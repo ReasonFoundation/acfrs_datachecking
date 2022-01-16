@@ -628,11 +628,11 @@ General Purpose
 </table>
 </div>
 </div>
-<div id="ranking" class="section level1">
-<h1>Ranking</h1>
-<ol style="list-style-type: decimal">
-<li>The rankings by percentage of revenue? The output should show the liability amount, the revenue and the ratio as a percentage.</li>
-</ol>
+<div id="ranking-top-10-in-each-field" class="section level1">
+<h1>Ranking top 10 in each field</h1>
+<div id="the-rankings-by-percentage-of-revenue" class="section level2">
+<h2>The rankings by percentage of revenue</h2>
+<p>The output should show the liability amount, the revenue and the ratio as a percentage.</p>
 Note: filtered out 70 rows where Revenues == 0
 <table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
@@ -960,753 +960,1573 @@ State of Maryland
 </tr>
 </tbody>
 </table>
-<pre><code>## &lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Net Pension Liability &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Illinois &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 143,346,569,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NJ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New Jersey &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 90,812,068,247 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Texas &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 67,084,585,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 46,376,874,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Massachusetts &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 41,643,152,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CT &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Connecticut &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 39,840,819,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; A.W. Brown Leadership Academy &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 34,612,334,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Chicago &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 32,958,251,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; KY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Kentucky &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 25,870,784,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MD &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Maryland &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 18,912,696,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;&lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Net OPEB Assets &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MI &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Oakland County &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 384,338,239 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; GA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Georgia &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 253,962,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NE &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Omaha Public Power District &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 224,416,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; WI &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Wisconsin &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 131,142,354 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; AK &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Alaska &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 118,886,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Santa Clara Valley Transportation Authority &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 65,678,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; AZ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Phoenix &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 61,488,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; KY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Kentucky Community and Technical College System &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 52,525,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IN &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Indiana State University &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 48,698,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; OH &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Columbus City School District &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 46,421,447 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;&lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Net OPEB Liability &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 109,456,918,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Texas &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 76,983,152,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 66,006,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NJ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New Jersey &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 65,491,562,252 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Illinois &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 58,996,493,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Los Angeles County &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 25,921,499,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CT &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Connecticut &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 23,023,169,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Metropolitan Transportation Authority &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 21,117,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Massachusetts &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 17,486,660,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MD &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Maryland &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 17,257,184,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;&lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Bonds Outstanding &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 99,455,082,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Texas &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 59,721,954,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Metropolitan Transportation Authority &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 51,013,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Massachusetts &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 41,939,680,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Illinois &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 31,531,895,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CT &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Connecticut &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 29,166,415,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Los Angeles &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 29,056,349,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; WA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Washington &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 26,732,746,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NJ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; The Port Authority of New York and New Jersey &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 26,310,244,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NJ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New Jersey &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 25,401,600,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;&lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Notes Outstanding &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Lower Colorado River Authority &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 4,055,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MI &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Michigan &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 3,349,760,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; AL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Jefferson County &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 2,518,608,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Chicago &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,648,820,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Illinois &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,545,193,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NJ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New Jersey &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,500,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NJ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; New Jersey Transit Corporation &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,288,077,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; ND &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of North Dakota &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,142,684,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MS &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Mississippi &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,080,809,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; AZ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Grand Canyon University &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,045,362,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;&lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Leases &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; GA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Georgia &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 3,023,377,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; VA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Virginia Port Authority &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 2,253,021,808 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,547,326,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Los Angeles &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,333,166,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; FL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Orange County District School Board &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,101,976,781 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MI &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Great Lakes Water Authority &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,026,208,454 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IN &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Capital Improvement Board of Managers &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 850,379,782 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MD &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Maryland &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 770,343,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IN &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Marion County &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 705,790,781 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; VA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Loudoun County &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 643,363,204 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;&lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Loans Outstanding &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Houston &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 12,422,419,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Chicago &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 7,254,252,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; PA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Pennsylvania Higher Education Assistance Agency &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 3,251,675,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NJ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New Jersey &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 2,917,100,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Texas &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 2,389,422,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,832,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MI &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Michigan &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,439,600,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Los Angeles &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 916,071,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Sacramento Regional County Sanitation District &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 834,143,265 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; City of Los Angeles Department of Water &amp;amp; Power - Water System &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 739,034,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;&lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Compensated Absences &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 5,693,120,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; WI &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Wisconsin &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 2,593,896,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Los Angeles County &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 2,072,486,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Texas &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 2,035,843,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,358,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Metropolitan Transportation Authority &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 1,061,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Los Angeles &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 943,187,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; WA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Washington &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 910,960,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Massachusetts &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 906,461,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; PA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Pennsylvania &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 868,402,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;&lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Total Liabilities &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 305,300,557,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Illinois &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 263,404,811,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Texas &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 250,250,365,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NJ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New Jersey &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 213,903,087,870 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 188,872,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Massachusetts &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 113,588,290,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CT &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Connecticut &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 97,821,884,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Metropolitan Transportation Authority &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 92,447,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; WA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Washington &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 84,090,857,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; PA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Pennsylvania &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 79,810,308,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;&lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Revenues &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Texas &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 199,988,664,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 189,989,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; PA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Pennsylvania &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 109,336,712,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; FL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Florida &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 105,839,544,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 95,921,699,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Illinois &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 91,181,741,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MI &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Michigan &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 88,274,088,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; OH &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Ohio &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 79,125,001,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Massachusetts &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 76,583,475,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NJ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New Jersey &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 73,616,040,355 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;&lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Net Pension Liability - Net Pension Assets &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Illinois &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 143,346,569,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NJ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New Jersey &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 90,811,867,346 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Texas &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 67,084,585,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 46,376,874,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Massachusetts &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 41,643,152,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CT &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Connecticut &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 39,840,819,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; A.W. Brown Leadership Academy &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 34,612,334,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Chicago &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 32,958,251,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; KY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Kentucky &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 25,870,784,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MD &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Maryland &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 18,912,696,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;&lt;table class=&quot; lightable-paper lightable-hover&quot; style=&#39;font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;&#39;&gt;
-## &lt;caption&gt;Net Pension Liability&lt;/caption&gt;
-##  &lt;thead&gt;
-##   &lt;tr&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; State &lt;/th&gt;
-##    &lt;th style=&quot;text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Entity &lt;/th&gt;
-##    &lt;th style=&quot;text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;&quot;&gt; Net OPEB Liability - Net OPEB Assets &lt;/th&gt;
-##   &lt;/tr&gt;
-##  &lt;/thead&gt;
-## &lt;tbody&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 109,456,918,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; TX &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Texas &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 76,983,152,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New York &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 66,005,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NJ &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of New Jersey &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 65,491,562,252 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; IL &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Illinois &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 58,996,493,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Los Angeles County &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 25,921,499,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; CT &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Connecticut &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 23,023,169,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; NY &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Metropolitan Transportation Authority &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 21,117,000,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MA &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; Commonwealth of Massachusetts &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 17,486,660,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-##   &lt;tr&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; MD &lt;/td&gt;
-##    &lt;td style=&quot;text-align:left;&quot;&gt; State of Maryland &lt;/td&gt;
-##    &lt;td style=&quot;text-align:right;&quot;&gt; 17,257,184,000 &lt;/td&gt;
-##   &lt;/tr&gt;
-## &lt;/tbody&gt;
-## &lt;/table&gt;</code></pre>
-<pre><code>##   State                        Entity       Category Net Pension Liability
-## 1    TX A.W. Brown Leadership Academy Charter School           34612334000
-##   Net OPEB Assets Net OPEB Liability Bonds Outstanding Notes Outstanding Leases
-## 1               0                  0          24939706                 0      0
-##   Loans Outstanding Compensated Absences Total Liabilities Revenues
-## 1                 0                    0          25807836 16030856
-##   Liabilities/Revenues Ratio Net Pension Liability - Net Pension Assets
-## 1                   1.609885                                34612334000
-##   Net OPEB Liability - Net OPEB Assets Net Pension Assets
-## 1                                    0                  0</code></pre>
 </div>
-<div id="second-version-of-the-total-liability-table" class="section level1">
-<h1>Second version of the Total Liability table:</h1>
-one with both Net Pension Assets and Net OPEB Assets subtracted out.
+<div id="ranking-of-other-fields" class="section level2">
+<h2>Ranking of other fields</h2>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Net Pension Liability
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+State of Illinois
+</td>
+<td style="text-align:right;">
+143,346,569,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:left;">
+State of New Jersey
+</td>
+<td style="text-align:right;">
+90,812,068,247
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+State of Texas
+</td>
+<td style="text-align:right;">
+67,084,585,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+New York
+</td>
+<td style="text-align:right;">
+46,376,874,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MA
+</td>
+<td style="text-align:left;">
+Commonwealth of Massachusetts
+</td>
+<td style="text-align:right;">
+41,643,152,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+State of Connecticut
+</td>
+<td style="text-align:right;">
+39,840,819,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+A.W. Brown Leadership Academy
+</td>
+<td style="text-align:right;">
+34,612,334,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+Chicago
+</td>
+<td style="text-align:right;">
+32,958,251,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KY
+</td>
+<td style="text-align:left;">
+Commonwealth of Kentucky
+</td>
+<td style="text-align:right;">
+25,870,784,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+State of Maryland
+</td>
+<td style="text-align:right;">
+18,912,696,000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Net OPEB Assets
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+MI
+</td>
+<td style="text-align:left;">
+Oakland County
+</td>
+<td style="text-align:right;">
+384,338,239
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GA
+</td>
+<td style="text-align:left;">
+State of Georgia
+</td>
+<td style="text-align:right;">
+253,962,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NE
+</td>
+<td style="text-align:left;">
+Omaha Public Power District
+</td>
+<td style="text-align:right;">
+224,416,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WI
+</td>
+<td style="text-align:left;">
+State of Wisconsin
+</td>
+<td style="text-align:right;">
+131,142,354
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AK
+</td>
+<td style="text-align:left;">
+State of Alaska
+</td>
+<td style="text-align:right;">
+118,886,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:left;">
+Santa Clara Valley Transportation Authority
+</td>
+<td style="text-align:right;">
+65,678,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AZ
+</td>
+<td style="text-align:left;">
+Phoenix
+</td>
+<td style="text-align:right;">
+61,488,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KY
+</td>
+<td style="text-align:left;">
+Kentucky Community and Technical College System
+</td>
+<td style="text-align:right;">
+52,525,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IN
+</td>
+<td style="text-align:left;">
+Indiana State University
+</td>
+<td style="text-align:right;">
+48,698,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:left;">
+Columbus City School District
+</td>
+<td style="text-align:right;">
+46,421,447
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Net OPEB Liability
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+New York
+</td>
+<td style="text-align:right;">
+109,456,918,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+State of Texas
+</td>
+<td style="text-align:right;">
+76,983,152,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+State of New York
+</td>
+<td style="text-align:right;">
+66,006,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:left;">
+State of New Jersey
+</td>
+<td style="text-align:right;">
+65,491,562,252
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+State of Illinois
+</td>
+<td style="text-align:right;">
+58,996,493,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:left;">
+Los Angeles County
+</td>
+<td style="text-align:right;">
+25,921,499,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+State of Connecticut
+</td>
+<td style="text-align:right;">
+23,023,169,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+Metropolitan Transportation Authority
+</td>
+<td style="text-align:right;">
+21,117,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MA
+</td>
+<td style="text-align:left;">
+Commonwealth of Massachusetts
+</td>
+<td style="text-align:right;">
+17,486,660,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+State of Maryland
+</td>
+<td style="text-align:right;">
+17,257,184,000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Bonds Outstanding
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+New York
+</td>
+<td style="text-align:right;">
+99,455,082,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+State of Texas
+</td>
+<td style="text-align:right;">
+59,721,954,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+Metropolitan Transportation Authority
+</td>
+<td style="text-align:right;">
+51,013,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MA
+</td>
+<td style="text-align:left;">
+Commonwealth of Massachusetts
+</td>
+<td style="text-align:right;">
+41,939,680,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+State of Illinois
+</td>
+<td style="text-align:right;">
+31,531,895,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+State of Connecticut
+</td>
+<td style="text-align:right;">
+29,166,415,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:left;">
+Los Angeles
+</td>
+<td style="text-align:right;">
+29,056,349,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WA
+</td>
+<td style="text-align:left;">
+State of Washington
+</td>
+<td style="text-align:right;">
+26,732,746,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:left;">
+The Port Authority of New York and New Jersey
+</td>
+<td style="text-align:right;">
+26,310,244,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:left;">
+State of New Jersey
+</td>
+<td style="text-align:right;">
+25,401,600,000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Notes Outstanding
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+Lower Colorado River Authority
+</td>
+<td style="text-align:right;">
+4,055,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MI
+</td>
+<td style="text-align:left;">
+State of Michigan
+</td>
+<td style="text-align:right;">
+3,349,760,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AL
+</td>
+<td style="text-align:left;">
+Jefferson County
+</td>
+<td style="text-align:right;">
+2,518,608,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+Chicago
+</td>
+<td style="text-align:right;">
+1,648,820,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+State of Illinois
+</td>
+<td style="text-align:right;">
+1,545,193,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:left;">
+State of New Jersey
+</td>
+<td style="text-align:right;">
+1,500,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:left;">
+New Jersey Transit Corporation
+</td>
+<td style="text-align:right;">
+1,288,077,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ND
+</td>
+<td style="text-align:left;">
+State of North Dakota
+</td>
+<td style="text-align:right;">
+1,142,684,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MS
+</td>
+<td style="text-align:left;">
+State of Mississippi
+</td>
+<td style="text-align:right;">
+1,080,809,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AZ
+</td>
+<td style="text-align:left;">
+Grand Canyon University
+</td>
+<td style="text-align:right;">
+1,045,362,000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Leases
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+GA
+</td>
+<td style="text-align:left;">
+State of Georgia
+</td>
+<td style="text-align:right;">
+3,023,377,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VA
+</td>
+<td style="text-align:left;">
+Virginia Port Authority
+</td>
+<td style="text-align:right;">
+2,253,021,808
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+New York
+</td>
+<td style="text-align:right;">
+1,547,326,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:left;">
+Los Angeles
+</td>
+<td style="text-align:right;">
+1,333,166,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FL
+</td>
+<td style="text-align:left;">
+Orange County District School Board
+</td>
+<td style="text-align:right;">
+1,101,976,781
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MI
+</td>
+<td style="text-align:left;">
+Great Lakes Water Authority
+</td>
+<td style="text-align:right;">
+1,026,208,454
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IN
+</td>
+<td style="text-align:left;">
+Capital Improvement Board of Managers
+</td>
+<td style="text-align:right;">
+850,379,782
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+State of Maryland
+</td>
+<td style="text-align:right;">
+770,343,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IN
+</td>
+<td style="text-align:left;">
+Marion County
+</td>
+<td style="text-align:right;">
+705,790,781
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VA
+</td>
+<td style="text-align:left;">
+Loudoun County
+</td>
+<td style="text-align:right;">
+643,363,204
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Loans Outstanding
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+Houston
+</td>
+<td style="text-align:right;">
+12,422,419,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+Chicago
+</td>
+<td style="text-align:right;">
+7,254,252,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PA
+</td>
+<td style="text-align:left;">
+Pennsylvania Higher Education Assistance Agency
+</td>
+<td style="text-align:right;">
+3,251,675,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:left;">
+State of New Jersey
+</td>
+<td style="text-align:right;">
+2,917,100,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+State of Texas
+</td>
+<td style="text-align:right;">
+2,389,422,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+State of New York
+</td>
+<td style="text-align:right;">
+1,832,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MI
+</td>
+<td style="text-align:left;">
+State of Michigan
+</td>
+<td style="text-align:right;">
+1,439,600,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:left;">
+Los Angeles
+</td>
+<td style="text-align:right;">
+916,071,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:left;">
+Sacramento Regional County Sanitation District
+</td>
+<td style="text-align:right;">
+834,143,265
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:left;">
+City of Los Angeles Department of Water &amp; Power - Water System
+</td>
+<td style="text-align:right;">
+739,034,000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Compensated Absences
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+New York
+</td>
+<td style="text-align:right;">
+5,693,120,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WI
+</td>
+<td style="text-align:left;">
+State of Wisconsin
+</td>
+<td style="text-align:right;">
+2,593,896,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:left;">
+Los Angeles County
+</td>
+<td style="text-align:right;">
+2,072,486,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+State of Texas
+</td>
+<td style="text-align:right;">
+2,035,843,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+State of New York
+</td>
+<td style="text-align:right;">
+1,358,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+Metropolitan Transportation Authority
+</td>
+<td style="text-align:right;">
+1,061,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:left;">
+Los Angeles
+</td>
+<td style="text-align:right;">
+943,187,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WA
+</td>
+<td style="text-align:left;">
+State of Washington
+</td>
+<td style="text-align:right;">
+910,960,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MA
+</td>
+<td style="text-align:left;">
+Commonwealth of Massachusetts
+</td>
+<td style="text-align:right;">
+906,461,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PA
+</td>
+<td style="text-align:left;">
+Commonwealth of Pennsylvania
+</td>
+<td style="text-align:right;">
+868,402,000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Total Liabilities
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+New York
+</td>
+<td style="text-align:right;">
+305,300,557,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+State of Illinois
+</td>
+<td style="text-align:right;">
+263,404,811,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+State of Texas
+</td>
+<td style="text-align:right;">
+250,250,365,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:left;">
+State of New Jersey
+</td>
+<td style="text-align:right;">
+213,903,087,870
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+State of New York
+</td>
+<td style="text-align:right;">
+188,872,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MA
+</td>
+<td style="text-align:left;">
+Commonwealth of Massachusetts
+</td>
+<td style="text-align:right;">
+113,588,290,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+State of Connecticut
+</td>
+<td style="text-align:right;">
+97,821,884,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+Metropolitan Transportation Authority
+</td>
+<td style="text-align:right;">
+92,447,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WA
+</td>
+<td style="text-align:left;">
+State of Washington
+</td>
+<td style="text-align:right;">
+84,090,857,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PA
+</td>
+<td style="text-align:left;">
+Commonwealth of Pennsylvania
+</td>
+<td style="text-align:right;">
+79,810,308,000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Revenues
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+State of Texas
+</td>
+<td style="text-align:right;">
+199,988,664,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+State of New York
+</td>
+<td style="text-align:right;">
+189,989,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PA
+</td>
+<td style="text-align:left;">
+Commonwealth of Pennsylvania
+</td>
+<td style="text-align:right;">
+109,336,712,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FL
+</td>
+<td style="text-align:left;">
+State of Florida
+</td>
+<td style="text-align:right;">
+105,839,544,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+New York
+</td>
+<td style="text-align:right;">
+95,921,699,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+State of Illinois
+</td>
+<td style="text-align:right;">
+91,181,741,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MI
+</td>
+<td style="text-align:left;">
+State of Michigan
+</td>
+<td style="text-align:right;">
+88,274,088,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:left;">
+State of Ohio
+</td>
+<td style="text-align:right;">
+79,125,001,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MA
+</td>
+<td style="text-align:left;">
+Commonwealth of Massachusetts
+</td>
+<td style="text-align:right;">
+76,583,475,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:left;">
+State of New Jersey
+</td>
+<td style="text-align:right;">
+73,616,040,355
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Net Pension Liability - Net Pension Assets
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+State of Illinois
+</td>
+<td style="text-align:right;">
+143,346,569,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:left;">
+State of New Jersey
+</td>
+<td style="text-align:right;">
+90,811,867,346
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+State of Texas
+</td>
+<td style="text-align:right;">
+67,084,585,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+New York
+</td>
+<td style="text-align:right;">
+46,376,874,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MA
+</td>
+<td style="text-align:left;">
+Commonwealth of Massachusetts
+</td>
+<td style="text-align:right;">
+41,643,152,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+State of Connecticut
+</td>
+<td style="text-align:right;">
+39,840,819,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+A.W. Brown Leadership Academy
+</td>
+<td style="text-align:right;">
+34,612,334,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+Chicago
+</td>
+<td style="text-align:right;">
+32,958,251,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KY
+</td>
+<td style="text-align:left;">
+Commonwealth of Kentucky
+</td>
+<td style="text-align:right;">
+25,870,784,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+State of Maryland
+</td>
+<td style="text-align:right;">
+18,912,696,000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Net Pension Liability
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+State
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Entity
+</th>
+<th style="text-align:right;font-weight: bold;color: white !important;background-color: #FF6C30 !important;">
+Net OPEB Liability - Net OPEB Assets
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+New York
+</td>
+<td style="text-align:right;">
+109,456,918,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TX
+</td>
+<td style="text-align:left;">
+State of Texas
+</td>
+<td style="text-align:right;">
+76,983,152,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+State of New York
+</td>
+<td style="text-align:right;">
+66,005,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:left;">
+State of New Jersey
+</td>
+<td style="text-align:right;">
+65,491,562,252
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IL
+</td>
+<td style="text-align:left;">
+State of Illinois
+</td>
+<td style="text-align:right;">
+58,996,493,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:left;">
+Los Angeles County
+</td>
+<td style="text-align:right;">
+25,921,499,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+State of Connecticut
+</td>
+<td style="text-align:right;">
+23,023,169,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NY
+</td>
+<td style="text-align:left;">
+Metropolitan Transportation Authority
+</td>
+<td style="text-align:right;">
+21,117,000,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MA
+</td>
+<td style="text-align:left;">
+Commonwealth of Massachusetts
+</td>
+<td style="text-align:right;">
+17,486,660,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+State of Maryland
+</td>
+<td style="text-align:right;">
+17,257,184,000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="second-version-of-the-total-liability-table" class="section level2">
+<h2>Second version of the Total Liability table:</h2>
+with both Net Pension Assets and Net OPEB Assets subtracted out.
 <table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Total Liabilities
@@ -1903,6 +2723,7 @@ Commonwealth of Pennsylvania
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 
 

@@ -11,6 +11,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(knitr.table.format = "html")
 library(tidyverse)
 library(dplyr)
 library(purrr)
@@ -39,8 +40,9 @@ kable_styling() %>%
 scroll_box(height = "500px", width = "800px")
 ```
 
-# Ranking 
-(1) The rankings by percentage of revenue?  The output should show the liability amount, the revenue and the ratio as a percentage.
+# Ranking top 10 in each field
+## The rankings by percentage of revenue
+  The output should show the liability amount, the revenue and the ratio as a percentage.
 
 Note: filtered out 70 rows where Revenues == 0
 ```{r}
@@ -87,8 +89,11 @@ d %>%
 #  %>% scroll_box(height = "300px")
 ```
 
+## Ranking of other fields
 
-```{r function}
+```{r function, results='asis'}
+# Note: must use results='asis' to show kable output from a for loop
+
 fields <- c("Net Pension Liability", "Net OPEB Assets", "Net OPEB Liability", "Bonds Outstanding", "Notes Outstanding", "Leases", "Loans Outstanding", "Compensated Absences", "Total Liabilities", "Revenues", "Net Pension Liability - Net Pension Assets", "Net OPEB Liability - Net OPEB Assets")
 
 #Note: can't directly select and arrange an outside variable. use all_of to select column wanted. Then arrange on index of an internal df inside function. 
@@ -101,15 +106,16 @@ df <- d %>%
 df %>% 
   arrange(desc(df[3])) %>% # can't arrange by field, must use index
   head(10) -> d1 
-  
-kable(d1, 
-      caption = "Net Pension Liability", row.names = FALSE, format = "html",
+
+knitr::kable(d1, 
+      caption = "Net Pension Liability", row.names = FALSE,
       align = c('l', 'l', 'r'),
       format.args = list(big.mark = ",")) %>% 
       kable_paper("hover", full_width = FALSE) %>% 
-      row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) -> result
+      row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) -> result 
 
 print(result)
+cat('\n')
 
 }
 
@@ -120,12 +126,13 @@ print(result)
 ```{r}
 # (2) Look into "TX  A.W. Brown Leadership Academy".  The Net Pension
 # Liability looks wrong.  If so, can you send a message to Ram and Sana?
-d %>% 
-  filter(Entity == "A.W. Brown Leadership Academy")
+# d %>% 
+#   filter(Entity == "A.W. Brown Leadership Academy")
 ```
 
-# Second version of the Total Liability table: 
-one with both Net Pension Assets and Net OPEB Assets subtracted out.
+## Second version of the Total Liability table: 
+
+with both Net Pension Assets and Net OPEB Assets subtracted out.
 ```{r}
 options(scipen = 999)
 d %>% 
