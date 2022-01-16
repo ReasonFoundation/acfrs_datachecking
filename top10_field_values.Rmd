@@ -1,0 +1,144 @@
+---
+title: "Top 10 values in each field"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(dplyr)
+library(purrr)
+library(kableExtra)
+library(knitr)
+```
+
+# Data
+
+```{r}
+jan11_site <- rio::import(here::here("data", "CAFRdata_20220111_221828.xlsx"))
+
+d <- jan11_site %>% 
+  filter(Category != "Non-Profit") %>% 
+  mutate("Liabilities/Revenues Ratio" = `Total Liabilities`/Revenues,
+         "Net Pension Liability - Net Pension Assets" = `Net Pension Liability` - `Net Pension Assets`, 
+         "Net OPEB Liability - Net OPEB Assets" = `Net OPEB Liability` - `Net OPEB Assets`
+         ) %>% 
+  select(State, Entity, Category,
+    `Net Pension Liability`, `Net OPEB Assets`, `Net OPEB Liability`, `Bonds Outstanding`, `Notes Outstanding`, 
+     Leases, `Loans Outstanding`, `Compensated Absences`, `Total Liabilities`, Revenues, `Liabilities/Revenues Ratio`, `Net Pension Liability - Net Pension Assets`, `Net OPEB Liability - Net OPEB Assets`, `Net Pension Assets`) 
+  
+
+kable(head(d), "html") %>%
+kable_styling() %>%
+scroll_box(height = "500px", width = "800px")
+```
+
+# Ranking 
+(1) The rankings by percentage of revenue?  The output should show the liability amount, the revenue and the ratio as a percentage.
+
+Note: filtered out 70 rows where Revenues == 0
+```{r}
+d %>% 
+  filter(Revenues != 0) %>% 
+  select(State, Entity, `Total Liabilities`, Revenues, `Liabilities/Revenues Ratio`) %>% 
+  arrange(desc(`Liabilities/Revenues Ratio`)) %>% 
+  slice(1:10) -> dtest 
+
+  
+  kable(dtest, caption = "Liabilities/Revenues Ratio", row.names = FALSE,
+        align = c('l', 'l', 'r', 'r', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+  
+```
+
+
+```{r test on 1 field }
+d %>% 
+  select(State, Entity, `Net Pension Liability`) %>% 
+  arrange(desc(`Net Pension Liability`)) %>% 
+  slice(1:10) -> dtest 
+
+  
+  kable(dtest, caption = "Net Pension Liability", row.names = FALSE,
+        align = c('l', 'l', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+  
+  # kable_styling(full_width = T,
+  #               font_size = 15,
+  # position = "left")) %>% # position of the table
+  # column_spec(column = 2, bold = TRUE) %>%  # columns must be specified by number
+  # column_spec(column = 5, width = "5cm") %>%
+  # row_spec(row = 0, color = "#660033") %>%  # row = 0 allows us to format the header
+  # row_spec(row = 2, italic = TRUE) %>%
+  # row_spec(row = 3, color = "#104e8b", background = "#d3d3d3") %>%
+  # row_spec(row = 4, monospace = TRUE) %>%
+  # row_spec(row = 5, underline = TRUE) %>%
+  # row_spec(row = 6, strikeout = TRUE)
+#  %>% scroll_box(height = "300px")
+```
+
+
+```{r function}
+fields <- c("Net Pension Liability", "Net OPEB Assets", "Net OPEB Liability", "Bonds Outstanding", "Notes Outstanding", "Leases", "Loans Outstanding", "Compensated Absences", "Total Liabilities", "Revenues", "Net Pension Liability - Net Pension Assets", "Net OPEB Liability - Net OPEB Assets")
+
+#Note: can't directly select and arrange an outside variable. use all_of to select column wanted. Then arrange on index of an internal df inside function. 
+            
+for (field in fields) {
+
+df <- d %>%
+  select(State, Entity, all_of(field))
+
+df %>% 
+  arrange(desc(df[3])) %>% # can't arrange by field, must use index
+  head(10) -> d1 
+  
+kable(d1, 
+      caption = "Net Pension Liability", row.names = FALSE, format = "html",
+      align = c('l', 'l', 'r'),
+      format.args = list(big.mark = ",")) %>% 
+      kable_paper("hover", full_width = FALSE) %>% 
+      row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) -> result
+
+print(result)
+
+}
+
+```
+
+
+
+```{r}
+# (2) Look into "TX  A.W. Brown Leadership Academy".  The Net Pension
+# Liability looks wrong.  If so, can you send a message to Ram and Sana?
+d %>% 
+  filter(Entity == "A.W. Brown Leadership Academy")
+```
+
+# Second version of the Total Liability table: 
+one with both Net Pension Assets and Net OPEB Assets subtracted out.
+```{r}
+options(scipen = 999)
+d %>% 
+  select(State, Entity, `Total Liabilities`, `Net OPEB Assets`, `Net Pension Assets`) %>% 
+  arrange(desc(`Total Liabilities`)) %>% 
+  slice(1:10) -> d_totLiability2 
+
+  
+  kable(d_totLiability2, caption = "Total Liabilities", row.names = FALSE, 
+        align = c('l', 'l', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+```
+

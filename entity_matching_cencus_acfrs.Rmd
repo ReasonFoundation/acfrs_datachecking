@@ -1,0 +1,65 @@
+---
+title: "Census Entities vs. ACFRS Entities"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+```
+
+### ACFRS unique entities
+
+```{r}
+acfr_entity <- rio::import(here::here("data", "CAFRdata_20220111_221828.xlsx")) %>% 
+  filter(Category != "Non-Profit") %>% 
+  select(Entity) %>% 
+  unique() %>% 
+  mutate_all(tolower)
+
+str(acfr_entity)
+
+acfr_entity 
+str_replace(acfr_entity$Entity[100], "a", "A")
+
+
+#remove "state of" in acfr entity
+acfr_entity_rmStateof <- str_replace(acfr_entity$Entity, "state of", "")
+
+str_detect(acfr_entity_rmStateof, "state of")
+```
+
+### Census Debt By Entity
+```{r}
+#data Marc emailed Jan 12
+census_debt_entity <- rio::import(here::here("data", "Census Debt By Entity 2019.xlsx")) %>% 
+  filter(`TOTAL DEBT (000s)` >= 500000) %>% 
+  rename("State" = STATE) %>% select(ENTITY) %>% 
+  mutate_all(tolower)
+
+
+#CALIFORNIA in the Census Data is equivalent to State of California in our data.
+census_debt_entity %>% str()
+```
+
+### Census entities that are not included in ACFRS
+```{r}
+census_debt_entity %>% 
+  filter(!ENTITY %in% acfr_entity$Entity) -> census_entities_NOT_in_acfrs
+
+
+census_debt_entity %>% 
+  filter(!ENTITY %in% acfr_entity_rmStateof)
+
+census_entities_NOT_in_acfrs  %>% str()
+
+#write_csv(census_entities_NOT_in_acfrs, "census_entities_NOT_in_acfrs.csv")
+
+```
+
+
+### ACFRS entities that are not included in Census 
+```{r}
+acfr_entity %>% 
+  filter(!Entity %in% census_debt_entity$ENTITY) %>% str()
+```

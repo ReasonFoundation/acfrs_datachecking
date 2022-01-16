@@ -1,0 +1,365 @@
+state,name,category,total_liabilities,bonds_outstanding,compensated_absences,leases,loans_outstanding,notes_outstanding,pension_debt,opeb_debt,total_revenues,charges_for_services,operating_grants,capital_grants,general_revenue,total_operating_revenues,non_operating_revenues,capital_contributions
+FL,Tampa-Hillsborough County Expressway Authority,Special District,919992827,675738483,0,0,0,0,4312517,0,97617385,0,0,0,0,87896561,7911645,1809179
+CA,Metropolitan Transportation Commission,Special District,10365512470,9140323768,0,0,0,0,34187728,-2826578,1031829694,688687936,468256919,7328320,-132443481,0,0,0
+CT,State of Connecticut Clean Water Fund - Water Pollution Control Authority,Special District,173274342,173274342,0,0,0,0,0,0,14423297,0,0,0,0,3989814,4469758,5963725
+CA,Alameda Corridor Transportation Authority,Special District,2225312612,2203738506,0,0,0,0,2116034,-490343,117379321,0,0,0,0,108667797,8711524,0
+ME,Maine Municipal Bond Bank,Special District,1831251898,1678316128,0,0,20548164,0,597603,926907,107064116,0,0,0,0,107064116,0,0
+MA,Massachusetts Clean Water Trust,Special District,2842574000,2724344000,0,0,0,0,0,0,305190000,0,0,0,0,170049000,135141000,0
+IN,Indiana Finance Authority,Special District,5391505866,4110320646,0,0,0,303175074,1618159,0,475808451,375592248,84276719,0,15939484,0,0,0
+NC,North Carolina State Education Assistance Authority,Special District,3598146550,879362371,0,0,0,0,1357035,4735285,316428098,0,0,0,0,63148989,253279109,0
+CT,West Shore Fire District,Special District,125695793,0,972244,0,0,0,79733392,44607973,10133181,318545,0,0,9814636,0,0,0
+OK,Autumn Ridge,Special District,1289521,0,0,0,0,0,0,0,60244,0,0,0,60244,0,0,0
+ND,North Dakota Housing Finance Agency,Special District,1394031000,1331980000,320000,0,0,0,2760000,189000,72051000,0,0,0,0,58106000,13945000,0
+NM,New Mexico Finance Authority,Special District,1859528603,1438941647,526988,0,410366407,0,0,0,149928097,0,0,0,0,68219692,81708405,0
+NM,State of New Mexico Taxation and Revenue Department,Special District,1146009025,0,2456590,0,0,0,0,0,105416214,0,1127212,0,104289002,0,0,0
+OH,Ohio Housing Finance Agency,Special District,1808572045,0,0,0,0,0,10786314,7757548,161920499,0,0,0,0,161920499,0,0
+LA,City of Gonzales Industrial Development Board,Special District,73191107,49614679,0,0,0,0,0,0,1699927,0,0,0,1699927,0,0,0
+CT,Great Pond Improvement District,Special District,9131867,8730654,0,0,0,0,0,0,132164,0,0,0,132164,0,0,0
+CT,Harbor Point Infrastructure Improvement District,Special District,158806693,155305420,0,0,0,0,0,0,9524707,0,0,0,9524707,0,0,0
+IL,Elwood,General Purpose,240579202,23317327,103257,0,0,84955518,20778,0,18472618,5876765,121746,0,12465670,0,8437,0
+IL,Mid-America Intermodal Authority Port District,Special District,46627,0,0,0,0,46627,0,0,4000,0,4000,0,0,0,0,0
+IL,Peoria Public Building Commission,Special District,92061457,90741099,0,0,0,0,-1388610,0,7169373,0,0,0,0,7073948,95425,0
+NE,Sanitary and Improvement District No. 9,Special District,5679065,5355000,0,0,0,0,0,0,583412,0,0,0,583412,0,0,0
+LA,Lafayette Metropolitan Expressway Commission,Special District,122611,0,0,0,0,0,0,0,6768,0,0,0,6768,0,0,0
+LA,Fremaux Economic Development District,Special District,9215112,9134954,0,0,0,0,0,0,619426,0,0,0,619426,0,0,0
+LA,St Landry Parish Waterworks District No 5,Special District,311526,0,0,0,0,301634,0,0,31863,0,0,0,0,31758,105,0
+NE,Sanitary and Improvement District No. 10 of  Cass County,Special District,1334776,1010000,0,0,0,0,0,0,104755,0,0,0,104755,0,0,0
+NE,Douglas SID 573 County,Special District,1824186,0,0,0,0,0,0,0,45469,0,0,0,45469,0,0,0
+NE,Douglas SID 531 County,Special District,6459621,4130000,0,0,0,0,0,0,405909,0,0,0,405909,0,0,0
+NE,Douglas SID 585 County,Special District,3363614,0,0,0,0,0,0,0,173371,0,0,0,173371,0,0,0
+NE,Sanitary and Improvement District No. 479 of  Douglas County,Special District,548201,485000,0,0,0,0,0,0,59701,0,0,0,59701,0,0,0
+NE,Douglas SID 504 County,Special District,3212544,3143583,0,0,0,0,0,0,350124,0,0,0,350124,0,0,0
+NE,Douglas SID 527 County,Special District,7799945,7595192,0,0,0,0,0,0,843389,0,0,0,843389,0,0,0
+NE,Sarpy SID 207 County,Special District,7267820,605000,0,0,0,0,0,0,88668,0,0,0,88668,0,0,0
+NE,Douglas SID 509 County,Special District,7284925,7135000,0,0,0,0,0,0,733924,0,0,0,733924,0,0,0
+NE,Douglas SID 575 County,Special District,6406960,1350000,0,0,0,0,0,0,323608,0,0,0,323608,0,0,0
+NE,Douglas SID 539 County,Special District,6847615,6750000,0,0,0,0,0,0,598713,0,0,0,598713,0,0,0
+NE,Sanitary and Improvement District No. 591 of Douglas County,Special District,3428535,0,0,0,0,0,0,0,20138,0,0,0,20138,0,0,0
+NE,Douglas SID 535 County,Special District,4947542,4850000,0,0,0,0,0,0,546527,0,0,0,546527,0,0,0
+NE,Douglas SID 544 County,Special District,3862211,2740000,0,0,0,0,0,0,283881,0,0,0,283881,0,0,0
+NE,Douglas SID 547 County,Special District,3487134,1361624,0,0,0,0,0,0,174168,0,0,0,174168,0,0,0
+NE,Douglas SID 557 County,Special District,12114129,10475000,0,0,0,0,0,0,1237176,0,0,0,1237176,0,0,0
+NE,Douglas SID 583 County,Special District,52580311,0,0,0,0,0,0,0,422194,0,0,0,422194,0,0,0
+NE,Douglas SID 568 County,Special District,4822350,4670000,0,0,0,0,0,0,276354,0,0,0,276354,0,0,0
+NE,Douglas SID 540 County,Special District,3050054,2585000,0,0,0,0,0,0,258496,0,0,0,258496,0,0,0
+NE,Douglas SID 528 County,Special District,10334775,10284611,0,0,0,0,0,0,954080,0,0,0,954080,0,0,0
+NE,Douglas SID 513 County,Special District,3727023,3660000,0,0,0,0,0,0,390279,0,0,0,390279,0,0,0
+NE,Sanitary and Improvement District No. 588 of Douglas County,Special District,936757,0,0,0,0,0,0,0,116,0,0,0,116,0,0,0
+NE,Douglas SID 574 County,Special District,1849764,995000,0,0,0,0,0,0,83879,0,0,0,83879,0,0,0
+NE,Douglas SID 524 County,Special District,20180172,11766137,0,0,0,0,0,0,784903,0,0,0,784903,0,0,0
+NE,Douglas SID 577 County,Special District,10282341,1000000,0,0,0,0,0,0,378512,0,0,0,378512,0,0,0
+NE,Douglas SID 581 County,Special District,5579011,0,0,0,0,0,0,0,199836,0,0,0,199836,0,0,0
+NE,Douglas SID 554 County,Special District,8072442,6931071,0,0,0,0,0,0,850173,0,0,0,850173,0,0,0
+NE,Douglas SID 582 County,Special District,11666568,3980000,0,0,0,0,0,0,283693,0,0,0,283693,0,0,0
+NE,Douglas SID 523 County,Special District,8063163,6326363,0,0,0,0,0,0,670110,0,0,0,670110,0,0,0
+NE,Douglas SID 578 County,Special District,6800931,0,0,0,0,0,0,0,253211,0,0,0,253211,0,0,0
+NE,Douglas SID 530 County,Special District,9854170,9715000,0,0,0,0,0,0,969717,0,0,0,969717,0,0,0
+NE,Douglas SID 538 County,Special District,3517476,3375000,0,0,0,0,0,0,369014,0,0,0,369014,0,0,0
+NE,Sanitary and Improvement District No. 596 of Douglas County,Special District,2231330,0,0,0,0,0,0,0,4576,0,0,0,4576,0,0,0
+NE,Douglas SID 570 County,Special District,10190989,9810000,0,0,0,0,0,0,800645,0,0,0,800645,0,0,0
+NE,Douglas SID 520 County,Special District,5615196,4080451,0,0,0,0,0,0,531780,0,0,0,531780,0,0,0
+NE,Douglas SID 555 County,Special District,8454709,8300000,0,0,0,0,0,0,794762,0,0,0,794762,0,0,0
+NE,Omaha Douglas Public Building Commission,Special District,157820697,155438945,125017,0,0,0,0,0,16061849,6702907,0,0,9358942,0,0,0
+NE,Douglas SID 413 County,Special District,4423042,2115000,0,0,0,0,0,0,353309,0,0,0,353309,0,0,0
+NE,Douglas SID 455 County,Special District,4256101,3600000,0,0,0,0,0,0,273066,0,0,0,273066,0,0,0
+NE,Douglas SID 482 County,Special District,3079464,3030000,0,0,0,0,0,0,337290,0,0,0,337290,0,0,0
+NE,Douglas SID 501 County,Special District,7671220,6875000,0,0,0,0,0,0,711921,0,0,0,711921,0,0,0
+NE,Douglas SID 425 County,Special District,26606467,16455897,0,0,288538,0,0,0,1564414,0,0,0,1564414,0,0,0
+NE,Dodge SID 6 County,Special District,582189,540000,0,0,0,0,0,0,61721,0,0,0,61721,0,0,0
+NE,Douglas SID 451 County,Special District,5574416,5390000,0,0,0,0,0,0,549310,0,0,0,549310,0,0,0
+NE,Douglas SID 466 County,Special District,6787435,6570000,0,0,0,0,0,0,737067,0,0,0,737067,0,0,0
+NE,Douglas SID 473 County,Special District,22005000,21004047,0,0,0,0,0,0,1556864,0,0,0,1556864,0,0,0
+NE,Douglas SID 476 County,Special District,31074735,15875000,0,0,14922051,0,0,0,2371066,0,0,0,2371066,0,0,0
+NE,Douglas SID 503 County,Special District,9961139,9825000,0,0,0,0,0,0,938970,0,0,0,938970,0,0,0
+NE,Douglas SID 507 County,Special District,4512165,4143280,0,0,0,0,0,0,473493,0,0,0,473493,0,0,0
+NE,Douglas SID 405 County,Special District,12964103,12740000,0,0,0,0,0,0,1262295,0,0,0,1262295,0,0,0
+NE,Douglas SID 478 County,Special District,2787097,2730000,0,0,0,0,0,0,208941,0,0,0,208941,0,0,0
+NE,Sarpy SID 270 County,Special District,9909583,9597829,0,0,0,0,0,0,605498,0,0,0,605498,0,0,0
+NE,Sarpy SID 302 County,Special District,2945960,2300000,0,0,0,0,0,0,191782,0,0,0,191782,0,0,0
+NE,Sarpy SID 316 County,Special District,3209378,0,0,0,0,0,0,0,125052,0,0,0,125052,0,0,0
+NE,Sarpy SID 249 County,Special District,4923382,2922662,0,0,1675754,0,0,0,408971,0,0,0,408971,0,0,0
+NE,Sarpy SID 258 County,Special District,8701629,8505000,0,0,0,0,0,0,523038,0,0,0,523038,0,0,0
+NE,Sarpy SID 332 County,Special District,4689609,0,0,0,0,0,0,0,18725,0,0,0,18725,0,0,0
+NE,Sarpy SID 298 County,Special District,1699040,850000,0,0,0,0,0,0,169735,0,0,0,169735,0,0,0
+NE,Sanitary and Improvement District No. 333,Special District,5894810,0,0,0,0,0,0,0,29366,0,0,0,29366,0,0,0
+NE,Sarpy SID 307 County,Special District,7191115,0,0,0,0,0,0,0,37140,0,0,0,37140,0,0,0
+NE,Sarpy SID 321 County,Special District,5644803,0,0,0,0,0,0,0,368825,0,0,0,368825,0,0,0
+NE,Sarpy SID 311 County,Special District,4065654,1315008,0,0,0,0,0,0,198434,0,0,0,198434,0,0,0
+NE,Sarpy SID 272 County,Special District,7392803,7370000,0,0,0,0,0,0,713463,0,0,0,713463,0,0,0
+NE,Sarpy SID 199 County,Special District,2631119,2590000,0,0,0,0,0,0,263337,0,0,0,263337,0,0,0
+NE,Sarpy SID 263 County,Special District,4269052,4215000,0,0,0,0,0,0,431278,0,0,0,431278,0,0,0
+NE,Sarpy SID 250 County,Special District,2898802,2865000,0,0,0,0,0,0,279110,0,0,0,279110,0,0,0
+NE,Sarpy SID 313 County,Special District,6432679,2000000,0,0,0,0,0,0,336426,0,0,0,336426,0,0,0
+NE,Sarpy SID 230 County,Special District,1604136,1570000,0,0,0,0,0,0,129763,0,0,0,129763,0,0,0
+NE,Sarpy SID 330 County,Special District,3695846,0,0,0,0,0,0,0,147501,0,0,0,147501,0,0,0
+NE,Sarpy SID 264 County,Special District,27412843,27125000,0,0,0,0,0,0,2588751,0,0,0,2588751,0,0,0
+NE,Sarpy SID 261 County,Special District,8669333,8500000,0,0,0,0,0,0,906187,0,0,0,906187,0,0,0
+NE,Sarpy SID 236 County,Special District,1960716,1940000,0,0,0,0,0,0,215741,0,0,0,215741,0,0,0
+NE,Sarpy SID 278 County,Special District,4382900,3965000,0,0,0,0,0,0,362687,0,0,0,362687,0,0,0
+NE,Sarpy SID 315 County,Special District,3164742,1000000,0,0,0,0,0,0,167310,0,0,0,167310,0,0,0
+NE,Sarpy SID 291 County,Special District,8071624,7885000,0,0,0,0,0,0,880585,0,0,0,880585,0,0,0
+NE,Sarpy SID 293 County,Special District,7659021,1770000,0,0,0,0,0,0,277120,0,0,0,277120,0,0,0
+NE,Sarpy SID 235 County,Special District,3461716,3420000,0,0,0,0,0,0,384491,0,0,0,384491,0,0,0
+NE,Sarpy SID 295 County,Special District,2374691,2245000,0,0,0,0,0,0,218955,0,0,0,218955,0,0,0
+NE,Sarpy SID 224 County,Special District,3097009,3050000,0,0,0,0,0,0,211233,0,0,0,211233,0,0,0
+NE,Sarpy SID 299 County,Special District,14595195,8895000,0,0,0,0,0,0,965646,0,0,0,965646,0,0,0
+NE,Sarpy SID 290 County,Special District,14243965,0,0,0,13121040,0,0,0,133958,0,0,0,133958,0,0,0
+NE,Sarpy County Sanitary and Improvement District No. 309,Special District,6571818,2800000,0,0,0,0,0,0,241460,0,0,0,241460,0,0,0
+NE,Sarpy SID 296 County,Special District,3207797,2000000,0,0,0,0,0,0,332957,0,0,0,332957,0,0,0
+NE,Sarpy SID 304 County,Special District,9345391,1200000,0,0,0,0,0,0,242558,0,0,0,242558,0,0,0
+NE,Sarpy SID 327 County,Special District,3826567,0,0,0,0,0,0,0,58755,0,0,0,58755,0,0,0
+NE,Sanitary and Improvement District No. 336 of  Sarpy County,Special District,4577704,0,0,0,0,0,0,0,9349,0,0,0,9349,0,0,0
+NE,Sarpy SID 251 County,Special District,5426574,5280000,0,0,0,0,0,0,599185,0,0,0,599185,0,0,0
+OK,Garfield County Industrial Authority Inc.,Special District,47012675,47000000,0,0,0,0,0,0,688724,0,0,0,0,657766,30958,0
+NE,Sarpy SID 303 County,Special District,3147249,3100000,0,0,0,0,0,0,226002,0,0,0,226002,0,0,0
+NE,Sarpy SID 300 County,Special District,4627419,0,0,0,0,0,0,0,105755,0,0,0,105755,0,0,0
+NE,Sarpy SID 257 County,Special District,8324609,8060000,0,0,0,0,0,0,868246,0,0,0,868246,0,0,0
+OH,Buckeye Tobacco Settlement Financing Authority of Ohio,Special District,5759391578,5740934483,0,0,0,0,0,0,328951810,0,0,0,328951810,0,0,0
+OH,Southern Ohio Agricultural and Community Development Foundation,Special District,490005,0,43914,0,0,0,254977,166027,28384,0,0,0,28384,0,0,0
+OK,Caddo County Governmental Building Authority,Special District,14770000,0,0,0,0,14770000,0,0,1502590,0,0,0,0,1492192,10398,0
+OK,Seminole County Educational Facilities Authority,Special District,3160000,3160000,0,0,0,0,0,0,462,0,0,0,462,0,0,0
+OK,Mcgee Creek Authority,Special District,79655853,17780000,88295,0,0,0,0,0,8311184,0,0,0,0,7506708,804476,0
+OK,Oklahoma Industrial Finance Authority,Special District,46516422,30000000,62699,0,0,0,33622,0,1538567,0,0,0,0,1385942,152625,0
+OK,Rush Springs Educational Facilities Authority,Special District,6675044,6660000,0,0,0,0,0,0,563173,0,0,0,0,562050,1123,0
+OK,Tulsa Municipal Airport Trust,Special District,333645769,325087522,0,0,0,0,0,0,22984776,0,0,0,0,20760499,2224277,0
+OR,Lake Oswego Redevelopment Agency,Special District,76726272,0,0,0,0,70800914,0,0,7863152,0,0,0,7863152,0,0,0
+OR,Beaverton Urban Redevelopment Agency,Special District,60634267,55000000,0,0,0,0,0,0,4859854,0,0,0,4859854,0,0,0
+OR,Klamath Falls Urban Renewal Agency,Special District,3938076,0,0,0,1344068,336824,0,0,286537,0,0,0,286537,0,0,0
+OR,Wood Village Urban Renewal Agency,Special District,4743151,0,5013,0,4487768,0,0,0,263403,0,0,0,263403,0,0,0
+OR,Shangri La Water District,Special District,1305209,0,0,0,1296469,0,0,0,141857,0,0,0,0,86062,55795,0
+OR,Urban Renewal Agency of the City of Troutdale,Special District,7008903,0,0,0,6700000,0,0,0,310221,0,0,0,310221,0,0,0
+TN,Industrial Development Board of Pigeon Forge,Special District,48471744,48285212,0,0,0,0,0,0,5062333,0,0,0,0,2249374,2812959,0
+RI,Rhode Island Student Loan Authority,Special District,595673525,566694363,0,0,0,24586010,0,0,34820017,0,0,0,0,34820017,0,0
+SD,Todd County School District No. 66-1,School District,406669978,0,269392,0,0,0,-78550,0,41381247,33016,9917087,216621,31214523,0,0,0
+SD,South Dakota Housing Development Authority,Special District,1341567876,1318536120,0,0,0,0,0,0,147123147,0,0,0,0,147123147,0,0
+TN,Industrial Development Board of the City of Bristol,Special District,153486273,146984674,0,0,0,0,0,0,9953003,0,9520556,0,432447,0,0,0
+TN,Industrial Development Board of the Counties of Cumberland Morgan & Roane ...,Special District,7615900,0,0,0,7554846,0,0,0,87043,0,0,0,87043,0,0,0
+TN,Industrial Development Board of Mcminnville-Warren County,Special District,6150959,0,0,0,0,5783674,0,0,337252,69029,0,0,268223,0,0,0
+TN,Industrial Development Board of the City of Sevierville,Special District,1566720,1535498,0,0,0,0,0,0,99915,0,0,0,0,99915,0,0
+VT,Vermont Housing Finance Agency,Special District,504675000,435189000,0,0,0,60936000,0,0,39378000,0,0,0,0,27584000,11794000,0
+TX,Central Texas Regional Mobility Authority,Special District,1874977366,1798976449,0,0,0,0,-896834,0,124659429,0,0,0,0,116934422,4474611,3250396
+VA,Chesapeake Bay Bridge and Tunnel District,Special District,846653455,790356557,0,0,0,0,12265486,5511019,77833898,0,0,0,0,57114488,20719410,0
+TN,Public Building Authority of Sevier County,Special District,9205379,9205176,0,0,0,0,0,0,98150,0,0,0,0,31868,66282,0
+UT,Utah Telecommunication Open Infrastructure Agency,Special District,461216203,179761471,825308,0,0,150442004,1107141,2734211,12098508,0,0,0,0,12036664,61844,0
+UT,Utah Infrastructure Agency,Special District,205189324,192842489,0,0,0,2760954,0,0,18754710,0,0,0,0,17183183,1571527,0
+UT,Utah Water Finance Agency,Special District,272944862,268805000,0,0,0,0,0,0,12952326,0,0,0,0,12952326,0,0
+CA,Mount Shasta Public Financing Authority,Special District,5932832,5865413,0,0,0,0,0,0,116483,0,0,0,0,116483,0,0
+VA,Virginia Port Authority,Special District,2877888547,503104113,1195851,2253021808,0,2064111,6383917,0,318727227,0,0,0,0,150540969,167902745,283513
+WY,Wyoming Community Development Authority,Special District,898363590,862047194,0,0,0,0,3776095,2042522,55154431,0,0,0,0,50129996,5024435,0
+NE,Sanitary and Improvement District No. 288,Special District,998159,971058,0,0,0,0,0,0,102085,0,0,0,102085,0,0,0
+CT,St of Ct Clean Water Fund - State Revolving Fund,Special District,1027728124,1027728124,0,0,0,0,0,0,76501908,0,0,0,0,24869319,36339058,15293531
+MO,Southeast Missouri State University,Public Higher Education,332814695,168285902,0,0,0,298693,128178153,4442902,6297097,0,3854330,0,2442767,0,0,0
+MO,Northwest Missouri State University,Public Higher Education,157673816,0,0,0,0,0,92777614,3851804,5074415,0,0,0,5074415,0,0,0
+OH,National Church Residences Worthington East Court,Special District,3555793,0,0,0,3499700,0,0,0,371841,0,0,0,0,371841,0,0
+IN,Indiana Motorsports Commission,Special District,80009377,0,0,78520000,0,0,0,0,5552327,0,0,0,0,5552327,0,0
+OK,Oklahoma Water Resources Board 1986 General Bond Resolution State Loan Program,Special District,171703190,169896425,0,0,0,0,0,0,7549140,0,0,0,0,7309896,239244,0
+IA,Clarke County Sanitary Landfill Commission,Special District,572380,0,0,0,0,0,0,0,51292,0,0,0,0,50591,701,0
+VA,Virginia Resource Authority,Special District,3522468962,3415890307,0,0,78249000,0,-136287,273278,258972610,0,0,0,0,150126437,108846173,0
+IN,Indiana Bond Bank,Special District,899817862,851986930,0,0,0,0,395273,0,33240329,0,0,0,0,32885499,354830,0
+TN,Carroll County Watershed Authority,Special District,10998058,10990254,0,0,0,0,0,0,434197,0,0,0,434197,0,0,0
+MI,Karegnondi Water Authority,Special District,330914895,292740549,0,37558648,0,0,0,0,25157885,0,0,0,0,2242678,22915207,0
+MI,Detroit City School District,School District,2022392486,1384887428,0,0,397849034,103710000,0,0,176048439,0,17013829,0,159034610,0,0,0
+MI,Gogebic Range Water Authority,Special District,13441334,13212000,0,0,0,0,0,0,994851,0,0,0,0,992156,2695,0
+MI,Grand Rapids City Building Authority,Special District,41232591,40783912,0,0,0,0,0,0,1667856,0,0,0,1667856,0,0,0
+MI,City of Marquette Brownfield Redevelopment Authority,Special District,65084744,33612545,0,0,0,0,0,0,4054122,0,0,0,4054122,0,0,0
+MI,City of Grand Rapids-Kent County Joint Building Authority,Special District,81686758,81678924,0,0,0,0,0,0,7757250,0,0,0,0,0,7757250,0
+MI,City of Lansing Building Authority,Special District,25807616,23026648,0,0,0,0,0,0,1315161,0,0,0,0,1315161,0,0
+MI,Flint City Economic Development Corportion,Special District,7666290,7585000,0,0,0,0,0,0,755070,533875,10026,0,211169,0,0,0
+MI,Forester Township,General Purpose,9064113,0,0,0,5201476,0,0,0,652189,440096,0,0,212093,0,0,0
+MI,School District of the City of Inkster,School District,40948962,5534000,0,0,35372282,0,0,0,1783662,0,0,0,1783662,0,0,0
+MI,Muskegon Heights School District,School District,37229371,17681234,0,0,0,18751317,136503,49740,2985317,154615,0,0,2830702,0,0,0
+MI,Lansing Tax Increment Finance Authority,Special District,45848601,27533577,0,18056287,0,0,0,0,3514492,0,0,0,3514492,0,0,0
+TN,Sequatchie / Bledsoe County Landfill,Special District,378927,0,0,0,0,0,0,0,38684,0,0,0,38684,0,0,0
+MI,West Branch Area Wastewater Treatment Plant Authority,Special District,10246336,10225034,0,0,0,0,0,0,280241,0,0,0,0,20000,260241,0
+TN,Judge O.K. Holliday Homes L.P.,Special District,1470775,0,0,0,0,1459070,0,0,148487,0,0,0,0,148412,75,0
+ND,North Dakota Public Finance Authority,Special District,495305000,490547000,0,0,0,0,431000,0,47907000,0,0,0,0,26250000,21657000,0
+IL,Newark Sanitary District,Special District,2741142,0,0,0,2741142,0,0,0,196361,0,0,0,0,165761,30600,0
+OK,Oklahoma Capitol Improvement Authority,Special District,1429526810,1400150625,0,0,0,0,0,0,63861240,0,0,0,0,56272005,7589235,0
+MD,East New Market,General Purpose,2321747,0,0,0,1830980,0,0,0,226371,0,0,0,113146,113146,79,0
+IA,Tobacco Settlement Authority,Special District,751433035,748135062,0,0,0,0,0,0,2882887,0,0,0,2882887,0,0,0
+NE,Douglas SID 512 County,Special District,2952446,2930000,0,0,0,0,0,0,175796,0,0,0,175796,0,0,0
+NE,Sarpy SID 297 County,Special District,6689323,6480000,0,0,0,0,0,0,358102,0,0,0,358102,0,0,0
+NE,Douglas SID 499 County,Special District,8714581,8490000,0,0,0,0,0,0,859362,0,0,0,859362,0,0,0
+MI,New Buffalo Library Joint Building Authority,Special District,4179671,4157834,0,0,0,0,0,0,300483,0,0,0,300483,0,0,0
+NE,Sarpy SID 310 County,Special District,3369684,0,0,0,0,0,0,0,231707,0,0,0,231707,0,0,0
+NE,Sanitary and Improvement District No. 337 of  Sarpy County,Special District,8631220,0,0,0,0,0,0,0,5839,0,0,0,5839,0,0,0
+NE,Sanitary and Improvement District No. 595 of  Douglas County,Special District,9541567,0,0,0,0,0,0,0,4597,0,0,0,4597,0,0,0
+KY,Logan Todd Regional Water Commission,Special District,72834148,64915410,0,0,0,4930925,1332692,318630,7592205,0,0,0,0,7352270,239935,0
+TX,Brazoria County Toll Road Authority,Special District,122636271,90390542,0,0,0,0,0,0,8086685,0,0,0,0,162177,352027,7572481
+CT,Connecticut Housing Finance Authority,Special District,5443998000,4899707000,0,0,0,0,70480000,82371000,337744000,0,0,0,0,215082000,122662000,0
+MI,City of Detroit Water and Sewerage Department,Special District,1283830776,1032613818,5002234,0,26503010,0,57200183,31606,137494734,0,0,0,0,114833467,22661267,0
+MI,Greater Wayne County Economic Development Corporation,Special District,29544,0,0,0,0,0,0,0,619,0,0,0,619,0,0,0
+LA,Nineteenth Judicial District Court Building Commission,Special District,94271326,93883236,0,0,0,0,0,0,7679906,7227547,22884,0,429475,0,0,0
+MI,Wayne County Building Authority,Special District,196179319,189043355,0,0,0,0,0,0,18613426,18603530,0,0,9896,0,0,0
+NE,Nebraska Cooperative Republican Platte Enhancement,Special District,88318259,88183420,0,0,0,0,0,0,8958948,977514,4066434,0,3915000,0,0,0
+OR,Independence Urban Renewal Agency,Special District,21827389,12543486,0,0,0,8353170,0,0,1030040,0,429925,0,600115,0,0,0
+NY,Village of Groton Housing Authority,Special District,3764963,0,0,0,3626707,0,21873,0,321222,0,0,0,0,321222,0,0
+KY,Locust Ridge Apartments,Special District,736322,730700,0,0,0,0,0,0,67422,0,0,0,67422,0,0,0
+MI,Washtenaw County Building Authority,Special District,426646,0,0,0,0,0,0,0,29162,0,29162,0,0,0,0,0
+MI,Washtenaw County Dept of Public Works Authority,Special District,8463965,8385994,0,0,0,0,0,0,11848,0,0,0,11848,0,0,0
+TN,Loudon County Solid Waste Disposal Commission,Special District,6855473,0,0,0,0,0,0,0,423177,0,0,0,0,323880,99297,0
+TN,Sports Authority of the County of Wilson,Special District,13444423,13400000,0,0,0,0,0,0,960784,4500,0,0,956284,0,0,0
+OK,Sperry Economic Development Authority,Special District,28399,0,0,0,0,28399,0,0,2825,0,0,0,0,2825,0,0
+MN,Applewood Pointe Cooperative of Eagan,Special District,22921448,0,0,0,22443300,0,0,0,2369291,0,0,0,0,2369291,0,0
+OH,The River South Authority,Special District,59937177,59734336,0,0,0,0,0,0,2254118,0,0,0,0,2234107,20011,0
+OH,Ohio Water Development Authority,Special District,5439888401,5293829688,289535,0,0,0,1474322,1152246,344009735,0,0,0,0,214300693,14002,129695040
+NE,Sanitary and Improvement District No.594,Special District,3829481,0,0,0,0,0,0,0,7017,0,0,0,7017,0,0,0
+LA,East Columbia Waterworks District,Special District,4252831,2889792,0,0,1046418,0,0,0,408388,0,0,0,0,403766,4622,0
+NE,Sanitary and Improvement District No. 339 of Sarpy County,Special District,1925574,0,0,0,0,0,0,0,2834,0,0,0,2834,0,0,0
+NE,Sanitary and Improvement District No.593,Special District,6816488,0,0,0,0,0,0,0,2887,0,0,0,2887,0,0,0
+NE,Sanitary and Improvement District No.598 of Douglas County,Special District,6410085,0,0,0,0,0,0,0,36677,0,0,0,36677,0,0,0
+NE,Sanitary and Improvement District No.1,Special District,960214,0,0,0,720581,0,0,0,69211,0,0,0,69211,0,0,0
+NE,Sanitary and Improvement District No. 599 of Douglas County,Special District,3198611,0,0,0,0,0,0,0,895,0,0,0,895,0,0,0
+CT,Bolton Lakes Regional Water Pollution Control Authority,Special District,7027071,6986060,0,0,0,0,0,0,608354,0,0,0,0,260010,1298,347046
+MO,University of Central Missouri,Public Higher Education,260207287,61066158,4048018,15596380,0,2440012,145766631,4163736,9044387,0,0,0,9044387,0,0,0
+DC,Building Hope Finance Formerly Building Hope... A Charter School Fac,Charter School,75049400,0,0,0,0,74772941,0,0,6742894,0,0,0,6742894,0,0,0
+MD,Charter Schools Development Corporation,Charter School,185556413,0,0,5589341,3352645,167977223,0,0,18767416,0,0,0,18767416,0,0,0
+VT,Vermont Economic Development Authority,Special District,256287000,0,0,0,96500000,157768000,0,0,16639000,0,0,0,0,16629000,10000,0
+LA,Caldwell Parish Waterworks District - East Columbia,Special District,4252831,0,0,0,1046418,2889792,0,0,408388,0,0,0,0,403766,4622,0
+PA,Williamsburg Municipal Authority,Special District,11073171,0,0,0,11001747,0,0,0,1048621,0,0,0,0,1043566,5055,0
+LA,Richland Parish Fire Protection District Ward 1,Special District,9549011,0,0,0,3065210,0,0,0,604850,584425,0,0,20425,0,0,0
+OK,Rogers County Educational Facilities Authority,Special District,52899715,52180000,0,0,0,0,0,0,1416005,0,0,0,0,12000,1404005,0
+OK,Rogers County Finance Authority,Special District,36005844,35425000,0,0,0,0,0,0,1377833,0,0,0,0,1010090,367743,0
+OR,Klamath Project Drought Response Agency,Special District,27424,0,0,0,0,0,0,0,237,0,0,0,0,0,237,0
+OK,Kay County Public Building Authority,Special District,12843536,12843536,0,0,0,0,0,0,456182,0,0,0,0,422339,33843,0
+CA,Grossmont Healthcare District,Special District,293766168,287012892,75809,0,0,0,255512,-592848,26495978,427758,16639004,0,9429216,0,0,0
+TX,Orange Redevelopment Corporation,Special District,13488919,0,0,0,12821745,0,0,0,901628,0,0,0,0,901346,282,0
+LA,Louisiana Public Facilities Authority,Special District,117962609,116611681,0,0,0,0,0,0,3862243,0,0,0,3862243,0,0,0
+MI,51st District Court-Waterford Charter Township,Special District,60186,60186,0,0,0,0,0,0,2975,0,0,0,2975,0,0,0
+IN,North Central Indiana Regional Development Authority,Special District,2081574,0,0,0,0,0,0,0,29191,0,0,0,0,0,29191,0
+MI,Monroe County Building Authority,Special District,4119712,4081412,0,0,0,0,0,0,138656,0,138656,0,0,0,0,0
+OH,Northwest Ohio Advanced Energy Improvement District,Special District,38243916,30225043,0,0,0,2721710,0,0,2551735,0,0,0,0,2551735,0,0
+OH,Delaware Northern New Community Authority,Special District,2208872,0,0,0,0,0,0,0,101425,0,0,0,0,101425,0,0
+LA,Shreveport Home Mortgage Authority,Special District,947861,867171,0,0,0,0,0,0,71017,0,0,0,0,53144,17873,0
+NJ,New Jersey Housing and Mortgage Finance Agency,Special District,2805957000,1918934000,0,0,0,0,44414000,16408000,239931000,0,0,0,0,219170000,20761000,0
+AR,University of Central Arkansas,Public Higher Education,284426688,226198824,4319657,0,0,1687680,23633126,3833990,25978183,0,0,0,25978183,0,0,0
+OK,Adair County Educational Facilities Authority,Special District,849813,840788,0,0,0,0,0,0,10285,0,0,0,0,10285,0,0
+NY,The Pavilion Housing Development Fund Corporation,Special District,6092824,0,0,0,5840900,0,0,0,414697,0,0,0,0,414697,0,0
+NE,Douglas SID 572 County,Special District,6957638,5600000,0,0,0,0,0,0,416431,0,0,0,416431,0,0,0
+OK,Tahlequah Educational Facilities Authority,Special District,8488258,6200000,0,0,0,0,0,0,19096,0,0,0,0,14885,4211,0
+PA,Corry,General Purpose,20557336,0,0,0,20301042,0,0,0,1087000,1087000,0,0,0,0,0,0
+TX,Vinton,General Purpose,20021487,8485000,39039,0,9881246,0,0,0,2204859,184430,17038,53981,1840989,108421,0,0
+MA,Worcester Redevelopment Authority,Special District,87203708,0,0,0,0,14892522,0,0,1992322,0,0,0,0,576111,24378,1391833
+OK,Marshall County Justice Authority,Special District,4633469,4578278,0,0,0,0,0,0,479521,0,0,0,0,472536,6985,0
+OH,555 West Goodale New Community Authority,Special District,9229009,0,0,0,0,9098116,0,0,434000,0,0,0,0,434000,0,0
+OH,Liberty Community Authority,Special District,37243595,21699477,0,0,11045733,0,0,0,1261482,0,0,0,0,1254170,7312,0
+OH,Northstar New Community Authority,Special District,23571632,16183357,0,0,0,0,0,0,175194,0,0,0,0,175194,0,0
+OH,Jerome Village Community Development Authority,Special District,105690321,71528926,0,0,0,0,0,0,2691552,0,0,0,0,2691552,0,0
+CO,Jamestown,General Purpose,7924186,0,0,0,0,0,0,0,814002,85092,-74998,708768,95140,0,0,0
+WI,St. Germain Housing Authority,Special District,2087061,0,0,0,0,2010854,0,0,188906,0,0,0,0,188906,0,0
+PR,Puerto Rico Highways and Transportation Authority,Special District,8777193750,4384109675,0,0,0,0,0,0,495472370,0,0,0,0,176743353,29588043,289140974
+TX,North Fort Bend Water Authority,Special District,1103434671,1085205135,0,0,0,0,0,0,63198761,0,0,0,0,59689984,3508777,0
+IA,Iowa Petroleum Underground Storage Tank Ust Board,Special District,6780632,0,0,0,0,0,0,0,234962,0,0,0,234962,0,0,0
+OK,Muskogee Industrial Trust,Special District,166767288,61,0,166757227,0,0,0,0,1437636,0,0,0,0,1437636,0,0
+TX,Denton County Municipal Utility District No 9,Special District,5342921,0,0,0,0,865000,0,0,54541,0,0,0,54541,0,0,0
+TX,Bay Colony West Municipal Utility District,Special District,25772858,21705912,0,0,0,0,0,0,2036919,0,0,0,2036919,0,0,0
+TX,Bell County Municipal Utility District No. 1,Special District,8898362,0,0,0,0,0,0,0,605263,0,0,0,605263,0,0,0
+TX,Belmont Fresh Water Supply District No.2,Special District,10087485,4968650,0,0,0,1566000,0,0,527555,0,0,0,527555,0,0,0
+CA,Mojave River Academy,Charter School,5549048,0,0,0,0,0,0,0,446852,0,0,0,446852,0,0,0
+TX,Comal County Water Control Improvement District No 1a,Special District,19380084,3055500,0,0,0,0,0,0,74480,0,0,0,74480,0,0,0
+TX,Blaketree Municipal Utility District No 1,Special District,23685719,9317207,0,0,0,0,0,0,1690546,0,0,0,1690546,0,0,0
+TX,Comal County Water Control Improvement District No 6,Special District,23546541,14833151,0,0,0,0,0,0,1787329,0,0,0,1787329,0,0,0
+TX,Denton County Municipal Utility District No 6,Special District,49359835,11534485,0,0,0,0,0,0,833650,0,0,0,833650,0,0,0
+TX,Brazoria County Municipal Utility District No 55,Special District,72589501,26556540,0,0,0,3965500,0,0,2636329,0,0,0,2636329,0,0,0
+TX,Fort Bend County Municipal Utility District No 132,Special District,38725399,9925000,0,0,0,0,0,0,2293056,0,0,0,2293056,0,0,0
+TX,Brazoria County Municipal Utility District No 22,Special District,46087650,32777813,0,0,0,8672850,0,0,4255015,0,0,0,4255015,0,0,0
+TX,Brazoria County Municipal Utility District No 24,Special District,6195889,0,0,0,0,0,0,0,308040,0,0,0,308040,0,0,0
+TX,Harris County Municipal Utility District No 382,Special District,11596639,11019578,0,0,0,0,0,0,1177979,0,0,0,1177979,0,0,0
+TX,East Montgomery County Municipal Utility District No 3,Special District,29142288,11625337,0,0,0,0,0,0,2081667,0,0,0,2081667,0,0,0
+TX,Brazoria County Municipal Utility District No 23,Special District,15245800,12709313,0,0,0,0,0,0,1676168,0,0,0,1676168,0,0,0
+TX,Harris County Improvement District No 12,Special District,6396211,0,0,0,0,0,0,0,456973,0,0,0,456973,0,0,0
+TX,East Montgomery County Municipal Utility District No 4,Special District,20010545,10275000,0,0,0,0,0,0,1196254,0,0,0,1196254,0,0,0
+TX,Galveston County Municipal Utility District No 56,Special District,54853914,22050917,0,0,0,12060000,0,0,1712474,0,0,0,1712474,0,0,0
+TX,Brazoria County Municipal Utility District No 28,Special District,60938626,55561271,0,0,0,0,0,0,5344130,0,0,0,5344130,0,0,0
+TX,Brazoria County Municipal Utility District No 32,Special District,31257842,0,0,0,0,8470000,0,0,1792156,0,0,0,1792156,0,0,0
+TX,Brazoria County Municipal Utility District No 36,Special District,9665321,4250000,0,0,0,0,0,0,559750,0,0,0,559750,0,0,0
+TX,Brazoria County Municipal Utility District No 39,Special District,52871130,23741038,0,0,0,1465000,0,0,3385149,0,0,0,3385149,0,0,0
+TX,Harris County Improvement District No 25,Special District,6788854,0,0,0,0,0,0,0,482076,0,0,0,482076,0,0,0
+TX,Galveston County Municipal Utility District No 66,Special District,8667193,6044939,0,0,0,0,0,0,742832,0,0,0,742832,0,0,0
+TX,Harris County Municipal Utility District No 381,Special District,18369407,11451901,0,0,0,0,0,0,1212913,0,0,0,1212913,0,0,0
+TX,Brazoria County Municipal Utility District No 40,Special District,23753914,0,0,0,0,3940000,0,0,1009065,0,0,0,1009065,0,0,0
+TX,Fort Bend County Municipal Utility District No 134b,Special District,118977693,81970688,0,0,0,0,0,0,6552914,0,0,0,6552914,0,0,0
+TX,Brazoria County Municipal Utility District No 53,Special District,735929,0,0,0,0,0,0,0,32843,0,0,0,32843,0,0,0
+TX,Galveston County Municipal Utility District No 54,Special District,27197265,21536370,0,0,0,0,0,0,2353918,0,0,0,2353918,0,0,0
+TX,Brazoria County Municipal Utility District No 56,Special District,11460666,0,0,0,0,0,0,0,714317,0,0,0,714317,0,0,0
+TX,Fort Bend County Municipal Utility District No 141,Special District,12820486,2630000,0,397859,0,0,0,0,803984,0,0,0,803984,0,0,0
+TX,Fort Bend County Levee Improvement District No 6,Special District,38364774,30337007,0,0,0,0,0,0,2469742,0,0,0,2469742,0,0,0
+TX,Brazoria County Municipal Utility District No 66,Special District,11074085,3500000,0,0,0,0,0,0,203950,0,0,0,203950,0,0,0
+TX,Collin County Water Control and Improvement District No 3,Special District,59179165,37438932,0,0,0,0,0,0,3323345,0,0,0,3323345,0,0,0
+TX,Canyon Falls Municipal Utility District No 1,Special District,10009302,0,0,0,0,0,0,0,221151,0,0,0,221151,0,0,0
+TX,Galveston County Municipal Utility District No 45,Special District,45294706,37542816,0,0,0,0,0,0,2879101,0,0,0,2879101,0,0,0
+TX,Canyon Falls Water Control and Improvement District No 2,Special District,34890170,20052502,0,0,0,0,0,0,1427335,0,0,0,1427335,0,0,0
+TX,Harris County Municipal Utility District No 411,Special District,7745953,7223444,0,0,0,0,0,0,805865,0,0,0,805865,0,0,0
+TX,Galveston County Municipal Utility District No 46,Special District,46736973,41351285,0,0,0,0,0,0,3536008,0,0,0,3536008,0,0,0
+TX,Fort Bend County Municipal Utility District No 174,Special District,13793641,0,0,0,0,0,0,0,85963,0,0,0,85963,0,0,0
+TX,Fort Bend County Municipal Utility District No 159,Special District,4655067,4329486,0,0,0,0,0,0,464967,0,0,0,464967,0,0,0
+TX,Harris County Municipal Utility District No 536,Special District,49660906,25488787,0,0,0,0,0,0,3823458,0,0,0,3823458,0,0,0
+TX,Fort Bend County Municipal Utility District No 167,Special District,29568095,29241632,0,0,0,0,0,0,2947920,0,0,0,2947920,0,0,0
+TX,Harris County Municipal Utility District No 231,Special District,5725598,0,0,0,0,0,0,0,274543,0,0,0,274543,0,0,0
+TX,Fort Bend County Municipal Utility District No 169,Special District,190589453,158720229,0,0,0,4875000,0,0,13006121,0,0,0,13006121,0,0,0
+TX,Harris County Municipal Utility District No 423,Special District,42871046,6194578,0,0,0,8430000,0,0,1021777,0,0,0,1021777,0,0,0
+TX,Harris County Municipal Utility District No 319,Special District,28564568,6745000,0,0,0,3250000,0,0,2123865,0,0,0,2123865,0,0,0
+TX,Hays County Development District No 1,Special District,42777444,13915000,0,0,0,0,0,0,1415239,0,0,0,1415239,0,0,0
+TX,Fort Bend Waller Counties Municipal Utility District No 3,Special District,39132810,13189067,0,0,0,0,0,0,1055531,0,0,0,1055531,0,0,0
+TX,Harris County Municipal Utility District No 531,Special District,31189174,19251924,0,0,0,0,0,0,2722079,0,0,0,2722079,0,0,0
+TX,Harris County Municipal Utility District No 504,Special District,68864415,30675910,0,0,0,6280000,0,0,5597175,0,0,0,5597175,0,0,0
+TX,Harris County Municipal Utility District No 518,Special District,2885105,0,0,0,0,0,0,0,60125,0,0,0,60125,0,0,0
+TX,Harris County Municipal Utility District No 530,Special District,43483151,25685482,0,0,0,0,0,0,3807074,0,0,0,3807074,0,0,0
+TX,Harris Brazoria Counties Municipal Utility District No 509,Special District,49871502,33269568,0,0,0,5390000,0,0,2576233,0,0,0,2576233,0,0,0
+TX,Harris County Municipal Utility District No 422,Special District,21088340,6175000,0,0,0,0,0,0,878435,0,0,0,878435,0,0,0
+TX,Harris County Municipal Utility District No 494,Special District,34971138,21247630,0,0,0,0,0,0,2827220,0,0,0,2827220,0,0,0
+TX,Fort Bend County Municipal Utility District No 187,Special District,46795889,37721368,0,0,0,0,0,0,2930794,0,0,0,2930794,0,0,0
+TX,Harris County Municipal Utility District No 538,Special District,12703052,0,0,0,0,0,0,0,640023,0,0,0,640023,0,0,0
+TX,Harris County Municipal Utility District No 459,Special District,19184245,6886106,0,0,0,0,0,0,807527,0,0,0,807527,0,0,0
+TX,Fort Bend County Municipal Utility District No 190,Special District,38357087,11425000,0,0,0,0,0,0,2284443,0,0,0,2284443,0,0,0
+TX,Harris County Municipal Utility District No 542,Special District,23248820,3155000,0,0,0,0,0,0,1157448,0,0,0,1157448,0,0,0
+TX,Fort Bend County Municipal Utility District No 207,Special District,6129055,0,0,0,0,0,0,0,440321,0,0,0,440321,0,0,0
+TX,Harris County Municipal Utility District No 558,Special District,30475431,11022939,0,0,0,0,0,0,1117027,0,0,0,1117027,0,0,0
+TX,Live Oak Creek Municipal Utility District No 1,Special District,22164162,11191378,0,0,0,2785000,0,0,647956,0,0,0,647956,0,0,0
+TX,Harris County Municipal Utility District No 450,Special District,18147075,18062683,0,0,0,0,0,0,1926366,0,0,0,1926366,0,0,0
+TX,Fulshear Municipal Utility District No 3a,Special District,59727493,22220000,0,0,0,4870000,0,0,3265750,0,0,0,3265750,0,0,0
+TX,Galveston County Municipal Utility District No 32,Special District,13219306,11477427,0,0,0,0,0,0,729379,0,0,0,729379,0,0,0
+TX,Fort Bend County Municipal Utility District No 184,Special District,19311679,5295000,0,0,0,0,0,0,1228187,0,0,0,1228187,0,0,0
+TX,Galveston County Municipal Utility District No 52,Special District,12199173,3980000,0,0,0,0,0,0,839567,0,0,0,839567,0,0,0
+TX,Harris County Municipal Utility District No 415,Special District,7774983,4095000,0,0,0,0,0,0,381779,0,0,0,381779,0,0,0
+TX,Lazy Nine Municipal Utility District No 1b,Special District,80517146,53795642,0,352878,0,0,0,0,7385134,0,0,0,7385134,0,0,0
+TX,Kaufman County Fresh Water Supply District No 4a,Special District,15369814,0,0,0,0,3671000,0,0,47435,0,0,0,47435,0,0,0
+TX,Harris Waller Counties Municipal Utility District No 3,Special District,71269082,36591001,0,0,0,0,0,0,2537611,0,0,0,2537611,0,0,0
+TX,Galveston County Municipal Utility District No 31,Special District,18245977,9220000,0,0,0,2760000,0,0,623308,0,0,0,623308,0,0,0
+TX,Highway 380 Municipal Management District No 1,Special District,62616993,31587908,0,0,0,0,0,0,2751913,0,0,0,2751913,0,0,0
+TX,Travis County Municipal Utility District No 15,Special District,33480286,32945390,0,0,0,0,0,0,2187283,0,0,0,2187283,0,0,0
+TX,Galveston County Municipal Utility District No 43,Special District,31676979,30893896,0,0,0,0,0,0,2894187,0,0,0,2894187,0,0,0
+TX,Galveston County Municipal Utility District No 44,Special District,31394799,25139620,0,0,0,0,0,0,1966309,0,0,0,1966309,0,0,0
+TX,Oak Point Water Control and Improvement District No 1,Special District,9644618,8193757,0,0,0,0,0,0,636329,0,0,0,636329,0,0,0
+TX,Williamson County Municipal Utility District No 28,Special District,20258025,15045845,0,0,0,5075000,0,0,1277078,0,0,0,1277078,0,0,0
+TX,Sunfield Municipal Utility District No 10,Special District,33814446,33482304,0,0,0,0,0,0,3108447,0,0,0,3108447,0,0,0
+TX,Northlake Municipal Management District No 1,Special District,33404445,0,0,0,0,5415000,0,0,263870,0,0,0,263870,0,0,0
+TX,Kaufman County Municipal Utility District No 10,Special District,6087964,3236728,0,0,0,0,0,0,630493,0,0,0,630493,0,0,0
+TX,Kaufman County Municipal Utility District No 3,Special District,355998,0,0,0,0,0,0,0,32740,0,0,0,32740,0,0,0
+TX,Kaufman County Municipal Utility District No 4,Special District,20295364,12544059,0,0,0,0,0,0,964827,0,0,0,964827,0,0,0
+TX,Lamar Improvement District,Special District,18306051,3410000,0,0,0,0,0,0,754753,0,0,0,754753,0,0,0
+TX,Williamson County Municipal Utility District No 29,Special District,322210,0,0,0,0,0,0,0,29679,0,0,0,29679,0,0,0
+TX,Lazy Nine Municipal Utility District No 1a,Special District,24529668,0,0,160400,0,0,0,0,320100,0,0,0,320100,0,0,0
+TX,Oak Point Water Control and Improvement District No 4,Special District,12425112,10495176,0,0,0,1070000,0,0,733703,0,0,0,733703,0,0,0
+TX,Willow Creek Farms Municipal Utility District,Special District,44059652,32357056,0,873200,0,0,0,0,4366694,0,0,0,4366694,0,0,0
+TX,Onion Creek Metro Park District,Special District,3323170,0,0,0,0,0,0,0,179019,0,0,0,179019,0,0,0
+TX,Kaufman County Fresh Water Supply District No 6,Special District,13623531,7584173,0,0,0,0,0,0,1183786,0,0,0,1183786,0,0,0
+TX,Montgomery County Municipal Utility District No 126,Special District,20481722,7065000,0,0,0,0,0,0,2061629,0,0,0,2061629,0,0,0
+TX,Woodridge Municipal Utility District,Special District,35743336,16460534,0,0,0,0,0,0,2682814,0,0,0,2682814,0,0,0
+TX,Montgomery County Municipal Utility District No 138,Special District,37603407,12895000,0,0,0,0,0,0,826804,0,0,0,826804,0,0,0
+TX,Travis County Municipal Utility District No 16,Special District,26239535,25623489,0,0,0,0,0,0,2508056,0,0,0,2508056,0,0,0
+TX,Sunfield Municipal Utility District No 30,Special District,65640196,31750257,0,0,0,0,0,0,1910149,0,0,0,1910149,0,0,0
+TX,Montgomery County Municipal Utility District No 92,Special District,12289405,12218833,0,0,0,0,0,0,601847,0,0,0,601847,0,0,0
+TX,The Lakes Fresh Water Supply District of Denton County,Special District,21741964,7273723,0,0,0,2700000,0,0,161668,0,0,0,161668,0,0,0
+TX,Montgomery County Municipal Utility District No 166,Special District,6180374,0,0,0,0,0,0,0,170969,0,0,0,170969,0,0,0
+TX,Montgomery County Municipal Utility District No 164,Special District,8421832,0,0,0,0,0,0,0,109293,0,0,0,109293,0,0,0
+TX,Montgomery County Municipal Utility District No 139,Special District,43502808,27180277,0,0,0,0,0,0,3489539,0,0,0,3489539,0,0,0
+TX,Travis County Municipal Utility District No 21,Special District,31763472,31577020,0,0,0,0,0,0,2078542,0,0,0,2078542,0,0,0
+TX,Waller County Improvement District No 2,Special District,11315687,2900000,0,0,0,0,0,0,893609,0,0,0,893609,0,0,0
+TX,Travis County Municipal Utility District No 20,Special District,340676,0,0,0,0,0,0,0,30579,0,0,0,30579,0,0,0
+TX,Williamson County Municipal Utility District No 25,Special District,24241910,8094297,0,0,0,0,0,0,805621,0,0,0,805621,0,0,0
+TX,Montgomery County Municipal Utility District No 107,Special District,22200449,22007899,0,0,0,0,0,0,1599468,0,0,0,1599468,0,0,0
+TX,Montgomery County Municipal Utility District No 108,Special District,4779659,0,0,0,0,0,0,0,7495,0,0,0,7495,0,0,0
+TX,Montgomery County Municipal Utility District No 111,Special District,21392336,0,0,0,0,0,0,0,654903,0,0,0,654903,0,0,0
+TX,Harris County Water Control Improvement District No 161,Special District,44384362,28095526,0,0,0,0,0,0,3685287,0,0,0,3685287,0,0,0
+TX,Lower Kirby Pearland Management District,Special District,31804440,21710120,0,0,0,0,0,0,3340116,0,0,0,3340116,0,0,0
