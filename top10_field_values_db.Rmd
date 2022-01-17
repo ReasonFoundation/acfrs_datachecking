@@ -12,27 +12,50 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 options(knitr.table.format = "html")
+library(readxl)
 library(tidyverse)
 library(dplyr)
 library(purrr)
 library(kableExtra)
 library(knitr)
+library(DBI)
+library(RPostgreSQL)
 ```
 
-# Data
+# Get Data by Querying the Database
+con <- dbConnect(dbDriver("PostgreSQL"), host = "72.249.37.13", port=5432, dbname = "cafrs", user="mjoffe", password="cafrproject22")
 
-```{r}
-jan11_site <- rio::import(here::here("data", "CAFRdata_20220111_221828.xlsx"))
+statement = "select cafrs_state.abbreviation as state, cafrs_entity.name, year, category,
+total_liabilities, bonds_outstanding, current_liabilities, leases, loans_outstanding, notes_outstanding,
+net_pension_liability, net_pension_assets, net_opeb_liability, net_opeb_assets, compensated_absences,
+charges_for_services, operating_grants, capital_grants, general_revenue, 
+cafrs_activities.change_in_net_position, expenses, 
+total_operating_revenues, non_operating_revenues, capital_contributions,
+greatest(charges_for_services + operating_grants + capital_grants + general_revenue,
+   cafrs_activities.change_in_net_position + expenses,
+   total_operating_revenues + non_operating_revenues) as revenues
+from cafrs_cafr
+inner join cafrs_entity on (cafrs_cafr.entity_id = cafrs_entity.id)
+inner join cafrs_state on (cafrs_state.id = cafrs_entity.state_id)
+inner join cafrs_netposition on (cafrs_netposition.cafr_id = cafrs_cafr.id)
+inner join cafrs_activities on (cafrs_activities.cafr_id = cafrs_cafr.id)
+inner join cafrs_proprietaryrevenues on (cafrs_proprietaryrevenues.cafr_id = cafrs_cafr.id)
+where year = 2020
+and category != 'Non-Profit'
+and is_valid
+and not is_nonstandard"
+
+queryResult <- dbGetQuery(con, statement)
+jan11_site = as.data.frame(queryResult)
+
+#jan11_site <- read_excel("CAFRdata_20220111_221828.xlsx", sheet = "Confirmed")
 
 d <- jan11_site %>% 
-  filter(Category != "Non-Profit") %>% 
-  mutate("Liabilities/Revenues Ratio" = `Total Liabilities`/Revenues,
-         "Net Pension Liability - Net Pension Assets" = `Net Pension Liability` - `Net Pension Assets`, 
-         "Net OPEB Liability - Net OPEB Assets" = `Net OPEB Liability` - `Net OPEB Assets`
-         ) %>% 
-  select(State, Entity, Category,
-    `Net Pension Liability`, `Net OPEB Assets`, `Net OPEB Liability`, `Bonds Outstanding`, `Notes Outstanding`, 
-     Leases, `Loans Outstanding`, `Compensated Absences`, `Total Liabilities`, Revenues, `Liabilities/Revenues Ratio`, `Net Pension Liability - Net Pension Assets`, `Net OPEB Liability - Net OPEB Assets`, `Net Pension Assets`) 
+  filter(category != "Non-Profit") %>% 
+  mutate("Liabilities/Revenues Ratio" = total_liabilities/revenues,
+         "Net Pension Liability - Net Pension Assets" = net_pension_liability - net_pension_assets , 
+         "Net OPEB Liability - Net OPEB Assets" = net_opeb_liability - net_opeb_assets) %>% 
+  select(state, name, category, year, everything()) 
   
 
 kable(head(d), "html") %>%
@@ -47,8 +70,8 @@ scroll_box(height = "500px", width = "800px")
 Note: filtered out 70 rows where Revenues == 0
 ```{r}
 d %>% 
-  filter(Revenues != 0) %>% 
-  select(State, Entity, `Total Liabilities`, Revenues, `Liabilities/Revenues Ratio`) %>% 
+  filter(revenues != 0) %>% 
+  select(state, name, total_liabilities, revenues, `Liabilities/Revenues Ratio`) %>% 
   arrange(desc(`Liabilities/Revenues Ratio`)) %>% 
   slice(1:10) -> dtest 
 
@@ -64,8 +87,8 @@ d %>%
 
 ```{r test on 1 field }
 d %>% 
-  select(State, Entity, `Net Pension Liability`) %>% 
-  arrange(desc(`Net Pension Liability`)) %>% 
+  select(state, name, net_pension_liability) %>% 
+  arrange(desc(net_pension_liability)) %>% 
   slice(1:10) -> dtest 
 
   
@@ -94,21 +117,21 @@ d %>%
 ```{r function, results='asis'}
 # Note: must use results='asis' to show kable output from a for loop
 
-fields <- c("Net Pension Liability", "Net OPEB Assets", "Net OPEB Liability", "Bonds Outstanding", "Notes Outstanding", "Leases", "Loans Outstanding", "Compensated Absences", "Total Liabilities", "Revenues", "Net Pension Liability - Net Pension Assets", "Net OPEB Liability - Net OPEB Assets")
+fields <- c(net_pension_liability, net_opeb_assets, net_opeb_liability, bonds_outstanding, notes_outstanding, leases, loans_outstanding, compensated_absences, total_liabilities, revenues, "Net Pension Liability - Net Pension Assets", "Net OPEB Liability - Net OPEB Assets")
 
 #Note: can't directly select and arrange an outside variable. use all_of to select column wanted. Then arrange on index of an internal df inside function. 
             
 for (field in fields) {
 
 df <- d %>%
-  select(State, Entity, all_of(field))
+  select(state, name, all_of(field))
 
 df %>% 
   arrange(desc(df[3])) %>% # can't arrange by field, must use index
   head(10) -> d1 
 
 knitr::kable(d1, 
-      caption = (d1 %>% colnames())[3], row.names = FALSE,
+      caption = "Net Pension Liability", row.names = FALSE,
       align = c('l', 'l', 'r'),
       format.args = list(big.mark = ",")) %>% 
       kable_paper("hover", full_width = FALSE) %>% 
@@ -119,10 +142,16 @@ cat('\n')
 
 }
 
-
 ```
 
 
+
+```{r}
+# (2) Look into "TX  A.W. Brown Leadership Academy".  The Net Pension
+# Liability looks wrong.  If so, can you send a message to Ram and Sana?
+# d %>% 
+#   filter(name == "A.W. Brown Leadership Academy")
+```
 
 ## Second version of the Total Liability table: 
 
@@ -130,8 +159,8 @@ with both Net Pension Assets and Net OPEB Assets subtracted out.
 ```{r}
 options(scipen = 999)
 d %>% 
-  select(State, Entity, `Total Liabilities`, `Net OPEB Assets`, `Net Pension Assets`) %>% 
-  arrange(desc(`Total Liabilities`)) %>% 
+  select(state, name, total_liabilities, `Net OPEB Assets`, `Net Pension Assets`) %>% 
+  arrange(desc(total_liabilities)) %>% 
   slice(1:10) -> d_totLiability2 
 
   
