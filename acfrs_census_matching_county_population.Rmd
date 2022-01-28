@@ -141,9 +141,10 @@ Joining these components:
 
 ```{r}
 # first, join entities in ACFRs contain words "County" and Louisiana that contain word "Parish" in their names
-county_pop_census_acfrs <- rbind(acfrs_county, louisiana_parish) %>% 
+acfrs_county_parish <- rbind(acfrs_county, louisiana_parish) 
 
-# next, join with census pop by = c("state.abb", "county")
+# next, join with census Census population by = c("state.abb", "county")
+county_pop_census_acfrs <- acfrs_county_parish %>% 
             left_join(pop) %>% 
             drop_na(population) %>% 
             arrange(desc(population)) %>%
@@ -152,79 +153,79 @@ county_pop_census_acfrs <- rbind(acfrs_county, louisiana_parish) %>%
             rbind(puertorico_afrs_census_pop) %>% distinct() 
 
 #write.csv(county_pop_census_acfrs, "county_pop_census_acfrs_TOTAL.csv")
-
 ```
 
-The matched dataset has `r nrow(county_pop_census_acfrs)` observations. 
+The matched dataset has `r nrow(county_pop_census_acfrs)` observations/ counties. 
 
-# List of counties with > 100k population in Census data that are not in ACFRs
+# List of counties in Census data with > 100k population  
 
 ```{r}
-# counties with > 100k  pop in Census
+# stoplist
+
+stoplist1 <-  pop %>% 
+  filter(state.name == "New York" & county %in% c("Bronx County", "Richmond County", "Kings County", "Queens County", "New York County"))
+  
+stoplist2 <- pop %>% 
+  filter(state.name == "Florida" & county == "Duval County") # FL Duval County's government is combined with FL Jacksonville,
+
+stoplist3 <- pop %>% 
+    filter(state.name == "Tennessee" & county == "Davidson County") 
+    
+stoplist4 <-  pop %>% 
+  filter(state.name == "Kentucky" & county == "Jefferson County")
+
+stoplist5 <- pop %>% 
+    filter(state.name == "Ohio" & county == "Franklin County")
+  
+stoplist <- rbind(stoplist1, stoplist2, stoplist3, stoplist4, stoplist5)
+
+# get counties in Census population data that have > 100k pop, county level, not Connecticut, not in stoplist
+
 census_pop_100k <- pop %>% 
- 
-  # the county level 
-  filter(grepl("County|Parish", county)) %>% # how about |Borough?
+  # counties with > 100k  pop in Census
   filter(population > 100000) %>% 
-
-  # that are not matched with counties in ACFRs
-  filter(!county %in% county_pop_census_acfrs$county) %>% distinct()
-
-```
   
-Two counties that should have been on this list : NY Kings County and NY Richmond County.  
-
-```{r}
-# list of census pop > 100k including NY Richmond County $ Kings County
-census_pop_100k %>% 
-  filter(county == "Richmond County" | county == "Kings County")
-
-# But Kings and Richmond are not in acfrs_county 
-acfrs_county %>% 
-  filter(county == "Richmond County" | county == "Kings County")
-#write.csv(census_county_100k_not_acfrs, "census_county_100k_not_acfrs.csv")
+  # only get county level 
+  filter(grepl("County|Parish", county)) %>%  # how about |Borough?
+  filter(state.name != "Connecticut") %>% 
+  filter(!id %in% stoplist$id) 
 
 ```
 
-
-List of counties to ignore
+## Counties in Census with > 100k population above that are not yet matched with ACFRs
 
 ```{r}
+census_pop_NOT_match_acfrs_100k <- census_pop_100k %>% 
+  filter(!id %in% county_pop_census_acfrs$id ) %>% arrange(desc(population)) %>% distinct()
+#write.csv(census_100k_not_acfrs, "census_100k_not_acfrs.csv")
+```
 
-# FL Duval County is not available.  It’s government is combined with FL Jacksonville,
+There are `r nrow(census_pop_NOT_match_acfrs_100k)` counties in Census that have more than 100k population that are not yet matche with ACFRs. 
 
-census_pop_100k %>% 
-  #filter(state.name != "Connecticut") %>% 
-  filter(state.name != "New York" & county != "Bronx County" & 
-           county != "Queens County" & county != "New York County"
-           ) %>% 
-  filter(state.name != "Florida" & county != "Duval County") %>% 
-  filter(state.name != )
+## All counties in Census, regardless of population size, that are not yet matched with ACFRs
 
+county_pop_census_acfrs
 
-#HOW ABOUT NY KINGS and RICHMOND? WHy not in this list?
-#NY Kings, Queens, Richmond, New York county, Bronx County, 
+```{r}
+census_pop_NOT_match_acfrs_all <- pop %>% 
 
-#"Davidson" TN
+  # only get county level 
+  filter(grepl("County|Parish", county)) %>%  # how about |Borough?
+  filter(state.name != "Connecticut") %>% 
+  filter(!id %in% stoplist$id) %>% 
+  filter(!id %in% county_pop_census_acfrs$id) %>% arrange(desc(population))
+```
 
-# KY Jefferson County
-------------
+There are `r nrow(census_pop_NOT_match_acfrs_all)` counties in Census, regarless of population size, that are not yet matche with ACFRs. 
 
-census_100k_not_acfrs %>% 
-  #filter(county == "Franklin County")
-# must be in list of 100k but Not acfrs
+```{r}
+#++++++++
+#Note: the below match is NOT accurate: it will filter out counties whose names appear in county_pop_census_acfrs. 
+#Some states have counties with the same name. 
+# Eg. this code will filter out "Kings County", both CA and NY. 
+# WHile Kings County NY is not in ACFRs, Kings County CA is. 
 
-census_100k_not_acfrs <- 
-  census_pop_100k %>% 
-  filter(county != stoplist_county) %>% 
-  left_join(county_pop_census_acfrs) %>% 
-  
-  #filter for those NOT in acfrs?
-  filter(is.na(category)) %>% 
-  filter(county == "Franklin County")
-
-
-
-write.csv(census_100k_not_acfrs, "census_100k_not_acfrs.csv")
+#  filter(!county %in% county_pop_census_acfrs$county) %>% distinct()
+#+++++++++
 ```
 
