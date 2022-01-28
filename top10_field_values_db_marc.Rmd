@@ -1,0 +1,198 @@
+---
+title: "Top 10 values in each field"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(knitr.table.format = "html")
+library(readxl)
+library(tidyverse)
+library(dplyr)
+library(purrr)
+library(kableExtra)
+library(knitr)
+
+```
+
+
+```{r}
+
+data_from_dbsite <- readRDS("data_from_dbsite.RDS")
+d <- data_from_dbsite %>% 
+  filter(category != "Non-Profit") %>% 
+  mutate("Liabilities/Revenues Ratio" = total_liabilities/revenues,
+         "Bonds Outstanding/Revenues Ratio" = bonds_outstanding/revenues,
+         "Net Pension Liability/Revenues Ratio" = (net_pension_liability - net_pension_assets)/revenues,
+         "Net OPEB Liability/Revenues Ratio" = (net_opeb_liability - net_opeb_assets)/revenues,
+         "Compensated Absences/Revenues Ratio" = compensated_absences/revenues,
+         "netted_net_pension_liability" = net_pension_liability - net_pension_assets, 
+         "netted_net_opeb_liability" = net_opeb_liability - net_opeb_assets) %>% 
+  select(state, name, category, year, everything()) 
+  
+
+kable(head(d), "html") %>%
+kable_styling() %>%
+scroll_box(height = "500px", width = "800px")
+
+```
+
+```{r}
+# Ranking top 10 in each field
+## The rankings by percentage of revenue
+ # The output should show the liability amount, the revenue and the ratio as a percentage.
+
+## Note: filtered out rows where Revenues < 1000000
+
+
+d %>% 
+  filter(revenues >= 1000000) %>% 
+  select(state, name, bonds_outstanding, revenues, `Bonds Outstanding/Revenues Ratio`) %>% 
+  arrange(desc(`Bonds Outstanding/Revenues Ratio`)) %>% 
+  slice(1:10) -> dtest 
+
+  
+  kable(dtest, caption = "Bonds Outstanding/Revenues Ratio", row.names = FALSE,
+        col.names = c('State','Entity Name','Bonds Outstanding','Revenues','Ratio'),
+        align = c('l', 'l', 'r', 'r', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+
+d %>% 
+  filter(revenues >= 1000000) %>% 
+  select(state, name, netted_net_pension_liability, revenues, `Net Pension Liability/Revenues Ratio`) %>% 
+  arrange(desc(`Net Pension Liability/Revenues Ratio`)) %>% 
+  slice(1:10) -> dtest 
+
+  
+  kable(dtest, caption = "Net Pension Liability/Revenues Ratio", row.names = FALSE,
+        col.names = c('State','Entity Name','Net Pension Liability','Revenues','Ratio'),
+        align = c('l', 'l', 'r', 'r', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+  
+d %>% 
+  filter(revenues >= 1000000) %>% 
+  select(state, name, netted_net_opeb_liability, revenues, `Net OPEB Liability/Revenues Ratio`) %>% 
+  arrange(desc(`Net OPEB Liability/Revenues Ratio`)) %>% 
+  slice(1:10) -> dtest 
+
+  
+  kable(dtest, caption = "Net OPEB Liability/Revenues Ratio", row.names = FALSE,
+        col.names = c('State','Entity Name','Net OPEB Liability','Revenues','Ratio'),
+        align = c('l', 'l', 'r', 'r', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+
+d %>% 
+  filter(revenues >= 1000000) %>% 
+  select(state, name, compensated_absences, revenues, `Compensated Absences/Revenues Ratio`) %>% 
+  arrange(desc(`Compensated Absences/Revenues Ratio`)) %>% 
+  slice(1:10) -> dtest 
+
+  
+  kable(dtest, caption = "Compensated Absences/Revenues Ratio", row.names = FALSE,
+        col.names = c('State','Entity Name','Compensated Absences','Revenues','Ratio'),
+        align = c('l', 'l', 'r', 'r', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+
+d %>% 
+  filter(revenues >= 1000000) %>% 
+  select(state, name, total_liabilities, revenues, `Liabilities/Revenues Ratio`) %>% 
+  arrange(desc(`Liabilities/Revenues Ratio`)) %>% 
+  slice(1:10) -> dtest 
+
+  
+  kable(dtest, caption = "Total Liabilities/Revenues Ratio", row.names = FALSE,
+        col.names = c('State','Entity Name','Total Liabilities','Revenues','Ratio'),
+        align = c('l', 'l', 'r', 'r', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+
+
+
+d %>% 
+  select(state, name, bonds_outstanding) %>% 
+  arrange(desc(bonds_outstanding)) %>% 
+  slice(1:10) -> dtest 
+
+  kable(dtest, caption = "Bonds Outstanding", row.names = FALSE,
+        align = c('l', 'l', 'r'),
+        col.names = c('State','Entity Name','Bonds Outstanding'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+
+d %>% 
+  select(state, name, netted_net_pension_liability) %>% 
+  arrange(desc(netted_net_pension_liability)) %>% 
+  slice(1:10) -> dtest 
+
+  kable(dtest, caption = "Net Pension Liability", row.names = FALSE,
+        col.names = c('State','Entity Name','Net Pension Liability'),
+        align = c('l', 'l', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+
+d %>% 
+  select(state, name, netted_net_opeb_liability) %>% 
+  arrange(desc(netted_net_opeb_liability)) %>% 
+  slice(1:10) -> dtest 
+
+  kable(dtest, caption = "Net OPEB Liability", row.names = FALSE,
+        col.names = c('State','Entity Name','Net OPEB Liability'),
+        align = c('l', 'l', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+
+d %>% 
+  select(state, name, compensated_absences) %>% 
+  arrange(desc(compensated_absences)) %>% 
+  slice(1:10) -> dtest 
+
+  kable(dtest, caption = "Compensated Absences", row.names = FALSE,
+        col.names = c('State','Entity Name','Compensated Absences'),
+        align = c('l', 'l', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+  
+d %>% 
+  select(state, name, total_liabilities) %>% 
+  arrange(desc(total_liabilities)) %>% 
+  slice(1:10) -> dtest 
+
+  kable(dtest, caption = "Total Liabilities", row.names = FALSE,
+        col.names = c('State','Entity Name','Total Liabilities'),
+        align = c('l', 'l', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+
+```
+
+Check: Bonds Outstanding/Revenues Ratio
+The River South Authority - marc checked - correct
+City of Gonzales Industrial Development Board: bond correct, 
+Rogers County Finance Authority
+
+
+Net Pension Liability/Revenues Ratio:
+Saline County --> wrong
+Wood Dale Fire Protection District
+Yamhill County School District 48j
+

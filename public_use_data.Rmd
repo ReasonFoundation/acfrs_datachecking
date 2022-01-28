@@ -28,10 +28,3 @@ statetypepu_clean %>% filter(amount_thousand == "30859593")
 
 ```
 
-```{r}
-fin_pid
-```
-```{r}
-fin_est
-```
-

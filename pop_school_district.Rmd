@@ -1,0 +1,86 @@
+---
+title: "population"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+library(tidyr)
+```
+
+## School Districts
+
+
+
+```{r nces_school_districts}
+#data downloaded Jan 27, 2020. No including charter schools. Student > 1. 
+nces_school_districts <- rio::import(here::here("data", "ncesdata_DBBFFFC.xlsx"), skip = 14) %>% 
+  select(`State District ID`, `District Name`, `County Name*`, City, State, `Students*`) %>% 
+  rename(name = `District Name`,
+    county = `County Name*`, 
+    state = State, 
+    student = `Students*`)
+  
+nces_school_districts <- nces_school_districts %>% 
+  mutate(name = str_replace(name, "School District", ""),
+         name = str_trim(name),
+         name = str_to_lower(name)) 
+
+nces_school_districts %>% 
+  filter(county == "Carroll County")
+```
+
+
+```{r}
+length(unique(nces_school_districts$state))
+length(unique(nces_school_districts$district_name))
+length(unique(nces_school_districts$City))
+
+```
+
+Number of distinct states and school districts in NCES data
+
+```{r}
+nces_school_districts %>% 
+distinct(name, state) %>% count()
+```
+
+
+# ACFRs data - School District
+
+Number of distinct states and school districts in ACFRs data, category "School District"
+```{r}
+
+acfrs_school_districts <- acfrs %>% 
+  filter(category == "School District") %>% 
+  mutate(name = str_to_lower(name))
+
+acfrs_school_districts %>% distinct(name, state) %>% count()
+
+length(setdiff(acfrs$state, school_districts$state))
+length(setdiff(acfrs$name, school_districts$county))
+
+#intersection between entities in ACFs and school district in School Disctrict
+length(intersect(acfrs_school_districts$name, nces_school_districts$name))
+
+acfrs_nces_school_discts <- acfrs_school_districts %>% 
+left_join(nces_school_districts) %>% 
+  drop_na(`Students*`) %>% arrange(desc(`Students*`))
+
+
+#write_csv(acfrs_nces_school_discts, "acfrs_nces_school_discts.csv")
+
+```
+
+
+
+```{r}
+# population data in ACFRs database
+pop_database <- rio::import(here::here("data", "population.csv"))
+pop_database %>% 
+filter(abbreviation == "NY" & name == "Clinton") 
+  
+```
+

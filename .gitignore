@@ -3,3 +3,4 @@
 .RData
 .Ruserdata
 data
+querydata_from_postgresQL.Rmd
