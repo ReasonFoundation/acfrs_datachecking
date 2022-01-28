@@ -1,0 +1,230 @@
+---
+title: "Matching Census Population to ACFRs at County Level"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+
+```
+
+# Census Population - County Level 
+
+```{r}
+d <- rio::import(here::here("data", "DECENNIALPL2020.P1_data_with_overlays_2021-12-16T123049.csv"), skip = 1) %>% 
+  select(id, `Geographic Area Name`, `!!Total:`) %>% 
+  rename(population = `!!Total:`)
+
+# join with df_state to get state.abb and state.name --> to have a common col with acfrs to join
+
+df_state <- data.frame(state.abb, state.name) %>% 
+  add_row(state.abb = "PR", state.name = "Puerto Rico") %>% 
+  add_row(state.abb = "DC", state.name = "District of Columbia")
+
+pop <- d %>% 
+  separate(`Geographic Area Name`, c("county", "state.name"), sep = ",")  %>%  
+  mutate(state.name = str_trim(state.name)) %>% 
+  left_join(df_state)
+
+```
+
+There are `r nrow(pop)` observations in census population data.
+
+# ACFRs data - County Level
+
+ACFRs data was queried from ACFRs PostgresQL database. The dataset was saved to R object `data_from_dbsite.RDS`. For security reason, the query commands are not included here.  
+
+```{r}
+acfrs <- readRDS("data_from_dbsite.RDS") %>% 
+# rename to easily join with census data later
+  rename(county = name) %>% 
+  rename(state.abb = state)
+
+```
+ACFRs has `r nrow(acfrs)` observations. 
+
+## Find "County" in ACFRs
+```{r}
+# ACFRs entities that contains the word "County" in their names
+  acfrs_county <- acfrs %>% 
+  filter(category == "General Purpose") %>% 
+  filter(grepl("County", county))
+  
+```
+
+There are `r nrow(acfrs_county)` entities that contain the word "county" in their names. 
+
+## Louisiana
+
+In Louisiana, counties are called Parishes.
+
+```{r}
+
+louisiana_parish <- acfrs %>% 
+  filter(category == "General Purpose") %>%  
+  filter(state.abb == "LA") %>% 
+  filter(grepl("Parish", county))
+
+```
+There're `r nrow(louisiana_parish)` Louisiana entities that contain the word "Parish" in their names. 
+
+
+## Alaska
+
+Alaska often uses the term “Municipality” instead of County. However, I found no Alaska entities has "Municipality" in their names. 
+```{r}
+#Marc: Alaska uses the term “Municipality” instead of County
+acfrs %>% 
+  filter(state.abb == "AK") %>% 
+  filter(grepl("Municipality", county))
+```
+
+Just to double check, find any ACFRs entities that has "Municipality" in their names.
+```{r}
+acfrs %>% filter(grepl("Municipality", county))
+
+# Found 2: SD Municipality of Dell Rapids & WV Municipality of Parkersburg.
+# However, they're not in Census population data
+pop %>%
+filter(county == "Municipality of Parkersburg" | county == "Municipality of Dell Rapids" )
+          
+```
+
+### Puerto Rico
+
+Puerto Rico only has “Municipios” that perform the functions of both cities and counties.
+
+The problem is: 
+* In ACFRs, there's no Puerto Rico entities that has "Municipio" in their names.
+* In Census, Puerto Rico counties do contain the word "Municipio" in their names.
+
+Solution: Remove "Municipio" in the names in Census to match with ACFRs
+
+Potential risk: Not all Puerto Rico entities in ACFRs without "Municipio" are actually a municipio.
+```{r}
+acfrs %>% 
+  filter(category == "General Purpose") %>% 
+  filter(state.abb == "PR") %>% 
+  filter(grepl("Municipio", county))
+```
+
+
+```{r}
+# in Census population, find county that has the word "Municipio" --> remove the word "Municipio" to match with acfrs 
+puertorico_census_pop <- pop %>% 
+          filter(state.name == "Puerto Rico") %>% 
+  filter(grepl("Municipio", county)) %>% 
+  mutate(county = str_remove(county, " Municipio")) 
+
+# In ACFRs, get all PR entities in General Purpose 
+ puertorico_afrs_census_pop <-  acfrs %>% 
+          filter(category == "General Purpose") %>% 
+          filter(state.abb == "PR") %>% 
+  
+#join Puerto Rico in acfrs with PR in census -
+         left_join(puertorico_census_pop) %>% 
+          drop_na(population) 
+          
+```
+
+
+# Join ACFRs and Census population data to get county level population 
+
+
+Joining these components: 
+* acfrs with entities contain word "County" in their names
+* acfrs entities of Louisiana that contain word "Parish" in their names
+* Puerto Rico in acfrs and Census. Note that in ACFRs, there's no Puerto Rico entities has "Municipio". To match with PR in Census, need to remove this word from Census population data. This introduces a risk that there might be cases where PR entities in ACFRs without word "Municipio" are NOT actually Municipio.
+
+
+```{r}
+# first, join entities in ACFRs contain words "County" and Louisiana that contain word "Parish" in their names
+county_pop_census_acfrs <- rbind(acfrs_county, louisiana_parish) %>% 
+
+# next, join with census pop by = c("state.abb", "county")
+            left_join(pop) %>% 
+            drop_na(population) %>% 
+            arrange(desc(population)) %>%
+  
+# third, bind with puertorico
+            rbind(puertorico_afrs_census_pop) %>% distinct() 
+
+#write.csv(county_pop_census_acfrs, "county_pop_census_acfrs_TOTAL.csv")
+
+```
+
+The matched dataset has `r nrow(county_pop_census_acfrs)` observations. 
+
+# List of counties with > 100k population in Census data that are not in ACFRs
+
+```{r}
+# counties with > 100k  pop in Census
+census_pop_100k <- pop %>% 
+ 
+  # the county level 
+  filter(grepl("County|Parish", county)) %>% # how about |Borough?
+  filter(population > 100000) %>% 
+
+  # that are not matched with counties in ACFRs
+  filter(!county %in% county_pop_census_acfrs$county) %>% distinct()
+
+```
+  
+Two counties that should have been on this list : NY Kings County and NY Richmond County.  
+
+```{r}
+# list of census pop > 100k including NY Richmond County $ Kings County
+census_pop_100k %>% 
+  filter(county == "Richmond County" | county == "Kings County")
+
+# But Kings and Richmond are not in acfrs_county 
+acfrs_county %>% 
+  filter(county == "Richmond County" | county == "Kings County")
+#write.csv(census_county_100k_not_acfrs, "census_county_100k_not_acfrs.csv")
+
+```
+
+
+List of counties to ignore
+
+```{r}
+
+# FL Duval County is not available.  It’s government is combined with FL Jacksonville,
+
+census_pop_100k %>% 
+  #filter(state.name != "Connecticut") %>% 
+  filter(state.name != "New York" & county != "Bronx County" & 
+           county != "Queens County" & county != "New York County"
+           ) %>% 
+  filter(state.name != "Florida" & county != "Duval County") %>% 
+  filter(state.name != )
+
+
+#HOW ABOUT NY KINGS and RICHMOND? WHy not in this list?
+#NY Kings, Queens, Richmond, New York county, Bronx County, 
+
+#"Davidson" TN
+
+# KY Jefferson County
+------------
+
+census_100k_not_acfrs %>% 
+  #filter(county == "Franklin County")
+# must be in list of 100k but Not acfrs
+
+census_100k_not_acfrs <- 
+  census_pop_100k %>% 
+  filter(county != stoplist_county) %>% 
+  left_join(county_pop_census_acfrs) %>% 
+  
+  #filter for those NOT in acfrs?
+  filter(is.na(category)) %>% 
+  filter(county == "Franklin County")
+
+
+
+write.csv(census_100k_not_acfrs, "census_100k_not_acfrs.csv")
+```
+

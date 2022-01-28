@@ -13,7 +13,6 @@ library(tidyr)
 ## School Districts
 
 
-
 ```{r nces_school_districts}
 #data downloaded Jan 27, 2020. No including charter schools. Student > 1. 
 nces_school_districts <- rio::import(here::here("data", "ncesdata_DBBFFFC.xlsx"), skip = 14) %>% 
