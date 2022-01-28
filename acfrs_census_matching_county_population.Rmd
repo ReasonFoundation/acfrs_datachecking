@@ -1,5 +1,7 @@
 ---
-title: "Matching Census Population to ACFRs at County Level"
+title: "Matching Census Population to ACFRs Data at County Level"
+author: "TN"
+date: January 28, 2022
 output: html_document
 ---
 
@@ -130,11 +132,11 @@ puertorico_census_pop <- pop %>%
 ```
 
 
-# Join ACFRs and Census population data to get county level population 
+# Join ACFRs and Census population data to get population for ACFRs counties 
 
 
 Joining these components: 
-* acfrs with entities contain word "County" in their names
+* acfrs entities contain word "County" in their names
 * acfrs entities of Louisiana that contain word "Parish" in their names
 * Puerto Rico in acfrs and Census. Note that in ACFRs, there's no Puerto Rico entities has "Municipio". To match with PR in Census, need to remove this word from Census population data. This introduces a risk that there might be cases where PR entities in ACFRs without word "Municipio" are NOT actually Municipio.
 
@@ -197,10 +199,10 @@ census_pop_100k <- pop %>%
 ```{r}
 census_pop_NOT_match_acfrs_100k <- census_pop_100k %>% 
   filter(!id %in% county_pop_census_acfrs$id ) %>% arrange(desc(population)) %>% distinct()
-#write.csv(census_100k_not_acfrs, "census_100k_not_acfrs.csv")
+#write.csv(census_pop_NOT_match_acfrs_100k, "census_pop_NOT_match_acfrs_100k.csv")
 ```
 
-There are `r nrow(census_pop_NOT_match_acfrs_100k)` counties in Census that have more than 100k population that are not yet matche with ACFRs. 
+There are `r nrow(census_pop_NOT_match_acfrs_100k)` counties in Census with more than 100k population that are not yet matched with ACFRs. 
 
 ## All counties in Census, regardless of population size, that are not yet matched with ACFRs
 
@@ -214,9 +216,11 @@ census_pop_NOT_match_acfrs_all <- pop %>%
   filter(state.name != "Connecticut") %>% 
   filter(!id %in% stoplist$id) %>% 
   filter(!id %in% county_pop_census_acfrs$id) %>% arrange(desc(population))
+
+#write.csv(census_pop_NOT_match_acfrs_all, "census_pop_NOT_match_acfrs_all.csv")
 ```
 
-There are `r nrow(census_pop_NOT_match_acfrs_all)` counties in Census, regarless of population size, that are not yet matche with ACFRs. 
+There are `r nrow(census_pop_NOT_match_acfrs_all)` counties in Census, regardless of population size, that are not yet matched with ACFRs. 
 
 ```{r}
 #++++++++
