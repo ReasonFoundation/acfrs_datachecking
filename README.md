@@ -1,4 +1,5 @@
-acfrs_datachecking
+US Municipal Financial Reports data integrity checking. Comparing with Census and NCES.
+
 # Matching Census Population to ACFRs at County Level
 ## ACFRs data - County Level: `data_from_dbsite.RDS`
 ACFRs data was queried from ACFRs PostgresQL database. The dataset was saved to R object `data_from_dbsite.RDS`. For security reason, the query commands are not included here.  
