@@ -2,6 +2,12 @@
 
 ## Matching Census Population with Municipal Financial Reports data (ACFRs) at County Level
 
+### Results 
+Three csv files: 
+* The matched dataset: `county_pop_census_acfrs_TOTAL.csv`
+* counties in Census with more than 100k population that are not yet matched with ACFRs: `census_pop_NOT_match_acfrs_100k.csv`
+* counties in Census, regardless of population size, that are not yet matched with ACFRs: `census_pop_NOT_match_acfrs_all.csv`
+
 ### How to just run this analysis on your machine (without cloning the whole repo)
 * get the script named `acfrs_census_matching_county_population.Rmd`
 
