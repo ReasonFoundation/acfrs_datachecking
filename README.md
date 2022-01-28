@@ -15,7 +15,7 @@ This data is located in `data` folder in the repo.
 Alternatively, this dataset can be downloaded from Census website
 https://data.census.gov/cedsci/table?q=&y=2020&d=DEC%20Redistricting%20Data%20%28PL%2094-171%29&tid=DECENNIALPL2020.P1
 
-* If you just want to push a button and not changing a directory to the data file: on your machine, create a folder called "data". Put the Census population data to that folder. 
+* If you just want to push a button and not changing any directory to the data file: on your machine, create a R project -> create a folder called "data" -> Put the Census population data to that folder. 
 * That's it!
 
 ## Matching Data from National Center for Education Statistics with Municipal Financial Reports data (ACFRs) at School District Level 
