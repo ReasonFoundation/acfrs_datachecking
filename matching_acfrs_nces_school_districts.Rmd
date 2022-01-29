@@ -1,0 +1,89 @@
+---
+title: "Matching ACFRs School Districts with NCES Student Enrollment"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+library(tidyr)
+library(dplyr)
+```
+
+# Read in Data 
+
+
+```{r nces_school_districts}
+#data downloaded Jan 27, 2020. Not including charter schools. Student > 1. 
+nces <- rio::import(here::here("data", "ncesdata_DBBFFFC.xlsx"), skip = 14) %>% 
+  select(`State District ID`, `District Name`, `County Name*`, City, State, `Students*`) %>% 
+  rename(name = `District Name`,
+    county = `County Name*`, 
+    state = State, 
+    student = `Students*`) %>% 
+  mutate(name = str_to_lower(name))
+  
+# acfrs from database, # only get School District
+
+acfrs_school_districts <- readRDS("data_from_dbsite.RDS") %>% 
+  filter(category == "School District") %>% 
+  mutate(name = str_to_lower(name))
+
+# unique state in each dataset 
+length(unique(nces$state))
+length(unique(acfrs_school_districts$state))
+
+```
+
+# Example of 63 School Districts
+
+This is a hand-matched example of 63 school district in NCES data & ACFRs. (Thank you! Marc)
+
+Analyzing the pattern of match between these 2 datasets will help to construct better match in the full datasets. 
+
+```{r}
+example_match_60sd <- rio::import(here::here("data", "Mappings for Largest School Districts (2).xlsx")) %>% 
+  rename(acfrs_name = `Name in ACFR System`, 
+         nces_name = `District Name`) %>% 
+  select(acfrs_name, nces_name, `State District ID`, `State...7`) 
+
+example_match_60sd_clean <- example_match_60sd %>% 
+   mutate(nces_name = str_to_lower(nces_name),
+         acfrs_name = str_to_lower(acfrs_name)) %>% 
+  
+  # remove terms in acfrs, 1st time
+  mutate(acfrs_name = str_remove_all(acfrs_name, "(the)?\\s*school district\\s*(of)?|county|independent school district|district school board|\\s*board of education\\s* (of the)?|public schools|the school board of|board of education|public school system")) %>% 
+
+  # remove terms in acfrs, second time
+  mutate(acfrs_name = str_trim(acfrs_name, side = "both")) %>% 
+  mutate(acfrs_name = str_remove_all(acfrs_name, "^of\\s*|-$|municipalno.*|\\.")) %>% 
+  mutate(acfrs_name = str_trim(acfrs_name, side = "both")) %>% # need to repeat b/c after removing words, space remains
+  
+  
+  # remove terms in nces, 1st time
+  mutate(nces_name = str_remove_all(nces_name, "(the)?\\s*school district\\s*(of)?|independent school district|district( school board)?|board of education|isd|public schools|schools|(co)? pblc schs|county|sd")) %>% 
+  
+  # remove terms in nces, 2nd time
+  
+  mutate(nces_name = str_trim(nces_name, side = "both")) %>% 
+  mutate(nces_name = str_remove_all(nces_name, "^of\\s*|-$|municipalno.*|\\.")) %>% 
+  mutate(nces_name = str_trim(nces_name, side = "both")) 
+  
+
+example_matched <- example_match_60sd_clean %>% 
+  # check of the 2 name cols are identical
+  mutate(same_name = ifelse(acfrs_name == nces_name, TRUE, FALSE)) %>% 
+  filter(same_name == TRUE)
+
+examples_NOT_matched <- example_match_60sd_clean %>% 
+  # check of the 2 name cols are identical
+  mutate(same_name = ifelse(acfrs_name == nces_name, TRUE, FALSE)) %>% 
+  filter(same_name == FALSE)
+
+```
+
+
+# ACFRs data - School District
+
+
