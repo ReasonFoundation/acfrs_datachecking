@@ -1,0 +1,48 @@
+---
+title: "Tables & Plots for Reporting Purposes"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(dplyr)
+library(kableExtra)
+
+acfrs <- readRDS("data_from_dbsite.RDS")
+matched_acfrs_nces_sd <- readRDS("matched_acfrs_nces_sd.RDS")
+county_pop_census_acfrs <- readRDS("county_pop_census_acfrs.RDS")
+```
+# State, Entity Name, Total Liabilities, Total Revenue and Total Liabilities/Total Revenue Ratio for all 50 states and the District of Columbia.
+
+
+```{r}
+all_states <- acfrs %>% 
+  select(state, name, total_liabilities, revenues, total_liabilities/revenues) 
+
+kable(head(all_states, 10), "html") %>%
+kable_styling() %>%
+scroll_box(height = "500px", width = "800px")
+```
+
+# State, Entity Name, Total Liabilities, Total Revenue and Total Liabilities/Total Revenue Ratio for the 100 highest population counties in our data
+
+```{r}
+top100_pop <- county_pop_census_acfrs %>% select(state.abb, county, total_liabilities, revenues, total_liabilities/revenues, population) %>% 
+  arrange(desc(population)) %>% slice(1:100)
+
+kable(top100_pop, "html") %>%
+kable_styling() %>%
+scroll_box(height = "500px", width = "800px")
+```
+
+
+# State, Entity Name, Total Liabilities, Total Revenue and Total Liabilities/Total Revenue Ratio for the 100 highest enrollment school districts in our data
+```{r}
+top100_student <- matched_acfrs_nces_sd %>% select(state, acfrs_original_name, total_liabilities, revenues, total_liabilities/revenues, student) %>% 
+  arrange(desc(student)) %>% slice(1:100)
+
+kable(top100_student, "html") %>%
+kable_styling() %>%
+scroll_box(height = "500px", width = "800px")
+```

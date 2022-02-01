@@ -108,7 +108,6 @@ nces_clean <- nces %>% select(-c(`State District ID`, City)) %>%
 
 ```
 
-
 ```{r}
 matched_acfrs_nces_sd <- acfrs_school_districts_clean %>% 
   left_join(nces_clean) %>% drop_na(student) %>%
@@ -117,7 +116,12 @@ matched_acfrs_nces_sd <- acfrs_school_districts_clean %>%
 
 #write.csv(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.csv")
 
+#saveRDS(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.RDS")
+
+
 # double check if the original name in ACFRs and NCES and the normalized names actually refer to the same entity
 matched_acfrs_nces_sd %>% select(state, acfrs_original_name, nces_original_name, name)
 ```
+
+
 
