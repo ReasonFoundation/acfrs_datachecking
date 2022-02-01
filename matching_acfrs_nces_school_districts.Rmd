@@ -18,22 +18,19 @@ library(dplyr)
 #data downloaded Jan 27, 2020. Not including charter schools. Student > 1. 
 nces <- rio::import(here::here("data", "ncesdata_DBBFFFC.xlsx"), skip = 14) %>% 
   select(`State District ID`, `District Name`, `County Name*`, City, State, `Students*`) %>% 
-  rename(nces_name = `District Name`,
+  rename(nces_original_name = `District Name`,
     county = `County Name*`, 
     state = State, 
     student = `Students*`) %>% 
-  mutate(nces_name = str_to_lower(nces_name)) %>% drop_na(nces_name)
+  mutate(nces_name = str_to_lower(nces_original_name)) %>% drop_na(nces_name)
   
 # acfrs from database, # only get School District
 
 acfrs_school_districts <- readRDS("data_from_dbsite.RDS") %>% 
-  rename(acfrs_name = name) %>% 
+  rename(acfrs_original_name = name) %>% 
   filter(category == "School District") %>% 
-  mutate(acfrs_name = str_to_lower(acfrs_name)) %>% drop_na(acfrs_name) 
+  mutate(acfrs_name = str_to_lower(acfrs_original_name)) %>% drop_na(acfrs_name) 
 
-# unique state in each dataset 
-length(unique(nces$state))
-length(unique(acfrs_school_districts$state))
 
 ```
 
@@ -108,7 +105,7 @@ nces_clean <- nces %>% select(-c(`State District ID`, City)) %>%
   mutate(nces_name = str_trim(nces_name, side = "both")) %>% 
   mutate(nces_name = str_remove_all(nces_name, "^of\\s*|-$|municipalno.*|\\.|'s|’s|[0-9]*$")) %>% 
   mutate(nces_name = str_trim(nces_name, side = "both")) %>% arrange(nces_name) %>% slice(-c(1:1)) %>% rename(name = nces_name)
-example_matched
+
 ```
 
 
@@ -120,5 +117,7 @@ matched_acfrs_nces_sd <- acfrs_school_districts_clean %>%
 
 #write.csv(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.csv")
 
+# double check if the original name in ACFRs and NCES and the normalized names actually refer to the same entity
+matched_acfrs_nces_sd %>% select(state, acfrs_original_name, nces_original_name, name)
 ```
 
