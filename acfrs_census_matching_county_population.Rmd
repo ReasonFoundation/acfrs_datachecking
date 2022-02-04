@@ -75,12 +75,13 @@ There're `r nrow(louisiana_parish)` Louisiana entities that contain the word "Pa
 
 ## Alaska
 
-Alaska often uses the term “Municipality” instead of County. However, I found no Alaska entities has "Municipality" in their names. 
+Alaska often uses the term "Borough" instead of County. 
 ```{r}
-#Marc: Alaska uses the term “Municipality” instead of County
-acfrs %>% 
+#Check term “Municipality” too, not found any. 
+alaska_borough <- acfrs %>% 
+  filter(category == "General Purpose") %>%  
   filter(state.abb == "AK") %>% 
-  filter(grepl("Municipality", county))
+  filter(grepl("Borough", county)) %>% arrange(county)
 ```
 
 Just to double check, find any ACFRs entities that has "Municipality" in their names.
@@ -142,11 +143,11 @@ Joining these components:
 
 
 ```{r}
-# first, join entities in ACFRs contain words "County" and Louisiana that contain word "Parish" in their names
-acfrs_county_parish <- rbind(acfrs_county, louisiana_parish) 
+# first, join entities in ACFRs contain words "County" + Louisiana that contain word "Parish" + alaska that contain "Borough" in their names
+acfrs_county_parish_borough <- rbind(acfrs_county, louisiana_parish) %>% rbind(alaska_borough)
 
 # next, join with census Census population by = c("state.abb", "county")
-county_pop_census_acfrs <- acfrs_county_parish %>% 
+county_pop_census_acfrs <- acfrs_county_parish_borough %>% 
             left_join(pop) %>% 
             drop_na(population) %>% 
             arrange(desc(population)) %>%
