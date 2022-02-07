@@ -43,7 +43,9 @@ acfrs <- readRDS("data_from_dbsite.RDS") %>%
 # rename to easily join with census data later
   rename(county = name) %>% 
   rename(state.abb = state)
+acfrs
 
+# Before: 31340 rows, when leaving out condition "NOT has_unconfirmed" --> get 33841 rows
 ```
 ACFRs has `r nrow(acfrs)` observations. 
 
@@ -53,7 +55,7 @@ ACFRs has `r nrow(acfrs)` observations.
   acfrs_county <- acfrs %>% 
   filter(category == "General Purpose") %>% 
   filter(grepl("County", county))
-  
+  acfrs_county
 ```
 
 There are `r nrow(acfrs_county)` entities that contain the word "county" in their names. 
@@ -239,19 +241,13 @@ There are `r nrow(census_pop_NOT_match_acfrs_all)` counties in Census, regardles
 ```{r}
 acfrs %>% 
   filter(category == "General Purpose") %>% 
-  select(state.abb, county, total_liabilities) %>% 
   filter(grepl("county|borough|parish", county, ignore.case = TRUE)) %>% arrange(county) -> t1
-
-acfrs_county_parish_borough
-
-t1 %>% filter(county == "Menominee County")
-
 
 ```
 
 
 ```{r}
-#get sheet Marc created "Data from CAFR System"
+#get sheet Marc created: "Data from CAFR System"
 census2017 <- rio::import(here::here("data", "Mapping County Data from ACFR System to 2017 and 2020 Census.xlsx"), sheet = 3)
 
 census2017 %>% 
@@ -260,10 +256,10 @@ census2017 %>%
   drop_na(`CAFR Year`) %>% # some rows have no years. Those with year 2020 are counties for which we have a CAFR for that year
   select(state.abb, county, `Census ID (from 2017)`) -> t2
 
-# entities that are NOT in acafrs databse
-t2 %>% left_join(t1) %>% # t1 has no total_liabilities na. 
-  filter(is.na(total_liabilities)) # after join, has 169 total_liabilities na => must be entities that are NOT in acfrs database. 
+# entities that are NOT in acfrs databse
+entities_inCensus2017_NOT_inAcfrs <- t2 %>% left_join(t1) %>% # t1 has no NA in total_liabilities 
+  filter(is.na(total_liabilities)) # after join, has these total_liabilities na => must be entities that are NOT in acfrs database. 
 
-
+#write_csv(entities_inCensus2017_NOT_inAcfrs, "entities_inCensus2017_NOT_inAcfrs.csv")
 ```
 
