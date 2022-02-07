@@ -214,7 +214,7 @@ census_pop_NOT_match_acfrs_all <- pop %>%
 
   # only get county level 
   filter(grepl("County|Parish", county)) %>%  # how about |Borough?
-  filter(state.name != "Connecticut") %>% 
+  filter(state.name != "Connecticut") %>%
   filter(!id %in% stoplist$id) %>% 
   filter(!id %in% county_pop_census_acfrs$id) %>% arrange(desc(population))
 
@@ -232,5 +232,38 @@ There are `r nrow(census_pop_NOT_match_acfrs_all)` counties in Census, regardles
 
 #  filter(!county %in% county_pop_census_acfrs$county) %>% distinct()
 #+++++++++
+```
+
+# County from 2017 Census
+
+```{r}
+acfrs %>% 
+  filter(category == "General Purpose") %>% 
+  select(state.abb, county, total_liabilities) %>% 
+  filter(grepl("county|borough|parish", county, ignore.case = TRUE)) %>% arrange(county) -> t1
+
+acfrs_county_parish_borough
+
+t1 %>% filter(county == "Menominee County")
+
+
+```
+
+
+```{r}
+#get sheet Marc created "Data from CAFR System"
+census2017 <- rio::import(here::here("data", "Mapping County Data from ACFR System to 2017 and 2020 Census.xlsx"), sheet = 3)
+
+census2017 %>% 
+  filter(grepl("county|borough|parish", Entity, ignore.case = TRUE)) %>% arrange(Entity) %>% 
+  rename(state.abb = State, county = Entity) %>% 
+  drop_na(`CAFR Year`) %>% # some rows have no years. Those with year 2020 are counties for which we have a CAFR for that year
+  select(state.abb, county, `Census ID (from 2017)`) -> t2
+
+# entities that are NOT in acafrs databse
+t2 %>% left_join(t1) %>% # t1 has no total_liabilities na. 
+  filter(is.na(total_liabilities)) # after join, has 169 total_liabilities na => must be entities that are NOT in acfrs database. 
+
+
 ```
 
