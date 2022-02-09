@@ -1,0 +1,143 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(scipen = 999)
+library(tidyverse)
+library(dplyr)
+```
+
+# Census Polulation - Cities and towns
+
+```{r}
+#Marc emailed this data Feb2: using 017 Census master file data to map to the 2020 Census Population data using FIPS Codes
+
+# GEO_ID: Census identifiers that point to population of places in US
+geoID_pop20_census <- rio::import(here::here("data", "City and Town Mapping.xlsx"), sheet = 2) %>% 
+rename(population = `!!Total:`, 
+       geo_id = GEO_ID) 
+
+# join with df_state to get state.abb and state.name --> to have a common col with acfrs to join
+df_state <- data.frame(state.abb, state.name) %>% 
+  add_row(state.abb = "DC", state.name = "District of Columbia")
+
+
+pop <- geoID_pop20_census %>% 
+  separate(NAME, c("city_town", "state.name"), sep = ",")  %>%  
+  mutate(state.name = str_trim(state.name), 
+         city_town = str_trim(city_town)) %>% 
+  left_join(df_state) %>% drop_na()
+
+# ==> 294 rows NA of state.abb: Puerto Rico
+
+pop %>% 
+  filter(grepl("city|town", city_town)) %>% 
+  filter(grepl("Los Angeles", city_town))
+```
+
+```{r}
+#government_ID: enumeration ID of local governments, has NO FIP codes --> this ID is used in ACFRs 
+# Note that population data is here is 2017 -> don't use
+# Note: census_id, which means government_id are numeric --> can be turn to scientific notation in R --> will not match --> need to avoid scientific notation. 
+# Use governmentID to join with acfrs
+
+governmentID <- rio::import(here::here("data", "City and Town Mapping.xlsx"), sheet = 3) %>% 
+  select(government_ID, `INFERRED GEO_ID`, NAME, CITY, STATE_AB, COUNTY_AREA_NAME)  %>% 
+  rename(geo_id = `INFERRED GEO_ID`,  # Marc created INFERRED GEO_ID, which meant to be geo_id
+         original_name = NAME 
+         #city_town = CITY
+         )   
+  
+governmentID %>% 
+  filter(grepl("Los Angeles", CITY, ignore.case = TRUE))
+  
+```
+
+```{r}
+pop_governmentID <- pop %>% 
+  left_join(governmentID) %>% drop_na(government_ID)
+
+pop_governmentID %>% 
+  #filter(city_town == "West New York town")
+  filter(grepl("city|town", city_town)) %>% 
+  filter(grepl("Los Angeles", city_town)) -> test1
+
+test1 %>% 
+  mutate(city_town = str_remove_all(city_town, " city")) %>% select( government_ID, population) -> test11
+
+```
+
+```{r}
+options(scipen = 999)
+# census_id in ACFRs is government_ID used in file "City and Town Mapping.xlsx"
+acfrs <- readRDS("data_from_dbsite.RDS") 
+
+acfrs_governmentID <- acfrs %>% drop_na(census_id) %>% 
+  filter(category == "General Purpose") %>% 
+  rename(government_ID = census_id)
+
+```
+
+
+```{r}
+# check the intersection of unique government_ID
+length(intersect(unique(acfrs_governmentID$government_ID), unique(pop_governmentID$government_ID)))
+
+
+# problem: government_ID in pop_pop_governmentID has 14 characters (05201902700000) >< some government_ID in ACFRs has 13 characters 5201902700000
+# look at those in acfrs
+# Is this safe to assume that these government_ID in ACFRs data should have 0 at the beginning? 
+# separate these into 2 sets for checking later. 
+acfrs_governmentID_13char <- acfrs_governmentID %>% 
+  filter(str_length(government_ID) == 13) %>% 
+  mutate(government_ID = paste0("0", government_ID)) 
+
+acfrs_governmentID_14char <- acfrs_governmentID %>% 
+  filter(str_length(government_ID) == 14)
+
+acfrs_governmentID_1314_char <- rbind(acfrs_governmentID_13char, acfrs_governmentID_14char)
+#Joining 1
+
+acfrs_city_pop <- acfrs_governmentID %>% 
+  left_join(pop_governmentID) %>% drop_na(population) %>% 
+  select(-c(state, STATE_AB, year)) %>% 
+  arrange(desc(population)) 
+
+# joining 2: including add 0 to those with 13 chars --> # once added extra 0, have more 695 matches 
+
+acfrs_city_pop_added_char <- acfrs_governmentID_1314_char %>% 
+  left_join(pop_governmentID) %>% drop_na(population) %>% 
+  select(-c(state, STATE_AB, year)) %>% 
+  arrange(desc(population)) 
+
+# checking some cases: 
+#Los Angeles in acfrs does not get matched with pop census
+acfrs_city_pop %>% 
+  filter(grepl("Los Angeles", name))
+
+# Now got matched
+acfrs_city_pop_added_char %>% 
+ filter(grepl("Los Angeles", name))
+
+write.csv(acfrs_city_pop, "acfrs_city_pop.csv")
+write.csv(acfrs_city_pop_added_char, "acfrs_city_pop_added_char.csv")
+```
+
+```{r}
+
+# cities with population over 100,000 
+cities_100Kpop_NOT_acfrs <- pop %>% 
+  filter(population >= 100000) %>% 
+  #filter(!geo_id %in% acfrs_city_pop$geo_id) %>% 
+  
+  # adding 0 to those with 13 char in government_ID in ACFRs get more matches --> now only 33 cities > 100k in pop but NOT in acfrs
+  filter(!geo_id %in% acfrs_city_pop_added_char$geo_id) %>% 
+  arrange(desc(population)) %>% distinct()
+
+write.csv(cities_100Kpop_NOT_acfrs, "cities_100Kpop_NOT_acfrs.csv")
+
+```
+

@@ -20,7 +20,6 @@ d <- rio::import(here::here("data", "DECENNIALPL2020.P1_data_with_overlays_2021-
   rename(population = `!!Total:`)
 
 # join with df_state to get state.abb and state.name --> to have a common col with acfrs to join
-
 df_state <- data.frame(state.abb, state.name) %>% 
   add_row(state.abb = "PR", state.name = "Puerto Rico") %>% 
   add_row(state.abb = "DC", state.name = "District of Columbia")
@@ -33,6 +32,7 @@ pop <- d %>%
 ```
 
 There are `r nrow(pop)` observations in census population data.
+
 
 # ACFRs data - County Level
 
@@ -97,7 +97,7 @@ filter(county == "Municipality of Parkersburg" | county == "Municipality of Dell
           
 ```
 
-### Puerto Rico
+### Puerto Rico (Note: not using to match with ACFRS for now)
 
 Puerto Rico only has “Municipios” that perform the functions of both cities and counties.
 
@@ -135,6 +135,9 @@ puertorico_census_pop <- pop %>%
 ```
 
 
+Update Feb 7/2022: Marc: "Drop Puerto Rico out of the county analysis?  I realize it
+was in the 2020 Census data, but they are not going to be on our map."
+
 # Join ACFRs and Census population data to get population for ACFRs counties 
 
 
@@ -152,12 +155,15 @@ acfrs_county_parish_borough <- rbind(acfrs_county, louisiana_parish) %>% rbind(a
 county_pop_census_acfrs <- acfrs_county_parish_borough %>% 
             left_join(pop) %>% 
             drop_na(population) %>% 
-            arrange(desc(population)) %>%
+            arrange(desc(population)) %>% distinct() 
   
-# third, bind with puertorico
-            rbind(puertorico_afrs_census_pop) %>% distinct() 
+# third, bind with puertorico - not using for now
+           # rbind(puertorico_afrs_census_pop) 
 
-#write.csv(county_pop_census_acfrs, "county_pop_census_acfrs_TOTAL.csv")
+write.csv(county_pop_census_acfrs, "county_pop_census_acfrs_TOTAL.csv")
+saveRDS(county_pop_census_acfrs, "county_pop_census_acfrs.RDS")
+
+
 ```
 
 The matched dataset has `r nrow(county_pop_census_acfrs)` observations/ counties. 

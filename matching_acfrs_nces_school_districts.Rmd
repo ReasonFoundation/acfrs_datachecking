@@ -114,7 +114,7 @@ matched_acfrs_nces_sd <- acfrs_school_districts_clean %>%
   mutate(student = as.numeric(student)) %>% 
   arrange(desc(student))
 
-#write.csv(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.csv")
+write.csv(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.csv")
 
 #saveRDS(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.RDS")
 
