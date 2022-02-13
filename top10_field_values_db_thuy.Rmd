@@ -1,0 +1,289 @@
+---
+title: "Top 10 values in each field"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, results = 'asis')
+options(knitr.table.format = "html")
+library(readxl)
+library(tidyverse)
+library(dplyr)
+library(purrr)
+library(kableExtra)
+library(knitr)
+library(DT)
+
+```
+
+# Data
+
+The dataset was queries from the database on Feb 8. 
+
+These ratio values were caculated: 
+
+         * "Liabilities/Revenues Ratio" = total_liabilities/revenues,
+         * "Bonds Outstanding/Revenues Ratio" = bonds_outstanding/revenues,
+         * "Net Pension Liability/Revenues Ratio" = (net_pension_liability - net_pension_assets)/revenues,
+         * "Net OPEB Liability/Revenues Ratio" = (net_opeb_liability - net_opeb_assets)/revenues,
+         * "Compensated Absences/Revenues Ratio" = compensated_absences/revenues,
+         * "netted_net_pension_liability" = net_pension_liability - net_pension_assets, 
+         * "netted_net_opeb_liability" = net_opeb_liability - net_opeb_assets
+         
+```{r}
+acfrs <- readRDS("data_from_dbsite.RDS")
+d <- acfrs %>% 
+  filter(category != "Non-Profit") %>% 
+  mutate("Liabilities/Revenues Ratio" = round(total_liabilities/(revenues + 1), 2),
+         "Bonds Outstanding/Revenues Ratio" = round(bonds_outstanding/revenues, 2),
+         "Net Pension Liability/Revenues Ratio" = round((net_pension_liability - net_pension_assets)/revenues, 2),
+         "Net OPEB Liability/Revenues Ratio" = round((net_opeb_liability - net_opeb_assets)/revenues, 2), 
+         "Compensated Absences/Revenues Ratio" = round(compensated_absences/revenues, 2), 
+         "netted_net_pension_liability" = round(net_pension_liability - net_pension_assets, 2), 
+         "netted_net_opeb_liability" = round(net_opeb_liability - net_opeb_assets), 2) %>% 
+  
+  #rename for easier human read field names & table display
+    rename(State = state,
+         Entity = name,
+         "Net Pension Liability" = net_pension_liability,
+         "Net OPEB Assets" = net_opeb_assets,
+         "Net OPEB Liability" = net_opeb_liability,
+         "Bonds Outstanding" = bonds_outstanding,
+         "Notes Outstanding" = notes_outstanding,
+         "Leases" = leases,
+         "Loans Outstanding" = loans_outstanding, 
+         "Compensated Absences" = compensated_absences,
+         "Total Liabilities" = total_liabilities,
+         "Revenues" = revenues
+         
+         ) %>% 
+  select(State, Entity, category, year, everything()) 
+
+```
+
+## Structure of the original data
+```{r}
+
+DT::datatable(d, fillContainer = FALSE, options = 
+                list(pageLength = 5))
+
+```
+
+## View some calculated fields
+```{r}
+DT::datatable(d[, c(1:3, 29:34)], fillContainer = FALSE, options = 
+                list(pageLength = 5))
+# kable(head(d), "html") %>%
+# kable_styling() %>%
+# scroll_box(height = "500px", width = "800px")
+```
+
+## Matching ACFRs data with NCES student enrollment
+```{r}
+
+matched_acfrs_nces_sd <- readRDS("matched_acfrs_nces_sd.RDS") 
+
+matched_acfrs_nces_sd %>% 
+  select(state, acfrs_original_name, nces_original_name, student) %>% 
+  datatable(fillContainer = FALSE, 
+            options = list(pageLength = 5))
+
+
+```
+
+
+## Matching ACFRs cities with Census population
+
+```{r}
+acfrs_city_pop_added_char <- readRDS("acfrs_city_pop_added_char.RDS")
+
+acfrs_city_pop_added_char %>% 
+  select(name, population, revenues, total_liabilities) %>% 
+  rename(acfrs_entity = name) %>% 
+    datatable(fillContainer = FALSE, 
+            options = list(pageLength = 5))
+```
+
+## Matching ACFRs counties with Census population
+
+```{r}
+county_pop_census_acfrs <- readRDS("county_pop_census_acfrs.RDS")
+
+county_pop_census_acfrs %>% 
+  select(county, state.name, population, revenues, total_liabilities) %>% 
+  rename(acfrs_entity = county) %>% 
+  datatable(fillContainer = FALSE, 
+            options = list(pageLength = 5))
+```
+
+
+# View top 10 in each of the following fields 
+
+
+```{r, results='asis'}
+
+individual_fields <- c("Bonds Outstanding", "Net Pension Liability", "Net OPEB Liability", "Compensated Absences", "Total Liabilities")
+#Note: can't directly select and arrange an outside variable. use all_of to select column wanted. Then arrange on index of an internal df inside function. 
+            
+for (field in individual_fields) {
+
+df <- d %>%
+  select(State, Entity, all_of(field))
+
+df %>% 
+  arrange(desc(df[3])) %>% # can't arrange by field, must use index
+  head(10) -> d1 
+
+knitr::kable(d1, 
+      caption = (d1 %>% colnames())[3], row.names = FALSE,
+      align = c('l', 'l', 'r'),
+      format.args = list(big.mark = ",")) %>% 
+      kable_paper("hover", full_width = FALSE) %>% 
+      row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) -> result 
+
+print(result)
+cat('\n')
+
+}
+```
+
+
+# View top 10 in each of the following ratio fields
+
+Note: Only show Revenues >= 1000000
+
+```{r}
+
+d %>% 
+  filter(Revenues >= 1000000) %>% 
+  select(State, Entity, `Bonds Outstanding`, Revenues, `Bonds Outstanding/Revenues Ratio`) %>% 
+  arrange(desc(`Bonds Outstanding/Revenues Ratio`)) %>% 
+  slice(1:10) %>% 
+  
+  kable(caption = "**Bonds Outstanding/Revenues Ratio**", row.names = FALSE,
+        col.names = c('State','Entity Name','Bonds Outstanding','Revenues','Ratio'),
+        align = c('l', 'l', 'r', 'r', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+```
+
+
+```{r}
+
+d %>% 
+  filter(Revenues >= 1000000) %>% 
+  select(State, Entity, netted_net_pension_liability, Revenues, `Net Pension Liability/Revenues Ratio`) %>% 
+  arrange(desc(`Net Pension Liability/Revenues Ratio`)) %>% 
+  slice(1:10) %>% 
+
+  
+  kable(caption = "Net Pension Liability/Revenues Ratio", row.names = FALSE,
+        col.names = c('State','Entity Name','Net Pension Liability','Revenues','Ratio'),
+        align = c('l', 'l', 'r', 'r', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+  
+```
+
+```{r}
+  
+d %>% 
+  filter(Revenues >= 1000000) %>% 
+  select(State, Entity, netted_net_opeb_liability, Revenues, `Net OPEB Liability/Revenues Ratio`) %>% 
+  arrange(desc(`Net OPEB Liability/Revenues Ratio`)) %>% 
+  slice(1:10) %>% 
+
+  
+  kable(caption = "Net OPEB Liability/Revenues Ratio", row.names = FALSE,
+        col.names = c('State','Entity Name','Net OPEB Liability','Revenues','Ratio'),
+        align = c('l', 'l', 'r', 'r', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+```
+
+```{r}
+
+d %>% 
+  filter(Revenues >= 1000000) %>% 
+  select(State, Entity, `Compensated Absences`, Revenues, `Compensated Absences/Revenues Ratio`) %>% 
+  arrange(desc(`Compensated Absences/Revenues Ratio`)) %>% 
+  slice(1:10) %>% 
+  
+  kable(caption = "Compensated Absences/Revenues Ratio", row.names = FALSE,
+        col.names = c('State','Entity Name','Compensated Absences','Revenues','Ratio'),
+        align = c('l', 'l', 'r', 'r', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+```
+
+```{r}
+d %>% 
+  filter(Revenues >= 1000000) %>% 
+  select(State, Entity, `Total Liabilities`, Revenues, `Liabilities/Revenues Ratio`) %>% 
+  arrange(desc(`Liabilities/Revenues Ratio`)) %>% 
+  slice(1:10) %>% 
+  
+  kable(caption = "Total Liabilities/Revenues Ratio", row.names = FALSE,
+        col.names = c('State','Entity Name','Total Liabilities','Revenues','Ratio'),
+        align = c('l', 'l', 'r', 'r', 'r'),
+        format.args = list(big.mark = ",")) %>% 
+  kable_paper("hover", full_width = FALSE) %>% 
+  row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) 
+
+
+```
+
+
+
+
+
+
+# Biggest city governments
+
+Chris: please create and send a spreadsheet that captures all of the data and categories that are available to make apples-to-apples comparisons of the biggest city governments, including New York City, Los Angeles, Chicago, Houston, Philadelphia, and Phoenix. 
+
+Note: only including Philadelphia of PA, not of TN; Phoenix of AZ, not OR
+
+```{r}
+
+acfrs_city_pop_added_char %>% 
+  #filter(name == "Phoenix")
+  filter(name %in% c("New York City", "Los Angeles", "Chicago", "Houston", "Philadelphia", "Phoenix") & !state.abb %in% c("TN", "OR")) %>% 
+  datatable(fillContainer = FALSE, 
+            options = list(pageLength = 5))
+
+
+# Philadelphia of PA, not of TN; Phoenix of AZ, not OR
+#  select(name, total_liabilities, state.abb, revenues, population) %>% 
+#   
+#   #normalize total_liabilities and revenues by mil population / or by each person
+#   mutate(liability_person = round(total_liabilities/population, 2)) %>% 
+#   mutate(revenues_person = round(revenues/population, 2)) -> test1
+#   
+# test1 %>% 
+#   datatable(fillContainer = FALSE, 
+#             options = list(pageLength = 5))
+# test1 %>% 
+#   pivot_longer(cols = 5:7, 
+#                names_to = "type", 
+#                values_to = "value") %>% 
+# ggplot(aes(name, group = value)) + 
+#   geom_bar(aes(fill = value), dodge = TRUE)
+```
+
+# State governments
+
+Similarly, please send a sheet showing the data categories/columns that all state governments could be compared across by using big states like California, Texas, Florida, and New York to give us examples. 
+```{r}
+
+```
+
+# Some basic visualizations

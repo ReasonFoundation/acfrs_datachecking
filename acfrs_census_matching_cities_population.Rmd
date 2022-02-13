@@ -125,11 +125,15 @@ acfrs_city_pop_added_char %>%
 write.csv(acfrs_city_pop, "acfrs_city_pop.csv")
 write.csv(acfrs_city_pop_added_char, "acfrs_city_pop_added_char.csv")
 
+saveRDS(acfrs_city_pop_added_char, "acfrs_city_pop_added_char.RDS")
+
+
 # for Jordan to map
 acfrs_city_pop_formap <- acfrs_city_pop_added_char %>% 
   rename(entity = name) %>% 
   mutate(lia_rev_ratio = (round(total_liabilities/revenues, 4))*100) %>% 
   select(state.abb, state.name, geo_id, government_ID, entity, total_liabilities, revenues, lia_rev_ratio)
+
 
 write.csv(acfrs_city_pop_formap, "acfrs_city_pop_formap.csv")
 ```
