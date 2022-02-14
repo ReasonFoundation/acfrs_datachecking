@@ -22,29 +22,19 @@ library(DT)
 
 # Data
 
-The dataset was queries from the database on Feb 8. 
 
-These ratio values were caculated: 
-
-         * "Liabilities/Revenues Ratio" = total_liabilities/revenues,
-         * "Bonds Outstanding/Revenues Ratio" = bonds_outstanding/revenues,
-         * "Net Pension Liability/Revenues Ratio" = (net_pension_liability - net_pension_assets)/revenues,
-         * "Net OPEB Liability/Revenues Ratio" = (net_opeb_liability - net_opeb_assets)/revenues,
-         * "Compensated Absences/Revenues Ratio" = compensated_absences/revenues,
-         * "netted_net_pension_liability" = net_pension_liability - net_pension_assets, 
-         * "netted_net_opeb_liability" = net_opeb_liability - net_opeb_assets
-         
 ```{r}
 acfrs <- readRDS("data_from_dbsite.RDS")
 d <- acfrs %>% 
-  filter(category != "Non-Profit") %>% 
+  filter(category != "Non-Profit" & year == 2020) %>% 
+  
   mutate("Liabilities/Revenues Ratio" = round(total_liabilities/(revenues + 1), 2),
          "Bonds Outstanding/Revenues Ratio" = round(bonds_outstanding/revenues, 2),
          "Net Pension Liability/Revenues Ratio" = round((net_pension_liability - net_pension_assets)/revenues, 2),
          "Net OPEB Liability/Revenues Ratio" = round((net_opeb_liability - net_opeb_assets)/revenues, 2), 
          "Compensated Absences/Revenues Ratio" = round(compensated_absences/revenues, 2), 
-         "netted_net_pension_liability" = round(net_pension_liability - net_pension_assets, 2), 
-         "netted_net_opeb_liability" = round(net_opeb_liability - net_opeb_assets), 2) %>% 
+         "netted_net_pension_liability" = (net_pension_liability - net_pension_assets), 
+         "netted_net_opeb_liability" = (net_opeb_liability - net_opeb_assets)) %>% 
   
   #rename for easier human read field names & table display
     rename(State = state,
@@ -63,9 +53,17 @@ d <- acfrs %>%
          ) %>% 
   select(State, Entity, category, year, everything()) 
 
+sum_tot_labilities <- round(sum(d$`Total Liabilities`)/1000000000000,2) #trillion
+
 ```
 
+US state and local governments reported over `r sum_tot_labilities`  trillion in liabilities in 2020, an amount that exceeds their annual revenue and is equal to about 30% of Gross Domestic Product. Reason Foundation computed this total and its subcomponents by reviewing 30,000 audited government financial statements filed by state and local governments for their 2020 fiscal year.
+
+
 ## Structure of the original data
+
+The dataset was queries from the database on Feb 8. 
+
 ```{r}
 
 DT::datatable(d, fillContainer = FALSE, options = 
@@ -73,7 +71,17 @@ DT::datatable(d, fillContainer = FALSE, options =
 
 ```
 
-## View some calculated fields
+## View calculated fields
+
+These ratio values were calculated: 
+
+         * "Liabilities/Revenues Ratio" = total_liabilities/revenues,
+         * "Bonds Outstanding/Revenues Ratio" = bonds_outstanding/revenues,
+         * "Net Pension Liability/Revenues Ratio" = (net_pension_liability - net_pension_assets)/revenues,
+         * "Net OPEB Liability/Revenues Ratio" = (net_opeb_liability - net_opeb_assets)/revenues,
+         * "Compensated Absences/Revenues Ratio" = compensated_absences/revenues,
+         * "netted_net_pension_liability" = net_pension_liability - net_pension_assets, 
+         * "netted_net_opeb_liability" = net_opeb_liability - net_opeb_assets
 ```{r}
 DT::datatable(d[, c(1:3, 29:34)], fillContainer = FALSE, options = 
                 list(pageLength = 5))
@@ -121,17 +129,35 @@ county_pop_census_acfrs %>%
 ```
 
 
-# View top 10 in each of the following fields 
+# View top 10 in each field 
 
 
 ```{r, results='asis'}
-
 individual_fields <- c("Bonds Outstanding", "Net Pension Liability", "Net OPEB Liability", "Compensated Absences", "Total Liabilities")
-#Note: can't directly select and arrange an outside variable. use all_of to select column wanted. Then arrange on index of an internal df inside function. 
-            
-for (field in individual_fields) {
+#Note: can't directly select and arrange an outside variable. use all_of to select column wanted. Then arrange on index of an internal df inside function.    
 
-df <- d %>%
+
+# for (field in individual_fields) {
+# df <- d %>%
+#   select(State, Entity, all_of(field))
+# 
+# df %>% 
+#   arrange(desc(df[3])) %>% # can't arrange by field, must use index
+#   head(10) -> d1 
+# 
+# knitr::kable(d1, 
+#       caption = (d1 %>% colnames())[3], row.names = FALSE,
+#       align = c('l', 'l', 'r'),
+#       format.args = list(big.mark = ",")) %>% 
+#       kable_paper("hover", full_width = FALSE) %>% 
+#       row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) -> result 
+# 
+# print(result)
+# cat('\n')}
+
+get_field_value <- function (field) {
+  
+  df <- d %>%
   select(State, Entity, all_of(field))
 
 df %>% 
@@ -147,12 +173,55 @@ knitr::kable(d1,
 
 print(result)
 cat('\n')
-
+  
 }
+
 ```
 
+## Net Pension Liability
+Governmental Accounting Standards Board Statement 68 requires governments to report underfunding of their defined benefit employee pension plans as a “Net Pension Liability”, and any overfunding as a “Net Pension Asset”.  A single government entity may participate in multiple pension systems with varying funded status. If a government participates in one or more underfunded systems and one or more overfunded systems, it will report both a Net Pension Liability and a Net Pension Asset. For purposes of this study, reported assets are netted against liabilities to determine a governmentwide net pension position. The accompanying table lists government entities with the largest net pension liabilities in absolute dollars net of any reported assets.
 
-# View top 10 in each of the following ratio fields
+**Table 1 – State and Local Governments Reporting Largest Net Pension Liabilities, 2020**
+
+```{r}
+get_field_value("Net Pension Liability")
+```
+
+## Net OPEB Liability
+Other post-employment benefits (OPEBs) refer to retiree health insurance, life insurance, and any other retiree entitlement aside from pensions. Health insurance accounts for the overwhelming majority of OPEBs nationally. For an in-depth discussion of OPEBs, readers are encouraged to consult Reason Foundation’s 2021 study of this topic. 
+
+After the implementation of Government Accounting Standards Board Statement 75,  reporting of Other Post-employment Benefits generally parallels that of defined benefit pensions. A government may report either a “Net OPEB Liability” or a “Net OPEB Asset.” If it participates in a mixture of underfunded and overfunded OPEB plans, it may report both a liability and an asset, which are netted for purposes of this study. The accompanying table lists government entities with the largest net OPEB liabilities in absolute dollars net of any reported assets.
+
+**Table 2 – State and Local Governments Reporting Largest Net OPEB Liabilities, 2020**
+
+```{r}
+get_field_value("Net OPEB Liability")
+```
+
+## Compensated Absences
+Most employers, both public and private, offer paid vacation and sick leave as well as personal days. Some offer other forms of paid leave such as sabbaticals for educators. Typically, employers provide specific numbers of paid vacation, sick, and personal days per year, although many do not differentiate between types of leave and simply offer a number of paid time off (PTO) days that can be used for any purpose. Depending on the employer, unused PTO days are either forfeited at the end of each year or can be accumulated by the employee.  Employers who allow employees to accumulate PTO pay out the value of unused days off at the time of separation (due to retirement or other reason).
+Public sector employers are more likely to allow employees to accumulate sick leave. According to the Bureau of Labor Statistics, 58 percent of state and local government employees were entitled to carryover sick leave from year to year without limitation, compared to only about 12 percent of private sector employees.  The BLS data does not address accumulation of vacation leave, but it does show that public sector employees receive slightly longer vacations than their private sector counterparts.
+Under government accounting standards, state and local governments must report the liability associated with accumulated, unused PTO. The accounting term for this liability is “compensated absences” and the rules for reporting it are set forth in Government Accounting Standards Board Statement 16. In 2020, GASB began a re-examination of its compensated absence policies. 
+
+
+**Table 3 – State and Local Governments Reporting Largest Compensated Absences Liabilities, 2020**
+
+
+```{r}
+get_field_value("Compensated Absences")
+```
+
+## Others 
+
+```{r}
+get_field_value("Bonds Outstanding")
+```
+
+```{r}
+get_field_value("Total Liabilities")
+```
+
+# View top 10 in ratio
 
 Note: Only show Revenues >= 1000000
 
@@ -246,44 +315,4 @@ d %>%
 
 
 
-# Biggest city governments
 
-Chris: please create and send a spreadsheet that captures all of the data and categories that are available to make apples-to-apples comparisons of the biggest city governments, including New York City, Los Angeles, Chicago, Houston, Philadelphia, and Phoenix. 
-
-Note: only including Philadelphia of PA, not of TN; Phoenix of AZ, not OR
-
-```{r}
-
-acfrs_city_pop_added_char %>% 
-  #filter(name == "Phoenix")
-  filter(name %in% c("New York City", "Los Angeles", "Chicago", "Houston", "Philadelphia", "Phoenix") & !state.abb %in% c("TN", "OR")) %>% 
-  datatable(fillContainer = FALSE, 
-            options = list(pageLength = 5))
-
-
-# Philadelphia of PA, not of TN; Phoenix of AZ, not OR
-#  select(name, total_liabilities, state.abb, revenues, population) %>% 
-#   
-#   #normalize total_liabilities and revenues by mil population / or by each person
-#   mutate(liability_person = round(total_liabilities/population, 2)) %>% 
-#   mutate(revenues_person = round(revenues/population, 2)) -> test1
-#   
-# test1 %>% 
-#   datatable(fillContainer = FALSE, 
-#             options = list(pageLength = 5))
-# test1 %>% 
-#   pivot_longer(cols = 5:7, 
-#                names_to = "type", 
-#                values_to = "value") %>% 
-# ggplot(aes(name, group = value)) + 
-#   geom_bar(aes(fill = value), dodge = TRUE)
-```
-
-# State governments
-
-Similarly, please send a sheet showing the data categories/columns that all state governments could be compared across by using big states like California, Texas, Florida, and New York to give us examples. 
-```{r}
-
-```
-
-# Some basic visualizations

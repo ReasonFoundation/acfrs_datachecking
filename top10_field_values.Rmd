@@ -22,9 +22,9 @@ library(knitr)
 # Data
 
 ```{r}
-jan11_site <- rio::import(here::here("data", "CAFRdata_20220111_221828.xlsx"))
-
-d <- jan11_site %>% 
+#jan11_site <- rio::import(here::here("data", "CAFRdata_20220111_221828.xlsx"))
+acfrs <- readRDS("data_from_dbsite.RDS") 
+d <- acfrs %>% 
   filter(Category != "Non-Profit") %>% 
   mutate("Liabilities/Revenues Ratio" = `Total Liabilities`/Revenues,
          "Net Pension Liability - Net Pension Assets" = `Net Pension Liability` - `Net Pension Assets`, 

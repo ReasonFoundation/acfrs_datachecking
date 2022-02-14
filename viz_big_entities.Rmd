@@ -1,0 +1,249 @@
+---
+title: "Some visualization of Cities"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(results = 'asis', echo = FALSE, warning = FALSE, message = FALSE)
+options(scipen = 999)
+library(tidyverse)
+library(dplyr)
+library(purrr)
+library(knitr)
+library(DT)
+library(ggrepel)
+acfrs_city_pop_added_char <- readRDS("acfrs_city_pop_added_char.RDS")
+```
+
+
+# Total Liabilities 
+## Cities with Population < 1 Mil
+
+```{r}
+
+  acfrs_city_pop_added_char %>% 
+    drop_na(total_liabilities) %>% 
+  filter(population > 1000 & population < 1000000 &
+           total_liabilities > 0)  %>% 
+  select(population, name, total_liabilities, revenues) %>% 
+  mutate(
+    tot_liabilities_mil = round(total_liabilities/1000000),
+         tot_revenues_mil = round(revenues/1000000)) -> d1
+  
+  d1 %>% 
+  ggplot(aes(population, tot_liabilities_mil)) +
+  geom_point(color = "#8EA0CB", alpha = .5) +
+  
+    # add lines 
+  geom_hline(yintercept = round(mean(d1$tot_liabilities_mil)),
+             linetype = "dashed", color = "red", size = .5) +
+    annotate(geom = "text", x = 600000, y = 200, label = paste("Mean = ", round(mean(d1$tot_liabilities_mil)))) +
+    
+    
+ geom_hline(yintercept = round(median(d1$tot_liabilities_mil)),
+           linetype = "dashed", color = "blue", size = .5) +
+    annotate(geom = "text", x = 600000, y = 20, label = paste("Median = ", round(median(d1$tot_liabilities_mil)))) +
+    
+  scale_x_log10() + 
+  scale_y_log10() +
+  labs(
+    x = "Population (log scale)",
+    y = "Million USD (log scale)",
+    title = "Total Liabilities by population among the cities",
+    subtitle = "1000 < Population < 1000000") +
+  theme_minimal()
+```
+  
+## Cities with Population > 1 Mil  
+
+```{r, results= 'asis'}
+
+  acfrs_city_pop_added_char %>% 
+    select(population, name, total_liabilities, revenues) %>% 
+    filter(population > 1000000) %>% 
+    mutate(tot_liabilities_mil = round(total_liabilities/1000000),
+         tot_revenues_mil = round(revenues/1000000),
+         population_mil = population/1000000) -> d2 
+  
+  d2 %>%   
+  ggplot(aes(population_mil, tot_liabilities_mil)) +
+  geom_point(color = "#8EA0CB", alpha = .8, size = 4) +
+    
+  geom_text_repel(aes(label = name), nudge_y = 0.1, nudge_x = 0.1, segment.curvature = -0.1) +
+  
+  geom_hline(yintercept = round(mean(d2$tot_liabilities_mil)),
+             linetype = "dashed", color = "red", size = .5) +
+annotate(geom = "text", x = 7, y = 40000, label = paste("Mean = ", round(mean(d2$tot_liabilities_mil)))) +
+  
+ geom_hline(yintercept = round(median(d2$tot_liabilities_mil)),
+           linetype = "dashed", color = "blue", size = .5) +
+annotate(geom = "text", x = 7, y = 15000, label = paste("Median = ", round(median(d2$tot_liabilities_mil)))) +
+    
+  scale_x_log10() + 
+  scale_y_log10() +
+  labs(
+    x = "Population in Million (log scale))",
+    y = "Million USD (log scale)",
+    title = "Total Liabilities by population in 10 cities",
+    subtitle = "Population > 1000000"
+  ) +
+  theme_minimal()
+```
+
+# Total Revenues 
+## Cities with population < 1 Mil
+
+```{r}
+d1 %>% 
+  ggplot(aes(population, tot_revenues_mil)) +
+  geom_point(color = "#A6D753", alpha = .3) +
+  
+  geom_hline(yintercept = round(mean(d1$tot_revenues_mil)),
+             linetype = "dashed", color = "red", size = .5) +
+  annotate(geom = "text", x = 600000, y = 100, label = paste("Mean = ", round(mean(d1$tot_revenues_mil)))) +
+  
+ geom_hline(yintercept = round(median(d1$tot_revenues_mil)),
+           linetype = "dashed", color = "blue", size = .5) +
+ annotate(geom = "text", x = 600000, y = 20, label = paste("Median = ", round(median(d1$tot_revenues_mil)))) +
+  
+  scale_x_log10() + 
+  scale_y_log10() +
+  labs(
+    x = "Population (log scale)",
+    y = "Million USD (log scale)",
+    title = "Total Revenues by population among the cities",
+    subtitle = " 1000 < Population < 1 Million"
+  ) +
+  theme_minimal()
+```
+
+## Cities with population > 1 Mil
+```{r}
+
+d2 %>%   
+  ggplot(aes(population_mil, tot_revenues_mil)) +
+  geom_point(color = "#A6D753", alpha = .8, size = 4) +
+    
+  geom_text_repel(aes(label = name), nudge_y = 0.1, nudge_x = 0.1, segment.curvature = -0.1) +
+  
+  geom_hline(yintercept = round(mean(d2$tot_revenues_mil)),
+             linetype = "dashed", color = "red", size = .5) +
+annotate(geom = "text", x = 7, y = 14000, label = paste("Mean = ", round(mean(d2$tot_revenues_mil)))) +
+  
+ geom_hline(yintercept = round(median(d2$tot_revenues_mil)),
+           linetype = "dashed", color = "blue", size = .5) +
+  annotate(geom = "text", x = 7, y = 5200, label = paste("Median = ", round(median(d2$tot_revenues_mil)))) +
+  scale_x_log10() + 
+  scale_y_log10() +
+  labs(
+    x = "Population in Million (log scale)",
+    y = "Million USD (log scale)",
+    title = "Total Revenue by population in 10 cities",
+    subtitle = "Population > 1000000"
+  ) +
+  theme_minimal()
+```
+
+# Six biggest city governments
+
+```{r}
+
+acfrs_city_pop_added_char %>% 
+ #arrange(desc(population)) %>% slice(1:6) # find 6 largest cities
+  #filter(name == "Phoenix")
+  filter(name %in% c("New York City", "Los Angeles", "Chicago", "Houston", "Philadelphia", "Phoenix") & !state.abb %in% c("TN", "OR")) %>% 
+  datatable(fillContainer = FALSE, 
+            options = list(pageLength = 5))
+```
+
+# Total revenues and Total Liabitity per person
+
+```{r, results= 'asis', include=FALSE}
+
+acfrs_city_pop_added_char %>% 
+  filter(name %in% c("New York City", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia") & !state.abb %in% c("TN", "OR")) %>% # Philadelphia of PA, not TN; Phoenix of AZ, not OR
+ select(name, total_liabilities, state.abb, revenues, population) %>%
+
+  #normalize total_liabilities and revenues by mil population / or by each person
+  mutate(liability_person = round(total_liabilities/population)) %>%
+  mutate(revenues_person = round(revenues/population)) -> top6_cities
+
+
+top6_cities %>%
+  pivot_longer(cols = 6:7,
+               names_to = "type",
+               values_to = "Value") %>%
+  # mutate(total_liabilities = bit64::as.integer64(total_liabilities),
+  #        revenues = bit64::as.integer64(revenues), 
+  #        value = bit64::as.integer64(value)) %>% 
+  select(name, type, Value) -> dp
+
+```
+
+## Total revenues and Total Liabitity per person in 6 largest cities
+```{r, echo=FALSE, include=FALSE}
+dp %>% 
+ggplot(aes(name, Value, fill = type)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(aes(label = Value), 
+            position = position_dodge(0.9), vjust = 0) + #give the labels the virtual with
+  
+  scale_fill_manual(values = c("#8EA0CB", "#A6D753" )) +
+
+  labs(
+    x = "",
+    y = "USD",
+    title = "Total revenues and Total Liabitity per person in 6 largest cities"
+  ) +
+        
+ guides(fill = guide_legend(title = NULL)) +
+ theme_minimal()
+
+```
+## Total revenues and Total Liabitity per person in 6 largest cities - Comparison 
+```{r, results= 'asis', echo=FALSE, include=FALSE}
+top6_cities %>%
+  pivot_longer(cols = 6:7,
+               names_to = "type",
+               values_to = "Value") %>%
+ggplot(aes(name, Value, fill = type)) +
+  
+ 
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(aes(label = Value), 
+            position = position_dodge(0.9), vjust = 0) + #give the labels the virtual with
+  
+   #average liabilities per person of all cities
+geom_hline(yintercept = round(mean(acfrs_city_pop_added_char$total_liabilities/ acfrs_city_pop_added_char$population)),
+           linetype = "dashed", color = "#8EA0CB", size = 1) +
+
+  
+  #average revenues per person of all cities
+geom_hline(yintercept = round(mean(acfrs_city_pop_added_char$revenues/ acfrs_city_pop_added_char$population)),
+           linetype = "dashed", color = "#A6D753", size = 1) +
+  
+  scale_fill_manual(values = c("#8EA0CB", "#A6D753" )) +
+
+  labs(
+    x = "",
+    y = "USD",
+    title = "Total revenues and Total Liabitity per person in 6 largest cities\nComparison with average values of all cities",
+
+  ) +
+        
+ guides(fill = guide_legend(title = NULL)) +
+ theme_minimal()
+
+```
+
+
+```{r}
+# State governments
+# 
+# Similarly, please send a sheet showing the data categories/columns that all state governments could be compared across by using big states like California, Texas, Florida, and New York to give us examples. 
+```
+
