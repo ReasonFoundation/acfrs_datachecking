@@ -16,7 +16,9 @@ library(purrr)
 library(knitr)
 library(DT)
 library(ggrepel)
-acfrs_city_pop_added_char <- readRDS("acfrs_city_pop_added_char.RDS")
+#acfrs_city_pop_added_char <- readRDS("acfrs_city_pop_added_char.RDS")
+# probelem with integer64
+acfrs_city_pop_added_char <- rio::import(here::here("acfrs_city_pop_added_char.csv"))
 ```
 
 
@@ -33,7 +35,9 @@ acfrs_city_pop_added_char <- readRDS("acfrs_city_pop_added_char.RDS")
   mutate(
     tot_liabilities_mil = round(total_liabilities/1000000),
          tot_revenues_mil = round(revenues/1000000)) -> d1
-  
+```
+
+```{r}
   d1 %>% 
   ggplot(aes(population, tot_liabilities_mil)) +
   geom_point(color = "#8EA0CB", alpha = .5) +
@@ -184,8 +188,10 @@ top6_cities %>%
 
 ```
 
+
 ## Total revenues and Total Liabitity per person in 6 largest cities
-```{r, echo=FALSE, include=FALSE}
+
+```{r, echo=FALSE}
 dp %>% 
 ggplot(aes(name, Value, fill = type)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -196,7 +202,7 @@ ggplot(aes(name, Value, fill = type)) +
 
   labs(
     x = "",
-    y = "USD",
+    y = "USD (raw scale)",
     title = "Total revenues and Total Liabitity per person in 6 largest cities"
   ) +
         
@@ -205,7 +211,7 @@ ggplot(aes(name, Value, fill = type)) +
 
 ```
 ## Total revenues and Total Liabitity per person in 6 largest cities - Comparison 
-```{r, results= 'asis', echo=FALSE, include=FALSE}
+```{r, results= 'asis', echo=FALSE}
 top6_cities %>%
   pivot_longer(cols = 6:7,
                names_to = "type",
@@ -220,7 +226,6 @@ ggplot(aes(name, Value, fill = type)) +
    #average liabilities per person of all cities
 geom_hline(yintercept = round(mean(acfrs_city_pop_added_char$total_liabilities/ acfrs_city_pop_added_char$population)),
            linetype = "dashed", color = "#8EA0CB", size = 1) +
-
   
   #average revenues per person of all cities
 geom_hline(yintercept = round(mean(acfrs_city_pop_added_char$revenues/ acfrs_city_pop_added_char$population)),
@@ -230,8 +235,8 @@ geom_hline(yintercept = round(mean(acfrs_city_pop_added_char$revenues/ acfrs_cit
 
   labs(
     x = "",
-    y = "USD",
-    title = "Total revenues and Total Liabitity per person in 6 largest cities\nComparison with average values of all cities",
+    y = "USD (raw scale)",
+    title = "Total revenues and Total Liabitity per person in 6 largest cities\nComparison with average values per person of all cities",
 
   ) +
         
