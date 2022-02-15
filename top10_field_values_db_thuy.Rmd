@@ -251,7 +251,7 @@ d %>%
   slice(1:10) %>% 
 
   
-  kable(caption = "Net Pension Liability/Revenues Ratio", row.names = FALSE,
+  kable(caption = "**Net Pension Liability/Revenues Ratio**", row.names = FALSE,
         col.names = c('State','Entity Name','Net Pension Liability','Revenues','Ratio'),
         align = c('l', 'l', 'r', 'r', 'r'),
         format.args = list(big.mark = ",")) %>% 
@@ -269,7 +269,7 @@ d %>%
   slice(1:10) %>% 
 
   
-  kable(caption = "Net OPEB Liability/Revenues Ratio", row.names = FALSE,
+  kable(caption = "**Net OPEB Liability/Revenues Ratio**", row.names = FALSE,
         col.names = c('State','Entity Name','Net OPEB Liability','Revenues','Ratio'),
         align = c('l', 'l', 'r', 'r', 'r'),
         format.args = list(big.mark = ",")) %>% 
@@ -285,7 +285,7 @@ d %>%
   arrange(desc(`Compensated Absences/Revenues Ratio`)) %>% 
   slice(1:10) %>% 
   
-  kable(caption = "Compensated Absences/Revenues Ratio", row.names = FALSE,
+  kable(caption = "**Compensated Absences/Revenues Ratio**", row.names = FALSE,
         col.names = c('State','Entity Name','Compensated Absences','Revenues','Ratio'),
         align = c('l', 'l', 'r', 'r', 'r'),
         format.args = list(big.mark = ",")) %>% 
