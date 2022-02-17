@@ -9,6 +9,8 @@ Three csv files:
 * counties in Census, regardless of population size, that are not yet matched with ACFRs: `census_pop_NOT_match_acfrs_all.csv`
 
 ### How to just run this analysis on your machine (without cloning the whole repo)
+*Note: The best way to run this project on your machine is to clone the whole repo. But if you don't want to do so for some reasons, here is how to just get a slice:* 
+
 * get the script named `acfrs_census_matching_county_population.Rmd`
 
 * get the data object `data_from_dbsite.RDS`
