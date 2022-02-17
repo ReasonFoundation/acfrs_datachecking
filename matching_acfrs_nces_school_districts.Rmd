@@ -17,7 +17,7 @@ library(dplyr)
 ```{r nces_school_districts}
 #data downloaded Jan 27, 2020. Not including charter schools. Student > 1. 
 nces <- rio::import(here::here("data", "ncesdata_DBBFFFC.xlsx"), skip = 14) %>% 
-  select(`State District ID`, `District Name`, `County Name*`, City, State, `Students*`) %>% 
+  select(`NCES District ID`, `State District ID`, `District Name`, `County Name*`, City, State, `Students*`) %>% 
   rename(nces_original_name = `District Name`,
     county = `County Name*`, 
     state = State, 
@@ -112,7 +112,11 @@ nces_clean <- nces %>% select(-c(`State District ID`, City)) %>%
 matched_acfrs_nces_sd <- acfrs_school_districts_clean %>% 
   left_join(nces_clean) %>% drop_na(student) %>%
   mutate(student = as.numeric(student)) %>% 
-  arrange(desc(student))
+  arrange(desc(student)) %>% 
+  select(state, acfrs_original_name, id, `NCES District ID`, nces_original_name, student)
+
+# 
+write.csv(matched_acfrs_nces_sd, "matched_acfrs_nces_sd_withID.csv")
 
 write.csv(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.csv")
 
