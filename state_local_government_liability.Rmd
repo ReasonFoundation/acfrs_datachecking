@@ -1,0 +1,103 @@
+---
+title: "State and Local Government Liabilities Study"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, results = 'asis')
+options(knitr.table.format = "html")
+library(readxl)
+library(tidyverse)
+library(dplyr)
+library(purrr)
+library(kableExtra)
+library(knitr)
+library(DT)
+
+```
+
+
+```{r}
+
+gdp_2020 <- readRDS("gdp_2020.RDS")
+
+acfrs <- readRDS("data_from_dbsite.RDS")
+d <- acfrs %>% 
+  filter(category != "Non-Profit" & year == 2020) %>% 
+  
+  mutate("Liabilities/Revenues Ratio" = round(total_liabilities/(revenues + 1), 2),
+         "Bonds Outstanding/Revenues Ratio" = round(bonds_outstanding/revenues, 2),
+         "Net Pension Liability/Revenues Ratio" = round((net_pension_liability - net_pension_assets)/revenues, 2),
+         "Net OPEB Liability/Revenues Ratio" = round((net_opeb_liability - net_opeb_assets)/revenues, 2), 
+         "Compensated Absences/Revenues Ratio" = round(compensated_absences/revenues, 2), 
+         "netted_net_pension_liability" = (net_pension_liability - net_pension_assets), 
+         "netted_net_opeb_liability" = (net_opeb_liability - net_opeb_assets)) %>% 
+  
+  #rename for easier human read field names & table display
+    rename(State = state,
+         Entity = name,
+         "Net Pension Liability" = net_pension_liability,
+         "Net OPEB Assets" = net_opeb_assets,
+         "Net OPEB Liability" = net_opeb_liability,
+         "Bonds Outstanding" = bonds_outstanding,
+         "Notes Outstanding" = notes_outstanding,
+         "Leases" = leases,
+         "Loans Outstanding" = loans_outstanding, 
+         "Compensated Absences" = compensated_absences,
+         "Total Liabilities" = total_liabilities,
+         "Revenues" = revenues
+         
+         ) %>% 
+  select(State, Entity, category, year, everything()) 
+
+sum_tot_labilities <- round(sum(d$`Total Liabilities`)/1000000000000,2) #trillion
+
+percent <- round(sum(d$`Total Liabilities`)/ (20893.75*1000000000)*100)
+```
+
+US state and local governments reported **$`r sum_tot_labilities` trillion** in liabilities in 2020, an amount that exceeds their annual revenue and is equal to *`r percent`%* of Gross Domestic Product. Reason Foundation computed this total and its subcomponents by reviewing 30,000 audited government financial statements filed by state and local governments for their 2020 fiscal year.
+
+The state and local governments that reported the largest liabilities were as follows:
+
+```{r, results='asis', include=FALSE}
+individual_fields <- c("Bonds Outstanding", "Net Pension Liability", "Net OPEB Liability", "Compensated Absences", "Total Liabilities")
+
+get_field_value <- function (field) {
+  
+  df <- d %>%
+  select(State, Entity, all_of(field))
+
+df %>% 
+  arrange(desc(df[3])) %>% 
+  head(10) -> d1 
+
+knitr::kable(d1, 
+      #caption = (d1 %>% colnames())[3], row.names = FALSE,
+      align = c('l', 'l', 'r'),
+      format.args = list(big.mark = ",")) %>% 
+    # kable_paper("striped") %>% 
+      row_spec(row = 0, background =  "#FF6C30", color = "white", bold = TRUE) %>% 
+  kable_styling(full_width = TRUE) -> result 
+
+print(result)
+cat('\n')
+  
+}
+
+```
+
+
+```{r, fig.width= 10, fig.height=10, out.width=50}
+get_field_value("Total Liabilities")
+```
+
+
+
+
+
+
+

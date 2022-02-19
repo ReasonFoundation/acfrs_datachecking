@@ -1,5 +1,5 @@
 ---
-title: "Top 10 values in each field"
+title: "State and Local Government Liabilities Study"
 output:
   html_document:
     toc: true
@@ -24,6 +24,9 @@ library(DT)
 
 
 ```{r}
+
+gdp_2020 <- readRDS("gdp_2020.RDS")
+
 acfrs <- readRDS("data_from_dbsite.RDS")
 d <- acfrs %>% 
   filter(category != "Non-Profit" & year == 2020) %>% 
@@ -55,9 +58,10 @@ d <- acfrs %>%
 
 sum_tot_labilities <- round(sum(d$`Total Liabilities`)/1000000000000,2) #trillion
 
+percent <- round(sum(d$`Total Liabilities`)/ (20893.75*1000000000)*100)
 ```
 
-US state and local governments reported over `r sum_tot_labilities`  trillion in liabilities in 2020, an amount that exceeds their annual revenue and is equal to about 30% of Gross Domestic Product. Reason Foundation computed this total and its subcomponents by reviewing 30,000 audited government financial statements filed by state and local governments for their 2020 fiscal year.
+US state and local governments reported **$`r sum_tot_labilities` trillion** in liabilities in 2020, an amount that exceeds their annual revenue and is equal to *`r percent`%* of Gross Domestic Product. Reason Foundation computed this total and its subcomponents by reviewing 30,000 audited government financial statements filed by state and local governments for their 2020 fiscal year.
 
 
 ## Structure of the original data
