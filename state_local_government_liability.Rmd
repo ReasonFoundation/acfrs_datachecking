@@ -20,12 +20,13 @@ library(DT)
 
 ```
 
-
+## Query from database, in-text code
 ```{r}
 
 gdp_2020 <- readRDS("gdp_2020.RDS")
 
 acfrs <- readRDS("data_from_dbsite.RDS")
+
 d <- acfrs %>% 
   filter(category != "Non-Profit" & year == 2020) %>% 
   
@@ -90,14 +91,44 @@ cat('\n')
 
 ```
 
+## Plain table
 
 ```{r, fig.width= 10, fig.height=10, out.width=50}
 get_field_value("Total Liabilities")
 ```
 
+## Highlight some row(s)/ column(s)
+
+```{r}
+d %>%
+  select(State, Entity, `Total Liabilities`) %>% 
+  arrange(desc(`Total Liabilities`)) %>% 
+  head(10) %>% 
+  kbl(align = c('l', 'l', 'r'),
+      format.args = list(big.mark = ",")) %>% 
+  column_spec(3, bold = T) %>% 
+  row_spec(row = 0, background =  "#69b3a2", color = "white", bold = TRUE) %>% 
+  row_spec(row = 9, background =  "#E17D85", color = "white", bold = TRUE) %>% 
+  kable_material(c("striped", "hover"))
+
+```
 
 
+## Add images
+```{r}
+entity_img <- tibble( # don't use data.frame
+  State = c("CA", "NY"),
+  Entity = c("State of California", "New York"),
+  `Total Liabilities` = c("408,305,319,000", "305,300,557,000")
+           ) 
 
-
+entity_img %>% 
+  kbl(booktabs = T) %>% 
+  kable_paper(full_width = T) %>% 
+  column_spec(3, bold = T) %>%
+  row_spec(row = 0, background =  "#72A502", color = "white", bold = TRUE) %>% 
+  column_spec(1, image =
+                spec_image(c("California-State-Flag.jpeg", "Flag_of_New_York_City.png"), 100, 100))
+```
 
 
