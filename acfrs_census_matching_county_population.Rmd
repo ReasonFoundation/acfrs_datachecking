@@ -29,6 +29,7 @@ pop <- d %>%
   mutate(state.name = str_trim(state.name)) %>% 
   left_join(df_state)
 
+pop %>% filter(str_detect(county))
 ```
 
 There are `r nrow(pop)` observations in census population data.
@@ -43,9 +44,9 @@ acfrs <- readRDS("data_from_dbsite.RDS") %>%
 # rename to easily join with census data later
   rename(county = name) %>% 
   rename(state.abb = state)
-acfrs
 
-# Before: 31340 rows, when leaving out condition "NOT has_unconfirmed" --> get 33841 rows
+acfrs %>% filter()
+
 ```
 ACFRs has `r nrow(acfrs)` observations. 
 
@@ -98,6 +99,8 @@ filter(county == "Municipality of Parkersburg" | county == "Municipality of Dell
 ```
 
 ### Puerto Rico (Note: not using to match with ACFRS for now)
+Update Feb 7/2022: Marc: "Drop Puerto Rico out of the county analysis?  I realize it
+was in the 2020 Census data, but they are not going to be on our map."
 
 Puerto Rico only has “Municipios” that perform the functions of both cities and counties.
 
@@ -134,10 +137,6 @@ puertorico_census_pop <- pop %>%
           
 ```
 
-
-Update Feb 7/2022: Marc: "Drop Puerto Rico out of the county analysis?  I realize it
-was in the 2020 Census data, but they are not going to be on our map."
-
 # Join ACFRs and Census population data to get population for ACFRs counties 
 
 
@@ -153,18 +152,17 @@ acfrs_county_parish_borough <- rbind(acfrs_county, louisiana_parish) %>% rbind(a
 
 # next, join with census Census population by = c("state.abb", "county")
 county_pop_census_acfrs <- acfrs_county_parish_borough %>% 
-            left_join(pop) %>% 
+            left_join(pop, by = c("state.abb", "county")) %>% 
             drop_na(population) %>% 
             arrange(desc(population)) %>% distinct() 
   
 # third, bind with puertorico - not using for now
            # rbind(puertorico_afrs_census_pop) 
 
-write.csv(county_pop_census_acfrs, "county_pop_census_acfrs_TOTAL.csv")
+write.csv(county_pop_census_acfrs, "county_pop_census_acfrs.csv")
 saveRDS(county_pop_census_acfrs, "county_pop_census_acfrs.RDS")
-
-
 ```
+
 
 The matched dataset has `r nrow(county_pop_census_acfrs)` observations/ counties. 
 
@@ -200,6 +198,8 @@ census_pop_100k <- pop %>%
   filter(grepl("County|Parish", county)) %>%  # how about |Borough?
   filter(state.name != "Connecticut") %>% 
   filter(!id %in% stoplist$id) 
+
+
 
 ```
 

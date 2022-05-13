@@ -38,7 +38,7 @@ census_debt_entity <- rio::import(here::here("data", "Census Debt By Entity 2019
   mutate_all(tolower)
 
 
-#CALIFORNIA in the Census Data is equivalent to State of California in our data.
+#CALIFORNIA in the Census Data is equivalent to State of California in ACFR data.
 census_debt_entity %>% str()
 ```
 

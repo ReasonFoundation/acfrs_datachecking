@@ -58,7 +58,9 @@ d <- acfrs %>%
 sum_tot_labilities <- round(sum(d$`Total Liabilities`)/1000000000000,2) #trillion
 
 percent <- round(sum(d$`Total Liabilities`)/ (20893.75*1000000000)*100)
+
 ```
+
 
 US state and local governments reported **$`r sum_tot_labilities` trillion** in liabilities in 2020, an amount that exceeds their annual revenue and is equal to *`r percent`%* of Gross Domestic Product. Reason Foundation computed this total and its subcomponents by reviewing 30,000 audited government financial statements filed by state and local governments for their 2020 fiscal year.
 

@@ -113,14 +113,13 @@ matched_acfrs_nces_sd <- acfrs_school_districts_clean %>%
   left_join(nces_clean) %>% drop_na(student) %>%
   mutate(student = as.numeric(student)) %>% 
   arrange(desc(student)) %>% 
-  select(state, acfrs_original_name, id, `NCES District ID`, nces_original_name, student)
+  select(-c(census_id, category, has_unconfirmed))
 
-# 
-write.csv(matched_acfrs_nces_sd, "matched_acfrs_nces_sd_withID.csv")
+# write.csv(matched_acfrs_nces_sd, "matched_acfrs_nces_sd_withID.csv")
+saveRDS(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.RDS")
 
-write.csv(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.csv")
-
-#saveRDS(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.RDS")
+matched_acfrs_nces_sd <- readRDS("matched_acfrs_nces_sd.RDS")
+```
 
 
 # double check if the original name in ACFRs and NCES and the normalized names actually refer to the same entity

@@ -33,6 +33,7 @@ pop <- geoID_pop20_census %>%
 
 # ==> 294 rows NA of state.abb: Puerto Rico
 
+#checking
 pop %>% 
   filter(grepl("city|town", city_town)) %>% 
   filter(grepl("Los Angeles", city_town))
@@ -87,9 +88,9 @@ acfrs_governmentID <- acfrs %>% drop_na(census_id) %>%
 length(intersect(unique(acfrs_governmentID$government_ID), unique(pop_governmentID$government_ID)))
 
 
-# problem: government_ID in pop_pop_governmentID has 14 characters (05201902700000) >< some government_ID in ACFRs has 13 characters 5201902700000
-# look at those in acfrs
-# Is this safe to assume that these government_ID in ACFRs data should have 0 at the beginning? 
+# problem: government_ID in pop_governmentID has 14 characters (05201902700000) >< some government_ID in ACFRs has 13 characters 5201902700000
+# Marc: Yes, it is safe to assume that these government_ID in ACFRs data should have 0 at the beginning? 
+
 # separate these into 2 sets for checking later. 
 acfrs_governmentID_13char <- acfrs_governmentID %>% 
   filter(str_length(government_ID) == 13) %>% 
@@ -99,6 +100,7 @@ acfrs_governmentID_14char <- acfrs_governmentID %>%
   filter(str_length(government_ID) == 14)
 
 acfrs_governmentID_1314_char <- rbind(acfrs_governmentID_13char, acfrs_governmentID_14char)
+
 #Joining 1
 
 acfrs_city_pop <- acfrs_governmentID %>% 
@@ -106,15 +108,14 @@ acfrs_city_pop <- acfrs_governmentID %>%
   select(-c(state, STATE_AB, year)) %>% 
   arrange(desc(population)) 
 
-# joining 2: including add 0 to those with 13 chars --> # once added extra 0, have more 695 matches 
+# joining 2: add 0 to those with 13 chars --> # once added extra 0, have more 695 matches 
 
 acfrs_city_pop_added_char <- acfrs_governmentID_1314_char %>% 
   left_join(pop_governmentID) %>% drop_na(population) %>% 
   select(-c(state, STATE_AB, year)) %>% 
   arrange(desc(population)) 
 
-# checking some cases: 
-#Los Angeles in acfrs does not get matched with pop census
+# checking some cases: Before: Los Angeles in acfrs does not get matched with pop census
 acfrs_city_pop %>% 
   filter(grepl("Los Angeles", name))
 
@@ -122,21 +123,14 @@ acfrs_city_pop %>%
 acfrs_city_pop_added_char %>% 
  filter(grepl("Los Angeles", name))
 
-write.csv(acfrs_city_pop, "acfrs_city_pop.csv")
-write.csv(acfrs_city_pop_added_char, "acfrs_city_pop_added_char.csv")
-
-saveRDS(acfrs_city_pop_added_char, "acfrs_city_pop_added_char.RDS")
-
-
-# for Jordan to map
-acfrs_city_pop_formap <- acfrs_city_pop_added_char %>% 
-  rename(entity = name) %>% 
-  mutate(lia_rev_ratio = (round(total_liabilities/revenues, 4))*100) %>% 
-  select(state.abb, state.name, geo_id, government_ID, entity, total_liabilities, revenues, lia_rev_ratio)
-
-
-write.csv(acfrs_city_pop_formap, "acfrs_city_pop_formap.csv")
 ```
+
+```{r}
+#now have total of 6249 cities 
+write.csv(acfrs_city_pop_added_char, "acfrs_city_pop_added_char.csv")
+saveRDS(acfrs_city_pop_added_char, "acfrs_city_pop_added_char.RDS")
+```
+
 
 ```{r}
 
