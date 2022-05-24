@@ -37,6 +37,8 @@ pop <- geoID_pop20_census %>%
 pop %>% 
   filter(grepl("city|town", city_town)) %>% 
   filter(grepl("Los Angeles", city_town))
+
+
 ```
 
 ```{r}
@@ -49,7 +51,6 @@ governmentID <- rio::import(here::here("data", "City and Town Mapping.xlsx"), sh
   select(government_ID, `INFERRED GEO_ID`, NAME, CITY, STATE_AB, COUNTY_AREA_NAME)  %>% 
   rename(geo_id = `INFERRED GEO_ID`,  # Marc created INFERRED GEO_ID, which meant to be geo_id
          original_name = NAME 
-         #city_town = CITY
          )   
   
 governmentID %>% 
@@ -65,9 +66,6 @@ pop_governmentID %>%
   #filter(city_town == "West New York town")
   filter(grepl("city|town", city_town)) %>% 
   filter(grepl("Los Angeles", city_town)) -> test1
-
-test1 %>% 
-  mutate(city_town = str_remove_all(city_town, " city")) %>% select( government_ID, population) -> test11
 
 ```
 
@@ -87,9 +85,8 @@ acfrs_governmentID <- acfrs %>% drop_na(census_id) %>%
 # check the intersection of unique government_ID
 length(intersect(unique(acfrs_governmentID$government_ID), unique(pop_governmentID$government_ID)))
 
-
 # problem: government_ID in pop_governmentID has 14 characters (05201902700000) >< some government_ID in ACFRs has 13 characters 5201902700000
-# Marc: Yes, it is safe to assume that these government_ID in ACFRs data should have 0 at the beginning? 
+# Marc: Yes, it is safe to assume that these government_ID in ACFRs data should have 0 at the beginning. 
 
 # separate these into 2 sets for checking later. 
 acfrs_governmentID_13char <- acfrs_governmentID %>% 
@@ -121,8 +118,7 @@ acfrs_city_pop %>%
 
 # Now got matched
 acfrs_city_pop_added_char %>% 
- filter(grepl("Los Angeles", name))
-
+ filter(grepl("Los Angeles", name)) 
 ```
 
 ```{r}
@@ -144,6 +140,34 @@ cities_100Kpop_NOT_acfrs <- pop %>%
   arrange(desc(population)) %>% distinct()
 
 write.csv(cities_100Kpop_NOT_acfrs, "cities_100Kpop_NOT_acfrs.csv")
+
+```
+
+
+
+# Some special cases
+
+```{r}
+  
+#Counties that are also Cities:
+#San Francisco, CA
+#Jacksonville, FL and Dupage County, FL
+#Nashville, TN and Davidson County, TN
+# Check Nashville
+acfrs %>% filter(state == "TN") %>% 
+  filter(grepl("Nashville", name)) %>% select(state, name, total_liabilities, revenues) %>% 
+  filter(name == "Nashville-Davidson County")
+```
+
+```{r}
+pop %>% filter(state.abb == "TN") %>% 
+  filter(grepl("Nashville", city_town))
+
+
+# Combined city/ city government: Jacksonville city, FL  = Duval County, FL
+jacksonville_city_fl <- acfrs_city_pop_added_char %>% 
+  filter(state.abb == "FL" & name == "Jacksonville") 
+
 
 ```
 

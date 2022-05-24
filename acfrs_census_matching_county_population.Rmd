@@ -27,9 +27,17 @@ df_state <- data.frame(state.abb, state.name) %>%
 pop <- d %>% 
   separate(`Geographic Area Name`, c("county", "state.name"), sep = ",")  %>%  
   mutate(state.name = str_trim(state.name)) %>% 
-  left_join(df_state)
+  left_join(df_state) %>% 
+  
+# special cases: Nashville-Davidson metropolitan government (balance) == "Nashville-Davidson County" in ACFRS--> rename to match
+mutate(county = ifelse(county == "Nashville-Davidson metropolitan government (balance)", "Nashville-Davidson County", county)) %>%  
 
-pop %>% filter(str_detect(county))
+# Louisville/Jefferson County metro government (balance) == in ACFRs Louisville-Jefferson County
+mutate(county = ifelse(county == "Louisville/Jefferson County metro government (balance)", "Louisville-Jefferson County", county)) 
+
+# recheck special cases: 
+pop %>% 
+  filter(str_detect(county, "Nashville-Davidson|Louisville-Jefferson"))
 ```
 
 There are `r nrow(pop)` observations in census population data.
@@ -41,11 +49,9 @@ ACFRs data was queried from ACFRs PostgresQL database. The dataset was saved to 
 
 ```{r}
 acfrs <- readRDS("data_from_dbsite.RDS") %>% 
-# rename to easily join with census data later
+# rename to easily join with census pop data later
   rename(county = name) %>% 
   rename(state.abb = state)
-
-acfrs %>% filter()
 
 ```
 ACFRs has `r nrow(acfrs)` observations. 
@@ -56,7 +62,7 @@ ACFRs has `r nrow(acfrs)` observations.
   acfrs_county <- acfrs %>% 
   filter(category == "General Purpose") %>% 
   filter(grepl("County", county))
-  acfrs_county
+
 ```
 
 There are `r nrow(acfrs_county)` entities that contain the word "county" in their names. 
@@ -85,10 +91,9 @@ alaska_borough <- acfrs %>%
   filter(category == "General Purpose") %>%  
   filter(state.abb == "AK") %>% 
   filter(grepl("Borough", county)) %>% arrange(county)
-```
 
-Just to double check, find any ACFRs entities that has "Municipality" in their names.
-```{r}
+
+# double check, find any ACFRs entities that has "Municipality" in their names.
 acfrs %>% filter(grepl("Municipality", county))
 
 # Found 2: SD Municipality of Dell Rapids & WV Municipality of Parkersburg.
@@ -98,7 +103,7 @@ filter(county == "Municipality of Parkersburg" | county == "Municipality of Dell
           
 ```
 
-### Puerto Rico (Note: not using to match with ACFRS for now)
+## Puerto Rico (Note: not using to match with ACFRS for now)
 Update Feb 7/2022: Marc: "Drop Puerto Rico out of the county analysis?  I realize it
 was in the 2020 Census data, but they are not going to be on our map."
 
@@ -110,14 +115,7 @@ The problem is:
 
 Solution: Remove "Municipio" in the names in Census to match with ACFRs
 
-Potential risk: Not all Puerto Rico entities in ACFRs without "Municipio" are actually a municipio.
-```{r}
-acfrs %>% 
-  filter(category == "General Purpose") %>% 
-  filter(state.abb == "PR") %>% 
-  filter(grepl("Municipio", county))
-```
-
+Potential risk: Not all Puerto Rico entities in ACFRs without the word "Municipio" are actually a municipio.
 
 ```{r}
 # in Census population, find county that has the word "Municipio" --> remove the word "Municipio" to match with acfrs 
@@ -125,16 +123,16 @@ puertorico_census_pop <- pop %>%
           filter(state.name == "Puerto Rico") %>% 
   filter(grepl("Municipio", county)) %>% 
   mutate(county = str_remove(county, " Municipio")) 
+```
 
+```{r}
 # In ACFRs, get all PR entities in General Purpose 
  puertorico_afrs_census_pop <-  acfrs %>% 
           filter(category == "General Purpose") %>% 
           filter(state.abb == "PR") %>% 
-  
-#join Puerto Rico in acfrs with PR in census -
-         left_join(puertorico_census_pop) %>% 
+          #join Puerto Rico in acfrs with PR in census -
+  left_join(puertorico_census_pop, by = c("state.abb", "county")) %>% 
           drop_na(population) 
-          
 ```
 
 # Join ACFRs and Census population data to get population for ACFRs counties 
@@ -149,16 +147,21 @@ Joining these components:
 ```{r}
 # first, join entities in ACFRs contain words "County" + Louisiana that contain word "Parish" + alaska that contain "Borough" in their names
 acfrs_county_parish_borough <- rbind(acfrs_county, louisiana_parish) %>% rbind(alaska_borough)
-
+  
 # next, join with census Census population by = c("state.abb", "county")
 county_pop_census_acfrs <- acfrs_county_parish_borough %>% 
             left_join(pop, by = c("state.abb", "county")) %>% 
             drop_na(population) %>% 
+            
+# third, bind with puertorico 
+           rbind(puertorico_afrs_census_pop) %>% 
             arrange(desc(population)) %>% distinct() 
-  
-# third, bind with puertorico - not using for now
-           # rbind(puertorico_afrs_census_pop) 
 
+# PROBLEM: Need to explore more why others do not get matches
+```
+
+
+```{r}
 write.csv(county_pop_census_acfrs, "county_pop_census_acfrs.csv")
 saveRDS(county_pop_census_acfrs, "county_pop_census_acfrs.RDS")
 ```
@@ -198,8 +201,6 @@ census_pop_100k <- pop %>%
   filter(grepl("County|Parish", county)) %>%  # how about |Borough?
   filter(state.name != "Connecticut") %>% 
   filter(!id %in% stoplist$id) 
-
-
 
 ```
 
@@ -268,4 +269,5 @@ entities_inCensus2017_NOT_inAcfrs <- t2 %>% left_join(t1) %>% # t1 has no NA in 
 
 #write_csv(entities_inCensus2017_NOT_inAcfrs, "entities_inCensus2017_NOT_inAcfrs.csv")
 ```
+
 

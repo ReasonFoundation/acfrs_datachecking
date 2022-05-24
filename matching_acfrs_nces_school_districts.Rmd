@@ -9,6 +9,12 @@ library(tidyverse)
 library(stringr)
 library(tidyr)
 library(dplyr)
+
+
+nces_clean %>% 
+  filter(str_detect(nces_original_name, "Chicago"))
+
+
 ```
 
 # Read in Data 
@@ -30,7 +36,6 @@ acfrs_school_districts <- readRDS("data_from_dbsite.RDS") %>%
   rename(acfrs_original_name = name) %>% 
   filter(category == "School District") %>% 
   mutate(acfrs_name = str_to_lower(acfrs_original_name)) %>% drop_na(acfrs_name) 
-
 
 ```
 
@@ -92,7 +97,11 @@ acfrs_school_districts_clean <- acfrs_school_districts %>%
   # remove terms in acfrs, second time
   mutate(acfrs_name = str_trim(acfrs_name, side = "both")) %>% 
   mutate(acfrs_name = str_remove_all(acfrs_name, "^of\\s*|-$|municipalno.*|\\.|'s|’s|[0-9]*$")) %>% 
-  mutate(acfrs_name = str_trim(acfrs_name, side = "both")) %>%  arrange(acfrs_name) %>% slice(-c(1:14)) %>% rename(name = acfrs_name)
+  mutate(acfrs_name = str_trim(acfrs_name, side = "both")) %>%  arrange(acfrs_name) %>% slice(-c(1:14)) %>% rename(name = acfrs_name) %>% 
+
+   # change some names: "City of Chicago SD 299" in NCES is "Chicago Board of Education" in Acfrs 
+  
+  mutate(name = ifelse(acfrs_original_name == "Chicago Board of Education", "chicago board of education", name)) 
 ```
 
 ```{r}
@@ -104,21 +113,28 @@ nces_clean <- nces %>% select(-c(`State District ID`, City)) %>%
   
   mutate(nces_name = str_trim(nces_name, side = "both")) %>% 
   mutate(nces_name = str_remove_all(nces_name, "^of\\s*|-$|municipalno.*|\\.|'s|’s|[0-9]*$")) %>% 
-  mutate(nces_name = str_trim(nces_name, side = "both")) %>% arrange(nces_name) %>% slice(-c(1:1)) %>% rename(name = nces_name)
+  mutate(nces_name = str_trim(nces_name, side = "both")) %>% arrange(nces_name) %>% slice(-c(1:1)) %>% rename(name = nces_name) %>% 
+
+# Marc: "City of Chicago SD 299" in NCES is "Chicago Board of Education" in Acfrs 
+mutate(name = ifelse(nces_original_name == "City of Chicago SD 299", "chicago board of education", name))
+  
 
 ```
 
 ```{r}
+
 matched_acfrs_nces_sd <- acfrs_school_districts_clean %>% 
-  left_join(nces_clean) %>% drop_na(student) %>%
+  left_join(nces_clean) %>% 
+  drop_na(student) %>%
   mutate(student = as.numeric(student)) %>% 
   arrange(desc(student)) %>% 
-  select(-c(census_id, category, has_unconfirmed))
+  select(-c(census_id, category, has_unconfirmed)) 
 
 # write.csv(matched_acfrs_nces_sd, "matched_acfrs_nces_sd_withID.csv")
 saveRDS(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.RDS")
 
 matched_acfrs_nces_sd <- readRDS("matched_acfrs_nces_sd.RDS")
+
 ```
 
 
