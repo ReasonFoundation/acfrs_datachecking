@@ -161,7 +161,9 @@ Joining these components:
 
 ```{r}
 # first, join entities in ACFRs contain words "County" + Louisiana that contain word "Parish" + alaska that contain "Borough" in their names
-acfrs_county_parish_borough <- rbind(acfrs_county, louisiana_parish) %>% rbind(alaska_borough)
+acfrs_county_parish_borough <- rbind(acfrs_county, louisiana_parish) %>% 
+                              rbind(alaska_borough) 
+                              
 
 # next, join with census Census population by = c("state.abb", "county")
 county_pop_census_acfrs <- acfrs_county_parish_borough %>% 
@@ -172,7 +174,11 @@ county_pop_census_acfrs <- acfrs_county_parish_borough %>%
            rbind(puertorico_afrs_census_pop) %>% 
             arrange(desc(population)) %>% distinct() 
 
-# PROBLEM: Need to explore more why others do not get matches
+# PROBLEM: Need to explore more why others do not get matched
+setdiff(acfrs_county_parish_borough$county, county_pop_census_acfrs$county)
+
+acfrs_county_parish_borough %>% 
+            left_join(pop, by = c("state.abb", "county")) %>% filter(is.na(population)) 
 ```
 
 
