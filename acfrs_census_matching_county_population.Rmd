@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(stringr)
+library(dplyr)
 
 ```
 
@@ -29,15 +30,24 @@ pop <- d %>%
   mutate(state.name = str_trim(state.name)) %>% 
   left_join(df_state) %>% 
   
-# special cases: Nashville-Davidson metropolitan government (balance) == "Nashville-Davidson County" in ACFRS--> rename to match
-mutate(county = ifelse(county == "Nashville-Davidson metropolitan government (balance)", "Nashville-Davidson County", county)) %>%  
+# normalize county names in pop
+  mutate(county = str_to_lower(county),
+         county = str_remove(county,"\\.|'|‘")) %>% 
+  
+## Special cases
+
+# Nashville-Davidson metropolitan government (balance) == "Nashville-Davidson County" in ACFRS--> rename to match
+mutate(county = ifelse(county == "nashville-davidson metropolitan government (balance)", "nashville-davidson county", county)) %>%  
 
 # Louisville/Jefferson County metro government (balance) == in ACFRs Louisville-Jefferson County
-mutate(county = ifelse(county == "Louisville/Jefferson County metro government (balance)", "Louisville-Jefferson County", county)) 
+mutate(county = ifelse(county == "louisville/jefferson county metro government (balance)", "louisville-jefferson county", county))
+
+# change to name style in acfrs
+#mutate(county = ifelse(county == "kauai county", "kaua‘i county", county)) 
 
 # recheck special cases: 
 pop %>% 
-  filter(str_detect(county, "Nashville-Davidson|Louisville-Jefferson"))
+  filter(str_detect(county, "nashville-davidson|louisville-jefferson|kauai county"))
 ```
 
 There are `r nrow(pop)` observations in census population data.
@@ -51,7 +61,12 @@ ACFRs data was queried from ACFRs PostgresQL database. The dataset was saved to 
 acfrs <- readRDS("data_from_dbsite.RDS") %>% 
 # rename to easily join with census pop data later
   rename(county = name) %>% 
-  rename(state.abb = state)
+  rename(state.abb = state) %>% 
+  
+# normalize county names 
+  mutate(county = str_to_lower(county), 
+         county = str_remove(county,"\\.|'|‘")
+         )
 
 ```
 ACFRs has `r nrow(acfrs)` observations. 
@@ -61,7 +76,7 @@ ACFRs has `r nrow(acfrs)` observations.
 # ACFRs entities that contains the word "County" in their names
   acfrs_county <- acfrs %>% 
   filter(category == "General Purpose") %>% 
-  filter(grepl("County", county))
+  filter(grepl("county", county))
 
 ```
 
@@ -76,7 +91,7 @@ In Louisiana, counties are called Parishes.
 louisiana_parish <- acfrs %>% 
   filter(category == "General Purpose") %>%  
   filter(state.abb == "LA") %>% 
-  filter(grepl("Parish", county))
+  filter(grepl("parish", county))
 
 ```
 There're `r nrow(louisiana_parish)` Louisiana entities that contain the word "Parish" in their names. 
@@ -90,16 +105,16 @@ Alaska often uses the term "Borough" instead of County.
 alaska_borough <- acfrs %>% 
   filter(category == "General Purpose") %>%  
   filter(state.abb == "AK") %>% 
-  filter(grepl("Borough", county)) %>% arrange(county)
+  filter(grepl("borough", county)) %>% arrange(county)
 
 
 # double check, find any ACFRs entities that has "Municipality" in their names.
-acfrs %>% filter(grepl("Municipality", county))
+acfrs %>% filter(grepl("municipality", county))
 
 # Found 2: SD Municipality of Dell Rapids & WV Municipality of Parkersburg.
 # However, they're not in Census population data
 pop %>%
-filter(county == "Municipality of Parkersburg" | county == "Municipality of Dell Rapids" )
+filter(county == "municipality of parkersburg" | county == "municipality of dell rapids" )
           
 ```
 
@@ -121,8 +136,8 @@ Potential risk: Not all Puerto Rico entities in ACFRs without the word "Municipi
 # in Census population, find county that has the word "Municipio" --> remove the word "Municipio" to match with acfrs 
 puertorico_census_pop <- pop %>% 
           filter(state.name == "Puerto Rico") %>% 
-  filter(grepl("Municipio", county)) %>% 
-  mutate(county = str_remove(county, " Municipio")) 
+  filter(grepl("municipio", county)) %>% 
+  mutate(county = str_remove(county, " municipio")) 
 ```
 
 ```{r}
@@ -147,7 +162,7 @@ Joining these components:
 ```{r}
 # first, join entities in ACFRs contain words "County" + Louisiana that contain word "Parish" + alaska that contain "Borough" in their names
 acfrs_county_parish_borough <- rbind(acfrs_county, louisiana_parish) %>% rbind(alaska_borough)
-  
+
 # next, join with census Census population by = c("state.abb", "county")
 county_pop_census_acfrs <- acfrs_county_parish_borough %>% 
             left_join(pop, by = c("state.abb", "county")) %>% 
@@ -164,6 +179,7 @@ county_pop_census_acfrs <- acfrs_county_parish_borough %>%
 ```{r}
 write.csv(county_pop_census_acfrs, "county_pop_census_acfrs.csv")
 saveRDS(county_pop_census_acfrs, "county_pop_census_acfrs.RDS")
+
 ```
 
 
@@ -242,32 +258,4 @@ There are `r nrow(census_pop_NOT_match_acfrs_all)` counties in Census, regardles
 #  filter(!county %in% county_pop_census_acfrs$county) %>% distinct()
 #+++++++++
 ```
-
-# County from 2017 Census
-
-```{r}
-acfrs %>% 
-  filter(category == "General Purpose") %>% 
-  filter(grepl("county|borough|parish", county, ignore.case = TRUE)) %>% arrange(county) -> t1
-
-```
-
-
-```{r}
-#get sheet Marc created: "Data from CAFR System"
-census2017 <- rio::import(here::here("data", "Mapping County Data from ACFR System to 2017 and 2020 Census.xlsx"), sheet = 3)
-
-census2017 %>% 
-  filter(grepl("county|borough|parish", Entity, ignore.case = TRUE)) %>% arrange(Entity) %>% 
-  rename(state.abb = State, county = Entity) %>% 
-  drop_na(`CAFR Year`) %>% # some rows have no years. Those with year 2020 are counties for which we have a CAFR for that year
-  select(state.abb, county, `Census ID (from 2017)`) -> t2
-
-# entities that are NOT in acfrs databse
-entities_inCensus2017_NOT_inAcfrs <- t2 %>% left_join(t1) %>% # t1 has no NA in total_liabilities 
-  filter(is.na(total_liabilities)) # after join, has these total_liabilities na => must be entities that are NOT in acfrs database. 
-
-#write_csv(entities_inCensus2017_NOT_inAcfrs, "entities_inCensus2017_NOT_inAcfrs.csv")
-```
-
 
