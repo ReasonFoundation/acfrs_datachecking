@@ -32,22 +32,25 @@ pop <- d %>%
   
 # normalize county names in pop
   mutate(county = str_to_lower(county),
-         county = str_remove(county,"\\.|'|‘")) %>% 
-  
+         county = str_remove(county,"\\.|'|‘")) 
+
+  pop %>% 
+  filter(state.abb == "TN" | state.abb == "KY") %>% 
+  filter(str_detect(county, "davidson|jefferson")) #jefferson county ; davidson county
 ## Special cases
 
-# Nashville-Davidson metropolitan government (balance) == "Nashville-Davidson County" in ACFRS--> rename to match
-mutate(county = ifelse(county == "nashville-davidson metropolitan government (balance)", "nashville-davidson county", county)) %>%  
-
-# Louisville/Jefferson County metro government (balance) == in ACFRs Louisville-Jefferson County
-mutate(county = ifelse(county == "louisville/jefferson county metro government (balance)", "louisville-jefferson county", county))
-
-# change to name style in acfrs
-#mutate(county = ifelse(county == "kauai county", "kaua‘i county", county)) 
-
-# recheck special cases: 
-pop %>% 
-  filter(str_detect(county, "nashville-davidson|louisville-jefferson|kauai county"))
+# # Nashville-Davidson metropolitan government (balance) == "Nashville-Davidson County" in ACFRS--> rename to match
+# mutate(county = ifelse(county == "nashville-davidson metropolitan government (balance)", "nashville-davidson county", county)) %>%  
+# 
+# # Louisville/Jefferson County metro government (balance) == in ACFRs Louisville-Jefferson County
+# mutate(county = ifelse(county == "louisville/jefferson county metro government (balance)", "louisville-jefferson county", county))
+# 
+# # change to name style in acfrs
+# #mutate(county = ifelse(county == "kauai county", "kaua‘i county", county)) 
+# 
+# # recheck special cases: 
+# pop %>% 
+#   filter(str_detect(county, "nashville-davidson|louisville-jefferson|kauai county"))
 ```
 
 There are `r nrow(pop)` observations in census population data.
@@ -66,10 +69,16 @@ acfrs <- readRDS("data_from_dbsite.RDS") %>%
 # normalize county names 
   mutate(county = str_to_lower(county), 
          county = str_remove(county,"\\.|'|‘")
-         )
+         ) %>% 
+# Special cases
+  mutate(county = ifelse(county == "nashville-davidson county", "davidson county", county), 
+         county = ifelse(county == "louisville-jefferson county" & state.abb == "KY", "jefferson county", county))
 
+  # filter(state.abb == "TN" | state.abb == "KY") %>% #43104504500000
+  # filter(str_detect(county, "davidson county|jefferson county")) %>% select(state.abb, county, census_id, total_liabilities)
 ```
 ACFRs has `r nrow(acfrs)` observations. 
+
 
 ## Find "County" in ACFRs
 ```{r}
@@ -183,6 +192,11 @@ acfrs_county_parish_borough %>%
 
 
 ```{r}
+#double check davidson|jefferson
+county_pop_census_acfrs %>% 
+  filter(state.abb == "KY" | state.abb == "TN") %>% 
+  filter(str_detect(county, "davidson|jefferson")) %>% select(state.abb, population, total_liabilities, id.y, county)
+  
 write.csv(county_pop_census_acfrs, "county_pop_census_acfrs.csv")
 saveRDS(county_pop_census_acfrs, "county_pop_census_acfrs.RDS")
 

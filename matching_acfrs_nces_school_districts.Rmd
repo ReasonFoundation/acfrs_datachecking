@@ -10,11 +10,6 @@ library(stringr)
 library(tidyr)
 library(dplyr)
 
-
-nces_clean %>% 
-  filter(str_detect(nces_original_name, "Chicago"))
-
-
 ```
 
 # Read in Data 
@@ -133,7 +128,6 @@ matched_acfrs_nces_sd <- acfrs_school_districts_clean %>%
 # write.csv(matched_acfrs_nces_sd, "matched_acfrs_nces_sd_withID.csv")
 saveRDS(matched_acfrs_nces_sd, "matched_acfrs_nces_sd.RDS")
 
-matched_acfrs_nces_sd <- readRDS("matched_acfrs_nces_sd.RDS")
 
 ```
 

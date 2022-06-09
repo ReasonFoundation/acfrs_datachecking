@@ -122,8 +122,7 @@ acfrs_city_pop_added_char %>%
 ```
 
 ```{r}
-#now have total of 6249 cities 
-write.csv(acfrs_city_pop_added_char, "acfrs_city_pop_added_char.csv")
+#write.csv(acfrs_city_pop_added_char, "acfrs_city_pop_added_char.csv")
 saveRDS(acfrs_city_pop_added_char, "acfrs_city_pop_added_char.RDS")
 ```
 
@@ -139,7 +138,7 @@ cities_100Kpop_NOT_acfrs <- pop %>%
   filter(!geo_id %in% acfrs_city_pop_added_char$geo_id) %>% 
   arrange(desc(population)) %>% distinct()
 
-write.csv(cities_100Kpop_NOT_acfrs, "cities_100Kpop_NOT_acfrs.csv")
+#write.csv(cities_100Kpop_NOT_acfrs, "cities_100Kpop_NOT_acfrs.csv")
 
 ```
 
