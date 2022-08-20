@@ -1,0 +1,36 @@
+---
+title: "state_gov"
+output: html_document
+date: '2022-08-15'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+#population from Census
+#https://www.census.gov/programs-surveys/popest/technical-documentation/research/evaluation-estimates/2020-evaluation-estimates/2010s-state-detail.html
+states_population <- rio::import("data/states_population2020_census.xlsx", skip = 8) %>% select(1:2) %>% 
+  rename(name = West,
+         population = "78654756") %>% 
+  mutate(name = str_remove(name, ".")) %>% slice(1:51)
+
+# All 51 state governments 
+state_gov <- readRDS("data_from_dbsite.RDS") %>% 
+  filter(category == "General Purpose") %>% 
+  
+  # only filter for state governments
+  filter(str_detect(name, "State of|Commonwealth|District of Columbia")) %>% 
+  filter(!str_detect(name, "Yap|Kosrae")) %>% 
+  
+  #clean state names to match with those names in census population data 
+  mutate(name = str_remove(name, "State of "),
+        name = str_remove(name, "Commonwealth of "),
+        name = str_remove(name, "Government of the ")) %>% 
+  left_join(states_population) %>% 
+  select(-c(census_id, id, year, has_unconfirmed))
+
+```
+

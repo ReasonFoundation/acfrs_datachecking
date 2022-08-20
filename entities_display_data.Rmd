@@ -1,0 +1,126 @@
+---
+title: "Untitled"
+output: html_document
+date: '2022-08-15'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+library(tidyr)
+library(dplyr)
+```
+# States
+```{r}
+# 50 states and DC
+state <- state_gov %>% mutate(gov_type = "State")
+```
+
+# Counties
+```{r}
+# --> 2503 county level entities, of which 255 do not have population data
+county <- county_pop_census_acfrs %>% 
+  rename(state = state.abb,
+         name = county) %>% 
+select(-c(id.x, id.y, state.name, census_id, year, has_unconfirmed)) %>% mutate(gov_type = "County")
+```
+# City
+
+```{r}
+#10412 city/town, 4112 do not have population data
+city <- acfrs_city_pop_added_char %>% 
+  rename(state = state.abb) %>% 
+  select(-c(government_ID, id, has_unconfirmed, geo_id, state.name, COUNTY_AREA_NAME, CITY, name, original_name)) %>% 
+  rename(name = city_town) %>% mutate(gov_type = "City")
+```
+
+# School Districts
+```{r}
+#9,574 school districts, of which 4604 do not have enrollment data
+school_dist <- school_districts %>% 
+  select(-c(name, id, year, `NCES District ID`, nces_original_name, county, census_id, has_unconfirmed)) %>% 
+  rename(name = acfrs_original_name,
+         population = student) %>% 
+  mutate(gov_type = "School District")
+```
+
+
+
+```{r}
+# 20391 "General Purpose" + "School District"
+# 11487 other_entities
+other_entities <- readRDS("data_from_dbsite.RDS") %>% 
+  select(-c(census_id, id, has_unconfirmed, year)) %>% #filter(category == "School District")
+  filter(!category %in% c("General Purpose", "School District")) %>% 
+  mutate(gov_type = category,
+         population = 0) 
+```
+# Data exploration 
+```{r}
+acfrs_8gov_type <- rbind(state, county, city, school_dist, other_entities) %>% 
+  mutate(ratio = (total_liabilities/revenues)*100)
+
+#Talk to Marc: the sum of number of each type of gov does not match: 
+# state 51 + city 10412  + county 2503 > General purpose: 10913, 
+
+# Thuy check again: Why 7574 school district after matching? Before matching: 9478
+
+saveRDS(acfrs_8gov_type, "acfrs_8gov_type.RDS")
+```
+
+
+```{r}
+state_51 <- acfrs_8gov_type %>%
+  filter(gov_type == "State") 
+
+county_50 <- acfrs_8gov_type %>% filter(gov_type == "County") %>% 
+  arrange(desc(population)) %>% slice(1:50) %>% 
+  mutate(name = str_to_title(name))
+
+city_50 <- acfrs_8gov_type %>% filter(gov_type == "City") %>% 
+  arrange(desc(population)) %>% slice(1:50) %>% 
+  mutate(name = str_to_title(name))
+
+schooldist_50 <- acfrs_8gov_type %>% filter(gov_type == "School District") %>% 
+  arrange(desc(population)) %>% slice(1:50)
+
+top_201_entities <- rbind(state_51, county_50, city_50, schooldist_50) %>% 
+  mutate(population = as.numeric(population))
+
+saveRDS(top_201_entities, "top_201_entities.RDS")
+
+```
+
+```{r}
+group_mean_percap <- top_201_entities %>% 
+  group_by(gov_type) %>% 
+    mutate("Total Liabilities" = mean(total_liabilities/population),
+         "Net Pension\nLiability" = mean(net_pension_liability/population), 
+         "Revenues" = mean(revenues/population)) %>% select(gov_type, `Total Liabilities`, `Net Pension\nLiability`, Revenues) %>% distinct() %>% 
+    mutate(name = " Mean") # adding a leading space to keep scale_fill_manual assign to it a consistent color. Else color fill assignment is abc based
+
+saveRDS(group_mean_percap, "group_mean_percap.RDS")
+```
+
+
+```{r}
+
+ranking_data <- top_201_entities %>% 
+  group_by(gov_type) %>% 
+  mutate("Liability-Revenue \nRatio" = rank(-ratio), 
+         "Total \nLiabilities" = rank(-total_liabilities),
+         Population = rank(-as.numeric(population)),
+         Revenue = rank(-revenues),
+         "Net Pension \nLiability" = rank(-net_pension_liability)) %>% 
+  select(name, gov_type, state, 9:13) 
+   
+ 
+saveRDS(ranking_data, "ranking_data.RDS")
+```
+
+
+```{r}
+
+```
+
