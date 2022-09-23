@@ -1,0 +1,69 @@
+---
+title: "Untitled"
+output: html_document
+date: "2022-09-07"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. Matching name in acfrs to gov_unit_original_name. 
+censusID_necesID_link.xlsx (dataformarc): gov_unit_original_name, idcensus, idnces
+
+2. Matching idnces to NCES ID: `NCES District ID`
+
+# ACFRs
+
+```{r}
+acfrsID <- readRDS("data_from_dbsite.RDS") %>% 
+  rename(acfrs_original_name = name) %>% 
+  filter(category == "School District") %>% 
+  mutate(name = str_to_lower(acfrs_original_name))
+
+acfrsID %>% filter(str_detect(acfrs_original_name, "Boyd County"))
+```
+
+# Census ID & NCES ID link
+```{r}
+# Got this file from Paul sent to Marc: "dataformarc" file
+id <- rio::import("data/censusID_necesID_link.xlsx") %>% 
+  # name in this file is government unit name
+  rename(gov_unit_original_name = name) %>% 
+  mutate(gov_unit_original_name = str_to_lower(gov_unit_original_name))  
+  
+length(unique(id$idcensus))
+length(unique(id$`NCES Agency Identification Number`))
+
+id %>% filter(str_detect(gov_unit_original_name, "boyd county"))
+```
+
+# NCES
+```{r}
+ncesID <- rio::import(here::here("data", "ncesdata_DBBFFFC.xlsx"), skip = 14) %>% 
+  select(`NCES District ID`, `State District ID`, `District Name`, `County Name*`, City, State, `Students*`) %>% 
+  rename(nces_original_name = `District Name`,
+    county = `County Name*`, 
+    state = State, 
+    student = `Students*`) %>% 
+  mutate(name = str_to_lower(nces_original_name)) 
+
+ncesID %>% filter(`NCES District ID`== "0401006")
+```
+
+# Government Units
+Govt_Units_2021_Final.xlsx: gov_unit_original_name, enrollment
+```{r}
+gov_unitID <- rio::import("data/Govt_Units_2021_Final.xlsx", sheet = 3) %>% 
+  rbind(rio::import("data/Govt_Units_2021_Final.xlsx", sheet = 4)) %>% 
+  filter(str_detect(UNIT_NAME, "BOYD"))
+  select(UNIT_NAME, STATE, ZIP, ZIP4, ENROLLMENT, ENROLLMENT_YEAR, COUNTY_AREA_NAME, CENSUS_ID_GIDID) %>% 
+  rename_all(., .funs = tolower) %>% 
+  rename(gov_unit_original_name = unit_name, 
+         idcensus = census_id_gidid) %>% 
+  mutate(gov_unit_original_name = str_to_lower(gov_unit_original_name))
+
+gov %>% filter(idcensus == "04500600300000")
+
+gov_unitID %>% filter(str_detect(gov_unit_original_name, "boyd county"))
+```

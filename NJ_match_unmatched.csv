@@ -1,0 +1,399 @@
+state,nces_original_name,gov_unit_original_name,name,ncesid,censusid,student,acfrs_original_name
+NJ,Alexandria Township School District,alexandria twp sch dist,alexandria,3400690,31501000100000,479.00000,NA
+NJ,Allamuchy Township School District,allamuchy twp sch dist,allamuchy,3400720,31502100100000,426.00000,NA
+NJ,Allendale Public School District,allendale public sch dist,allendale,3400750,31500200100000,872.00000,NA
+NJ,Alloway Twp School District,alloway twp sch dist,alloway twp,3400810,31501700100000,326.00000,NA
+NJ,Alpha Borough School District,alpha boro sch dist,alpha,3400840,31502100200000,211.00000,NA
+NJ,Alpine School District,alpine public sch dist,alpine,3400870,31500200200000,157.00000,NA
+NJ,Andover Regional School District,andover reg sch dist,andover regional,3400900,31501900100000,452.00000,NA
+NJ,Asbury Park School District,asbury park school district,asbury park,3400930,31501360100000,1951.00000,city of asbury park board of education
+NJ,Atlantic Highlands School District,atlantic highlands school dist,atlantic highlands,3401020,31501300300000,302.00000,NA
+NJ,Atlantic City School District,atlantic city sch district,atlantic,3400960,31500140200000,6921.00000,NA
+NJ,Avalon School District,avalon stone harbor sch dist,avalon,3401110,31500500100000,86.00000,NA
+NJ,Avon Boro School District,avon boro sch dist,avon,3401140,31501300400000,127.00000,NA
+NJ,Barrington School District,barrington sch dist,barrington,3401170,31500400300000,598.00000,NA
+NJ,Bay Head Borough School District,bay head boro sch dist,bay head,3401230,31501500100000,122.00000,NA
+NJ,Bayonne School District,bayonne school district,bayonne,3401260,31200900130100,9987.00000,city of bayonne board of education
+NJ,Beach Haven School District,beach haven sch dist,beach haven,3401290,31501500200000,60.00000,NA
+NJ,Bedminster Township Public School District,bedminster twp sch dist,bedminster,3401320,31501800100000,522.00000,NA
+NJ,Bellmawr Public School District,bellmawr public sch dist,bellmawr,3401380,31500400400000,1225.00000,borough of bellmawr school district
+NJ,Belvidere School District,belvidere sch dist,belvidere,3401440,31502100300000,657.00000,NA
+NJ,Bergenfield Borough School District,bergenfield boro sch dist,bergenfield,3401500,31500200300000,3655.00000,bergenfield board of education
+NJ,Berkeley Heights School District,berkeley heights sch dist,berkeley heights,3401530,31502000100000,2559.00000,NA
+NJ,Berlin Borough School District,berlin borough board of educatn,berlin,3401590,31500400500000,812.00000,NA
+NJ,Berlin Township School District,berlin twp sch dist,berlin,3401620,31500400600000,651.00000,NA
+NJ,Bethlehem Township School District,bethlehem twp sch dist,bethlehem,3401710,31501000200000,347.00000,NA
+NJ,BEVERLY CITY SCHOOL DISTRICT,beverly city school district,beverly,3401740,31200300130100,318.00000,NA
+NJ,Black Horse Pike Regional School District,black horse pike reg sch dist,black horse pike regional,3401770,31500400700000,3663.00000,black horse pike regional school district
+NJ,Blairstown Elementary Township School District,blairstown twp sch dist,blairstown elementary,3401800,31502100400000,467.00000,NA
+NJ,Bloomfield Township School District,bloomfield town sch dist,bloomfield,3401830,31500780100000,6589.00000,bloomfield township school district
+NJ,Bloomingdale School District,bloomingdale school dist,bloomingdale,3401860,31501600100000,564.00000,NA
+NJ,Bloomsbury Borough School District,bloomsbury boro sch dist,bloomsbury,3401890,31501000300000,91.00000,NA
+NJ,Boonton Town School District,boonton town sch dist,boonton town,3401950,31501400100000,1482.00000,NA
+NJ,Boonton Township School District,boonton twp sch dist,boonton,3401980,31501400200000,405.00000,town of boonton school district
+NJ,Bound Brook School District,bound brook sch dist,bound brook,3402100,31501800400000,2037.00000,borough of bound brook school district
+NJ,Bradley Beach School District,bradley beach elem sch dist,bradley beach,3402130,31501300600000,274.00000,NA
+NJ,Branchburg Township School District,branchburg twp sch dist,branchburg,3402160,31501800500000,1394.00000,NA
+NJ,Bridgewater-Raritan Regional School District,bridgewater-raritan reg sch dt,bridgewater raritan regional,3402280,31501800600000,8542.00000,bridgewater-raritan regional school district
+NJ,Brielle Boro School District,brielle boro sch dist,brielle,3402310,31501300700000,521.00000,NA
+NJ,Brigantine Public School District,brigantine city school system,brigantine,3402340,31200100330100,524.00000,NA
+NJ,Brooklawn Public School District,brooklawn boro sch dist,brooklawn,3402370,31500400800000,290.00000,NA
+NJ,Burlington City Public School District,burlington city school district,burlington,3402430,31500320100000,1783.00000,NA
+NJ,Butler Public School District,butler public sch dist,butler,3402520,31501400300000,1202.00000,NA
+NJ,Byram Township School District,byram twp sch dist,byram,3402550,31501900300000,820.00000,NA
+NJ,CALDWELL-WEST SCHOOL DISTRICT,caldwell-w caldwell sch dist,caldwell west,3402580,31500700200000,2710.00000,caldwell-west caldwell school district
+NJ,Califon Borough School District,califon boro sch dist,califon,3402610,31501000400000,80.00000,NA
+NJ,Camden City School District,camden city sch dist,camden,3402640,31500403800000,7167.00000,city of camden board of education
+NJ,Camden Prep Inc.,camden prep inc.,camden prep inc,3400776,31634007760000,897.00000,NA
+NJ,Carlstadt-East Rutherford Regional High School District,carlstadt-east rutherford regional high school district,carlstadt east rutherford regional,3402800,31500280100000,544.00000,NA
+NJ,Carlstadt PublicSchool District,carlstadt public sch dist,carlstadt public,3402790,31500200500000,553.00000,NA
+NJ,Cedar Grove Township School District,cedar grove twp sch dist,cedar grove,3402850,31500700400000,1613.00000,NA
+NJ,Central Regional School District,central reg high school dist,central regional,3402910,31501500500000,2377.00000,central regional school district
+NJ,School District of the Chathams,chathams school district,the chathams,3400004,31501440100000,4075.00000,NA
+NJ,CHESTER TOWNSHIP SCHOOL DISTRICT,chester sch dist,chester,3403060,31501400600000,1080.00000,NA
+NJ,Chesterfield Township School District,chesterfield twp sch dist,chesterfield,3403090,31500300200000,766.00000,NA
+NJ,Clayton Public School District,clayton boro sch dist,clayton,3403180,31500800100000,1505.00000,borough of clayton school district
+NJ,Clearview Regional High School District,clearview reg high school dist,clearview regional,3403210,31500850100000,2268.00000,clearview regional high school district
+NJ,Cliffside Park School District,cliffside pk sch dist,cliffside park,3403270,31500200600000,3255.00000,school district of the borough of cliffside park
+NJ,Clinton-Glen Gardner School District,clinton-glen gardner sch dist,clinton glen gardner,3403330,31501000500000,440.00000,NA
+NJ,Clinton Township School District,clinton twp sch dist,clinton,3403360,31501000600000,1224.00000,NA
+NJ,Closter Public School District,closter public sch dist,closter,3403390,31500200700000,1213.00000,NA
+NJ,Colts Neck Township School District,colts neck twp sch dist,colts neck,3403450,31501300200000,993.00000,township of colts neck school district
+NJ,Cranbury Township School District,cranbury twp sch dist,cranbury,3403540,31501200200000,484.00000,NA
+NJ,Cresskill Public School District,cresskill public sch dist,cresskill,3403600,31500200800000,1812.00000,NA
+NJ,CUMBERLAND REGIONAL SCHOOL DISTRICT,cumberland reg sch dist,cumberland regional,3403620,31500660100000,1024.00000,cumberland regional school district
+NJ,Deal Boro School District,deal boro sch dist,deal,3403630,31501300800000,162.00000,NA
+NJ,Deerfield Township School District,deerfield twp sch dist,deerfield,3403660,31500600200000,273.00000,NA
+NJ,Delanco Township School District,delanco twp sch dist,delanco,3403690,31500300400000,426.00000,NA
+NJ,Delaware Township School District,delaware twp sch dist,delaware,3403720,31501000700000,382.00000,NA
+NJ,Delaware Valley Regional High School District,delaware valley reg high school dist,delaware valley regional,3403750,31501050100000,728.00000,NA
+NJ,DELSEA REGIONAL HIGH SCHOOL DISTRICT,delsea regional high school district,delsea regional,3415450,31500850200000,1675.00000,NA
+NJ,Demarest School District,demarest sch dist,demarest,3403810,31500200900000,711.00000,NA
+NJ,Dennis Township School District,dennis twp sch dist,dennis,3403840,31500500300000,596.00000,NA
+NJ,Denville Township K-8 School District,denville twp sch dist,denville k 8,3403870,31501400700000,1670.00000,NA
+NJ,Dover Public School District,dover public sch dist,dover,3403930,31501400800000,3389.00000,town of dover board of education
+NJ,Downe Township School District,downe twp sch dist,downe,3403960,31500600300000,178.00000,NA
+NJ,Dumont Public School District,dumont public sch dist,dumont,3403990,31500201000000,2587.00000,borough of dumont school district
+NJ,Dunellen Public School District,dunellen public sch dist,dunellen,3404020,31501200300000,1270.00000,NA
+NJ,Eagleswood Township School District,eagleswood twp sch dist,eagleswood,3404050,31501500600000,130.00000,NA
+NJ,East Amwell Township School District,east amwell twp sch dist,east amwell,3404080,31501000800000,353.00000,NA
+NJ,East Greenwich Township School District,east greenwich twp sch dist,east greenwich,3404140,31500800300000,1323.00000,NA
+NJ,East Hanover Township School District,east hanover twp sch dist,east hanover,3404170,31501400900000,929.00000,NA
+NJ,East Newark School District,east newark sch dist,east newark,3404200,31500900100000,238.00000,NA
+NJ,East Rutherford School District,east rutherford sch dist,east rutherford,3404290,31500201200000,788.00000,NA
+NJ,Eastampton Township School District,eastampton twp sch dist,eastampton,3404350,31500300600000,577.00000,NA
+NJ,Eastern Camden County Regional School District,eastern camden cnty regional school dist,eastern camden county regional,3404380,31500470200000,1952.00000,NA
+NJ,Edgewater School District,edgewater sch dist,edgewater,3404440,31500201300000,971.00000,NA
+NJ,Egg Harbor City School District,egg harbor city school district,egg harbor,3404530,31200100630100,495.00000,NA
+NJ,Elizabeth Public Schools,elizabeth city school district,elizabeth public,3404590,31502020200000,29021.00000,NA
+NJ,Elk Township School District,elk twp sch dist,elk,3404620,31500800400000,327.00000,NA
+NJ,Elmwood Park School District,elmwood park boro sch dist,elmwood park,3404660,31500201100000,2653.00000,elmwood park board of education
+NJ,Elsinboro Township School District,elsinboro twp sch dist,elsinboro,3404680,31501700300000,119.00000,NA
+NJ,Emerson Public School District,emerson school district,emerson,3404710,31500201400000,1127.00000,NA
+NJ,Englewood Cliffs School District,englewood cliffs boro school dist,englewood cliffs,3404770,31500201500000,491.00000,NA
+NJ,Essex Fells School District,essex fells sch dist,essex fells,3404830,31500700500000,252.00000,NA
+NJ,Estell Manor School District,estell manor school dist,estell manor,3404860,31500170100000,197.00000,NA
+NJ,Fair Haven School District,fair haven sch dist,fair haven,3404950,31501301000000,988.00000,NA
+NJ,Fair Lawn Public School District,fair lawn sch dist,fair lawn,3404980,31500201600000,5277.00000,borough of fair lawn school district
+NJ,Fairview Public School District,fairview boro sch dist,fairview,3405070,31500201700000,1562.00000,fairview board of education
+NJ,Farmingdale Public School District,farmingdale boro sch dist,farmingdale,3405130,31501301100000,162.00000,NA
+NJ,Flemington-Raritan Regional School District,flemington-raritan reg sch dist,flemington raritan regional,3405190,31501000900000,3087.00000,flemington-raritan regional school district
+NJ,Florham Park School District,florham park sch district,florham park,3405250,31501401000000,992.00000,NA
+NJ,Folsom Borough School District,folsom boro school dist,folsom,3405280,31500100300000,393.00000,NA
+NJ,Fort Lee School District,fort lee public sch dist,fort lee,3405310,31500201800000,4185.00000,NA
+NJ,Frankford Township Consolidated School District,frankford twp sch dist,frankford consolidated,3405340,31501900400000,505.00000,NA
+NJ,Franklin Borough School District,franklin boro sch dist,franklin,3405400,31501900500000,457.00000,NA
+NJ,Franklin Lakes School District,franklin lakes boro sch,franklin lakes,3405370,31500201900000,1129.00000,NA
+NJ,Fredon Township School District,fredon twp sch dist,fredon,3405550,31501900600000,196.00000,NA
+NJ,Freehold Borough School District,freehold boro sch dist,freehold,3405580,31501301200000,1675.00000,freehold borough board of education
+NJ,Freehold Regional High School District,freehold regional high sch dist,freehold regional,3405610,31501301400000,10704.00000,freehold regional high school district
+NJ,Frelinghuysen Township School District,frelinghuysen sch dist,frelinghuysen,3405670,31502100600000,137.00000,NA
+NJ,Frenchtown Borough School District,frenchtown boro sch dist,frenchtown,3405700,31501001100000,122.00000,NA
+NJ,Garwood Boro,garwood boro sch dist,garwood boro,3405790,31502000400000,363.00000,NA
+NJ,Gibbsboro Elementary School District,gibbsboro sch dist,gibbsboro elementary,3405850,31500401300000,265.00000,NA
+NJ,Glen Ridge Public School District,glen ridge boro sch dist,glen ridge,3405940,31500700600000,1880.00000,NA
+NJ,Glen Rock Public School District,glen rock sch dist,glen rock,3405970,31500202000000,2567.00000,NA
+NJ,Gloucester City Public School District,gloucester city school district,gloucester,3406000,31500470300000,2255.00000,NA
+NJ,Great Meadows Regional School District,great meadows regional school district,great meadows regional,3400008,31502130100000,635.00000,NA
+NJ,Greater Egg Harbor Regional High School District,greater egg harbor reg high school dist,greater egg harbor regional,3406060,31500150100000,3103.00000,greater egg harbor regional high school district
+NJ,Green Brook Township Public School District,green brook sch dist,green brook,3406120,31501800900000,770.00000,NA
+NJ,Green Township School District,green twp sch dist,green,3406090,31501900700000,409.00000,NA
+NJ,Greenwich Township School District,greenwich twp sch dist,greenwich,3406150,31500600500000,84.00000,NA
+NJ,Greenwich Township School District,greenwich twp sch dist,greenwich,3406180,31500800700000,445.00000,NA
+NJ,Greenwich Township School District,greenwich twp sch dist,greenwich,3406210,31502100700000,699.00000,NA
+NJ,Guttenberg School District,guttenberg town school district,guttenberg,3406240,31500920100000,979.00000,guttenberg board of education
+NJ,Hackensack School District,hackensack school district,hackensack,3406270,31500220100000,5790.00000,NA
+NJ,Hackettstown Public School District,hackettstown sch dist,hackettstown,3406300,31502100800000,1975.00000,town of hackettstown school district
+NJ,HADDON HEIGHTS School District,haddon heights boro sch dist,haddon heights,3406330,31500401700000,1503.00000,NA
+NJ,Haddon Township School District,haddon twp sch dist,haddon,3406360,31500401500000,2087.00000,township of haddon school district
+NJ,Hainesport Township School District,hainesport twp sch dist,hainesport,3406420,31500301100000,565.00000,NA
+NJ,Haledon Public School District,haledon public sch dist,haledon,3406450,31501600200000,1044.00000,school district of the borough of haledon
+NJ,Hamburg School District,hamburg borough school district,hamburg,3406480,31501900800000,253.00000,NA
+NJ,Hammonton School District,hammonton town sch dist,hammonton,3406570,31500100600000,3561.00000,town of hammonton school district
+NJ,Hampton Borough School District,hampton boro sch dist,hampton,3406600,31501001300000,87.00000,NA
+NJ,Hanover Park Regional High School District,hanover park high school dist,hanover park regional,3406660,31501401100000,1489.00000,NA
+NJ,Hanover Township School District,hanover twp sch dist,hanover,3406690,31501401200000,1362.00000,NA
+NJ,Harding Township School District,harding twp sch dist,harding,3406720,31501401300000,277.00000,NA
+NJ,Hardyston Township School District,hardyston twp sch dist,hardyston,3406780,31501901000000,666.00000,NA
+NJ,HARMONY TOWNSHIP SCHOOL DISTRICT,harmony twp sch dist,harmony,3406810,31502101000000,238.00000,NA
+NJ,Harrington Park School District,harrington park boro sch,harrington park,3406840,31500202100000,628.00000,NA
+NJ,Harrison Public Schools,harrison city school district,harrison public,3406870,31200900430100,2318.00000,NA
+NJ,Hasbrouck Heights School District,hasbrouck heights boro school dist,hasbrouck heights,3406930,31500202200000,1795.00000,hasbrouck heights board of education
+NJ,Haworth Public School District,haworth boro sch dist,haworth,3406960,31500202300000,395.00000,NA
+NJ,Hawthorne Public School District,hawthorne boro sch dist,hawthorne,3406990,31501600300000,2367.00000,borough of hawthorne school district
+NJ,Henry Hudson Regional School District,henry hudson regional sch dist,henry hudson regional,3407050,31501350200000,342.00000,NA
+NJ,High Bridge Borough School District,high bridge boro sch dist,high bridge,3407110,31501001400000,362.00000,NA
+NJ,High Point Regional High School District,high pt regional dist,high point regional,3407140,31501970100000,885.00000,NA
+NJ,Highland Park Boro School District,highland park boro school dist,highland park,3407170,31501200600000,1611.00000,highland park borough public school district
+NJ,Highlands Borough School District,highlands boro sch dist,highlands,3407200,31501301500000,183.00000,NA
+NJ,Hillsdale School District,hillsdale boro sch dist,hillsdale,3407260,31500202400000,1118.00000,NA
+NJ,Ho-Ho-Kus School District,hohokus boro sch dist,ho ho kus,3407320,31500202500000,607.00000,NA
+NJ,Holland Township School District,holland twp sch dist,holland,3407380,31501001500000,525.00000,NA
+NJ,Hopatcong Borough School District,hopatcong school dist,hopatcong,3407440,31501970200000,1522.00000,hopatcong borough school district
+NJ,Hope Township School District,hope twp sch dist,hope,3407470,31502101100000,125.00000,NA
+NJ,Hopewell Township School District,hopewell twp sch dist,hopewell,3407500,31500600600000,497.00000,NA
+NJ,Hopewell Valley Regional School District,hopewell valley reg sch dist,hopewell valley regional,3407530,31501100500000,3467.00000,hopewell valley regional school district
+NJ,Hunterdon Central Regional High School District,hunterdon central high sch dist,hunterdon central regional,3407590,31501001600000,2756.00000,hunterdon central regional high school district
+NJ,Island Heights School District,island heights boro sch dist,island heights,3407710,31501500800000,116.00000,NA
+NJ,Jamesburg Public School District,jamesburg boro sch dist,jamesburg,3407770,31501200700000,715.00000,borough of jamesburg school district
+NJ,Jersey City Public Schools,jersey city school system,jersey public,3407830,31000000030100,29113.00000,NA
+NJ,Keansburg School District,keansburg boro sch dist,keansburg,3407860,31501301900000,1696.00000,keansburg public school district
+NJ,Kearny,kearny town school dist,kearny,3407890,31500990700000,5394.00000,kearny board of education
+NJ,Kenilworth School District,kenilworth boro sch dist,kenilworth,3407920,31502000600000,1455.00000,NA
+NJ,Keyport School District,keyport boro sch dist,keyport,3407950,31501302000000,1044.00000,borough of keyport school district
+NJ,Kingsway Regional School District,kingsway regional high school dist,kingsway regional,3407980,31500870200000,2868.00000,kingsway regional school district
+NJ,Kingwood Township School District,kingwood twp sch dist,kingwood,3408010,31501001700000,359.00000,NA
+NJ,Kinnelon School District,kinnelon boro sch dist,kinnelon,3408040,31501401500000,1728.00000,NA
+NJ,KIPP: Cooper Norcross A New Jersey Nonprofit Corporation,kipp: cooper norcross a new jersey nonprofit corporation,kipp: cooper norcross a new jersey nonprofit corporation,3400777,31634007770000,1513.00000,NA
+NJ,Kittatinny Regional School District,kittatinny regional sch dist,kittatinny regional,3408060,31501990200000,910.00000,NA
+NJ,Knowlton Township School District,knowlton twp sch dist,knowlton,3408070,31502101300000,155.00000,NA
+NJ,Lacey Township School District,lacey twp sch dist,lacey,3408100,31501501000000,3985.00000,NA
+NJ,Lafayette Township School District,lafayette twp sch dist,lafayette,3408130,31501901100000,197.00000,NA
+NJ,Lakehurst School District,lakehurst boro sch dist,lakehurst,3408160,31501501100000,389.00000,school district of lakehurst
+NJ,Lakeland Regional High School District,lakeland high sch dist,lakeland regional,3408190,31501650100000,972.00000,NA
+NJ,Laurel Springs School District,laurel spgs boro sch dist,laurel springs,3408280,31500401900000,187.00000,NA
+NJ,Lavallette Borough School District,lavallette boro sch dist,lavallette,3408310,31501501300000,152.00000,NA
+NJ,Lawnside School Distric,lawnside boro sch dist,lawnside school distric,3408340,31500402000000,313.00000,NA
+NJ,Lebanon Borough School District,lebanon borough school district,lebanon,3408430,31501001900000,99.00000,NA
+NJ,Lebanon Township School District,lebanon twp sch dist,lebanon,3408460,31501002000000,626.00000,NA
+NJ,Lenape Valley Regional High School District,lenape valley regional high sch dist,lenape valley regional,3408500,31501990300000,656.00000,NA
+NJ,Leonia Public School District,leonia boro sch dist,leonia,3408520,31500202600000,2045.00000,leonia board of education
+NJ,Lincoln Park School District,lincoln park boro school dist,lincoln park,3408580,31501401600000,917.00000,NA
+NJ,Linden Public School District,linden city school dist,linden,3408610,31502090100000,6354.00000,city of linden board of education
+NJ,Lindenwold Public School District,lindenwold boro sch dist,lindenwold,3408640,31500402100000,3078.00000,borough of lindenwold school district
+NJ,Linwood City School District,linwood city school district,linwood,3408670,31200101030100,822.00000,NA
+NJ,Little Falls Township Public School District,little falls twp sch dist,little falls,3408730,31501600400000,894.00000,NA
+NJ,Little Ferry Public School District,little ferry boro sch dist,little ferry,3408760,31500202700000,886.00000,little ferry board of education
+NJ,Little Silver Boro School District,little silver borough sch dist,little silver,3408790,31501302100000,835.00000,NA
+NJ,Lodi School District,lodi boro sch dist,lodi,3408850,31500202800000,3248.00000,lodi board of education
+NJ,Logan Township School District,logan twp sch dist,logan,3408880,31500800900000,847.00000,NA
+NJ,Long Beach Island Consolidated School District,long beach island sch dist,long beach island consolidated,3408910,31501501500000,224.00000,NA
+NJ,LONG BRANCH PUBLIC SCHOOL District,long branch city sch dist,long branch,3408940,31501360200000,5853.00000,city of long branch school district
+NJ,Long Hill Township School District,long hill twp school dist,long hill,3412660,31501403100000,894.00000,NA
+NJ,Lopatcong Township School District,lopatcong twp sch dist,lopatcong,3409000,31502101500000,736.00000,NA
+NJ,The Lower Alloways Creek School District,lower alloway creek twp school dist,the lower alloways creek,3409030,31501700400000,163.00000,NA
+NJ,Lower Cape May Regional School District,lower cape may reg school dist,lower cape may regional,3409090,31500550100000,1321.00000,lower cape may regional school district
+NJ,Madison Public School District,madison boro sch dist,madison,3409240,31501401700000,2636.00000,NA
+NJ,Magnolia School District,magnolia boro sch dist,magnolia,3409300,31500402300000,408.00000,NA
+NJ,Mainland Regional High School,mainland reg high school dist,mainland regional,3409360,31500150200000,1248.00000,mainland regional high school district
+NJ,Manalapan-Englishtown Regional Schools School District,manalapan-englishtown reg sch dist,manalapan englishtown regional,3409390,31501302200000,4910.00000,manalapan-englishtown regional school district
+NJ,Manasquan School District,manasquan boro sch dist,manasquan,3409420,31501302300000,1516.00000,NA
+NJ,Mannington Township School District,mannington twp sch dist,mannington,3409480,31501700600000,194.00000,NA
+NJ,Mansfield Township Elementary School District,mansfield twp sch dist,mansfield elementary,3409540,31502101600000,584.00000,NA
+NJ,Mansfield Township School District,mansfield twp sch dist,mansfield,3409510,31500301300000,545.00000,NA
+NJ,Manville School District,manville boro sch dist,manville,3409630,31501801100000,1601.00000,borough of manville school district
+NJ,Margate City School District,margate city school district,margate,3409690,31200101230100,360.00000,NA
+NJ,Mastery Schools of Camden Inc.,mastery schools of camden inc.,mastery of camden inc,3400772,31634007720000,2631.00000,NA
+NJ,Matawan-Aberdeen Regional School District,matawan-aberdeen reg sch dist,matawan aberdeen regional,3409750,31501302500000,3882.00000,matawan-abredeen regional school district
+NJ,Maurice River Township School District,maurice river twp sch dist,maurice river,3409780,31500600800000,422.00000,NA
+NJ,Maywood School District,maywood boro sch dist,maywood,3409810,31500203100000,984.00000,NA
+NJ,Medford Lakes School District,medford lakes borough sch dist,medford lakes,3409840,31500301600000,527.00000,NA
+NJ,Mendham Borough School District,mendham boro sch dist,mendham,3409900,31501401800000,491.00000,NA
+NJ,Mendham Township School District,mendham twp sch dist,mendham,3409930,31501401900000,729.00000,NA
+NJ,Merchantville School District,merchantville boro sch dist,merchantville,3409960,31500402400000,443.00000,NA
+NJ,Metuchen Public School District,metuchen boro sch dist,metuchen,3409990,31501200900000,2300.00000,metuchen board of education
+NJ,Middlesex Borough School District,middlesex boro sch dist,middlesex,3410050,31501201000000,2090.00000,borough of middlesex school district
+NJ,Midland Park School District,midland park sch dist,midland park,3410140,31500203200000,914.00000,NA
+NJ,Milford Borough School District,milford boro sch dist,milford,3410170,31501002100000,61.00000,NA
+NJ,Millstone Township School District,millstone twp sch dist,millstone,3410230,31501302700000,1093.00000,NA
+NJ,Milltown School District,milltown boro sch dist,milltown,3410290,31501201100000,802.00000,NA
+NJ,Millville School District,millville city school district,millville,3410320,31500620100000,5323.00000,city of millville board of education
+NJ,Mine Hill Township School District,mine hill twp sch dist,mine hill,3410350,31501402000000,340.00000,NA
+NJ,Monmouth Beach School District,monmouth beach boro sch dist,monmouth beach,3410380,31501302800000,232.00000,NA
+NJ,Monmouth Regional High School,monmouth reg high school dist,monmouth regional,3410440,31501350100000,961.00000,NA
+NJ,Montague Township School District,montague twp sch dist,montague,3410530,31501901200000,244.00000,NA
+NJ,Montgomery Township School District,montgomery twp sch dist,montgomery,3410590,31501801300000,4701.00000,township of montgomery school district
+NJ,Montvale Board of Education School District,montvale boro school dist,montvale board of education,3410620,31500203300000,997.00000,NA
+NJ,Moonachie School District,moonachie boro sch dist,moonachie,3410680,31500203400000,347.00000,NA
+NJ,Morris Hills Regional School District,morris hills regional dist,morris hills regional,3410740,31501402300000,2778.00000,morris hills regional school district
+NJ,Morris Plains School District,morris plains sch dist,morris plains,3410770,31501402400000,600.00000,NA
+NJ,Mount Arlington Public School District,mount arlington boro sch dist,mount arlington,3410860,31501402600000,369.00000,NA
+NJ,Mount Laurel Township School District,mount laurel twp sch dist,mount laurel,3410950,31500301900000,4259.00000,township of mount laurel school district
+NJ,Mount Olive Township School District,mount olive twp sch dist,mount olive,3410980,31501402700000,4692.00000,NA
+NJ,Mountain Lakes Public School District,mountain lakes boro sch dist,mountain lakes,3411010,31501402800000,1379.00000,NA
+NJ,Mountainside School District,mountainside boro school dist,mountainside,3411040,31502000700000,755.00000,NA
+NJ,Mt. Ephraim School District,mt ephraim boro sch dist,mt ephraim,3410890,31500402500000,430.00000,NA
+NJ,National Park Boro School District,national park boro school dist,national park,3411100,31500801200000,286.00000,NA
+NJ,Neptune City School District,neptune city boro school dist,neptune,3411130,31501302900000,272.00000,NA
+NJ,Netcong School District,netcong boro sch dist,netcong,3411190,31501402900000,292.00000,NA
+NJ,New Milford Public School District,new milford boro sch dist,new milford,3411280,31500203500000,2008.00000,new milford board of education
+NJ,New Providence School District,new providence boro sch dist,new providence,3411310,31502000800000,2439.00000,NA
+NJ,Newark Public School District,newark city school system,newark,3411340,31000000030200,41629.00000,newark board of education
+NJ,NEWTON PUBLIC SCHOOL DISTRICT,newton town sch dist,newton,3411400,31501901300000,1631.00000,town of newton school district
+NJ,Northern Burlington County Regional School District,north burlington county regional high school district,northern burlington county regional,3411700,31500350200000,2193.00000,NA
+NJ,North Caldwell School District,north caldwell boro sch dist,north caldwell,3411520,31500700900000,695.00000,NA
+NJ,North Haledon School District,north haledon borough school district,north haledon,3411550,31501600500000,624.00000,NA
+NJ,North Hunterdon-Voorhees Regional High School District,north hunterdon-voorhees reg sch dist,north hunterdon voorhees regional,3411610,31501002200000,2431.00000,NA
+NJ,North Plainfield School District,north plainfield boro school dist,north plainfield,3411640,31501801400000,3456.00000,borough of north plainfield school district
+NJ,North Warren Regional School District,north warren reg sch dist,north warren regional,3409550,31502180100000,763.00000,NA
+NJ,North Wildwood School District,north wildwood city school dist,north wildwood,3411670,31500590300000,217.00000,NA
+NJ,Northern Highlands Regional High School District,northern highlands reg high school dist,northern highlands regional,3411730,31500270100000,1432.00000,NA
+NJ,Northern Valley Regional High School District,northern valley reg high school district,northern valley regional,3411760,31500203700000,2156.00000,northern valley regional high school district
+NJ,Northfield City School District,northfield city school dist,northfield,3411790,31500190100000,973.00000,city of northfield board of education
+NJ,Northvale Public School District,northvale boro sch dist,northvale,3411820,31500203800000,558.00000,NA
+NJ,Norwood Public School District,norwood boro sch dist,norwood,3411850,31500203900000,620.00000,NA
+NJ,Nutley Public School District,nutley town sch dist,nutley,3411880,31500701000000,4125.00000,nutley board of education
+NJ,Oakland Public School District,oakland boro sch dist,oakland,3411910,31500204000000,1360.00000,NA
+NJ,Oaklyn Public School District,oaklyn boro sch dist,oaklyn,3411940,31500402600000,282.00000,NA
+NJ,Ocean Gate School District,ocean gate boro sch dist,ocean gate,3412030,31501501900000,132.00000,NA
+NJ,Oceanport School District,oceanport boro sch dist,oceanport,3412120,31501303200000,600.00000,NA
+NJ,OFFICE OF EDUCATION DEPARTMENT OF CHILDREN AND FAMILIES,office of education department of children and families,office of education department of children and families,3400085,31634000850000,393.00000,NA
+NJ,OFFICE OF EDUCATION JUVENILE JUSTICE COMMISSION,office of education juvenile justice commission,office of education juvenile justice commission,3400089,31634000890000,157.00000,NA
+NJ,OFFICE OF EDUCATIONAL SERVICES DEPARTMENT OF CORRECTIONS,office of educational services department of corrections,office of educational services department of corrections,3400088,31634000880000,132.00000,NA
+NJ,Ogdensburg Borough School District,ogdensburg boro sch dist,ogdensburg,3412150,31501901400000,257.00000,NA
+NJ,Old Tappan Public School District,old tappan boro sch dist,old tappan,3412180,31500204100000,672.00000,NA
+NJ,Oldmans Township School District,oldmans twp sch dist,oldmans,3412210,31501700700000,284.00000,NA
+NJ,Oradell Public School District,oradell boro sch dist,oradell,3412240,31500204200000,768.00000,NA
+NJ,ORANGE BOARD OF EDUCATION School District,orange city township school district,orange board of education,3412270,31300761530100,5802.00000,NA
+NJ,Oxford Township School District,oxford twp sch dist,oxford,3412300,31502101700000,267.00000,NA
+NJ,Palisades Park School District,palisades park boro sch dist,palisades park,3412360,31500204300000,1846.00000,palisades park board of education
+NJ,Palmyra Public School District,palymra boro sch dist,palmyra,3412390,31500302200000,940.00000,borough of palmyra school district
+NJ,Paramus Public School District,paramus boro sch dist,paramus,3412420,31500204400000,3760.00000,paramus board of education
+NJ,Park Ridge School District,park ridge boro sch dist,park ridge,3412450,31500204500000,1257.00000,NA
+NJ,Pascack Valley Regional High School District,pascack valley reg high school dist,pascack valley regional,3412510,31500204600000,1987.00000,NA
+NJ,Passaic City School District,passaic city sch dist,passaic,3412540,31501680100000,14358.00000,passaic board of education-passaic public schools
+NJ,Passaic County Manchester Regional High School District,passaic cnty-manchester reg school dist,passaic county manchester regional,3412600,31501650200000,818.00000,NA
+NJ,Paulsboro School District,paulsboro boro sch dist,paulsboro,3412720,31500801400000,1229.00000,paulsboro board of education
+NJ,Penns Grove-Carneys Point Regional School District,penns grove carneys point reg sch dist,penns grove carneys point regional,3412840,31501700800000,2233.00000,penns grove carneys point regional school district
+NJ,Pequannock Township School District,pequannock twp sch dist,pequannock,3412900,31501403200000,2078.00000,NA
+NJ,Phillipsburg School District,phillipsburg town school dist,phillipsburg,3412960,31502180200000,3991.00000,phillipsburg school district
+NJ,Pine Hill School District,pine hill boro sch dist,pine hill,3412990,31500402800000,1918.00000,borough of pine hill school district
+NJ,Pinelands Regional School District,pinelands reg sch dist,pinelands regional,3413000,31501560100000,1564.00000,pinelands regional school distrcit
+NJ,Pitman Boro School District,pitman boro sch dist,pitman,3413080,31500801500000,1258.00000,borough of pitman school district
+NJ,Pohatcong Township School District,pohatcong twp sch dist,pohatcong,3413260,31502101900000,307.00000,NA
+NJ,Point Pleasant Beach School District,point pleasant beach boro sch dist,point pleasant beach,3413320,31501502200000,743.00000,NA
+NJ,Pompton Lakes School District,pompton lakes boro school dist,pompton lakes,3413350,31501600700000,1726.00000,borough of pompton lakes board of education
+NJ,Port Republic School District,port republic city school district,port re,3413380,31200101530100,111.00000,NA
+NJ,Prospect Park Public School District,prospect park boro school dist,prospect park,3413470,31501600800000,878.00000,borough of prospect park board of education
+NJ,Quinton Township School District,quinton twp sch dist,quinton,3413500,31501701100000,298.00000,NA
+NJ,Ramapo Indian Hills Regional High School District,ramapo-indian hills reg high school dist,ramapo indian hills regional,3413560,31500204700000,2271.00000,NA
+NJ,Ramsey School District,ramsey boro sch dist,ramsey,3413590,31500204800000,2711.00000,ramsey board of education
+NJ,Rancocas Valley Regional High School District,rancocas valley reg high school dist,rancocas valley regional,3413620,31500302500000,2107.00000,rancocas valley regional high school district
+NJ,Readington Township School District,readington twp sch dist,readington,3413710,31501002300000,1486.00000,NA
+NJ,Red Bank Borough Public School District,red bank boro sch dist,red bank borough,3413740,31501303400000,1438.00000,NA
+NJ,Red Bank Regional School District,red bank regional high sch dist,red bank regional,3413750,31501390100000,1290.00000,NA
+NJ,Ridgefield School District,ridgefield boro sch dist,ridgefield,3413770,31500204900000,1462.00000,ridgefield board of education
+NJ,Ridgefield Park Public School District,ridgefield park vil school d,ridgefield park,3413800,31500205000000,2234.00000,ridgefield park board of education
+NJ,Ringwood School District,ringwood boro sch dist,ringwood,3413860,31501600900000,1097.00000,NA
+NJ,River Dell Regional School District,river dell regional high sch dist,river dell regional,3412260,31500250100000,1617.00000,NA
+NJ,River Edge School District,river edge boro sch dist,river edge,3413890,31500205200000,1241.00000,NA
+NJ,River Vale Public School District,river vale twp sch dist,river vale,3413950,31500205300000,1111.00000,NA
+NJ,Riverdale School District,riverdale boro sch dist,riverdale,3413980,31501403400000,324.00000,NA
+NJ,Riverton School District,riverton boro sch dist,riverton,3414040,31500302700000,305.00000,NA
+NJ,Rochelle Park School District,rochelle park sch dist,rochelle park,3414070,31500205400000,513.00000,NA
+NJ,Rockaway Borough School District,rockaway boro sch dist,rockaway,3414100,31501403500000,545.00000,NA
+NJ,Roosevelt Borough Public School District,roosevelt boro sch dist,roosevelt borough,3414220,31501303500000,80.00000,NA
+NJ,Roseland School District,roseland boro sch dist,roseland,3414250,31500701100000,471.00000,NA
+NJ,Roselle Public Schools,roselle boro sch dist,roselle public,3414280,31502000900000,2897.00000,NA
+NJ,Roselle Park Public School District,roselle park boro sch dist,roselle park,3414310,31502001000000,2068.00000,school district of roselle park
+NJ,Rumson Borough School District,rumson boro sch dist,rumson,3414370,31501303600000,1009.00000,NA
+NJ,Rumson-Fair Haven Regional High School District,rumson fair haven reg high school dist,rumson fair haven regional,3414400,31501303700000,1004.00000,NA
+NJ,RUNNEMEDE PUBLIC SCHOOL DISTRICT,runnemede boro sch dist,runnemede,3414430,31500403000000,863.00000,NA
+NJ,Rutherford School District,rutherford boro sch dist,rutherford,3414460,31500205600000,2652.00000,rutherford school district
+NJ,Saddle River School District,saddle river boro sch dist,saddle river,3414520,31500205800000,154.00000,NA
+NJ,Salem City School District,salem school district,salem,3414550,31501740100000,1275.00000,city of salem school district
+NJ,Sandyston-Walpack Consolidated School District,sandyston-walpack school dist,sandyston walpack consolidated,3414610,31501901500000,119.00000,NA
+NJ,Sayreville School District,sayreville boro sch dist,sayreville,3414640,31501201600000,6298.00000,sayreville board of education
+NJ,Scotch Plains-Fanwood School District,scotch plains fanwood reg school dist,scotch plains fanwood,3414670,31502001100000,5631.00000,NA
+NJ,Sea Girt Borough School District,sea girt sch dist,sea girt,3414730,31501303900000,154.00000,NA
+NJ,Seaside Heights School District,seaside heights boro school dist,seaside heights,3414790,31501502300000,210.00000,NA
+NJ,Secaucus School District,secaucas town sch dist,secaucus,3414850,31500980200000,2304.00000,secaucus board of education
+NJ,Shamong Township School District,shamong twp sch dist,shamong,3414880,31500302800000,732.00000,NA
+NJ,Shore Regional High School District,shore regional high school district,shore regional,3414940,31501350300000,660.00000,NA
+NJ,Shrewsbury Borough School District,shrewsbury boro sch dist,shrewsbury,3414970,31501304000000,492.00000,NA
+NJ,Somerdale School District,somerdale boro sch dist,somerdale,3415000,31500403100000,488.00000,NA
+NJ,Somers Point School District,somers point city sch dist,somers point,3415030,31500190200000,867.00000,city of somers point board of education
+NJ,Somerset Hills Regional School District,somerset hills school district,somerset hills regional,3400009,31501800300000,1953.00000,NA
+NJ,Somerville Public School District,somerville boro sch dist,somerville,3415090,31501801700000,2333.00000,somerville borough school district
+NJ,SOUTH BOUND BROOK PUBLIC SCHOOL DISTRICT,south bound brook boro school dist,south bound brook,3415180,31501801800000,435.00000,NA
+NJ,South Brunswick School District,south brunswick twp sch dist,south brunswick,3415210,31501201700000,8502.00000,township of south brunswick school district
+NJ,South Hackensack School District,south hackensack twp sch dist,south hackensack,3415240,31500205900000,299.00000,NA
+NJ,South Harrison Township School District,south harrison twp sch dist,south harrison,3415270,31500801600000,331.00000,NA
+NJ,South Hunterdon Regional School District,south hunterdon regional sch dist,south hunterdon regional,3400769,31501050300000,952.00000,NA
+NJ,South Orange-Maplewood School District,south orange-maplewood school dist,south orange maplewood,3415330,31500701200000,7353.00000,south orange and maplewood school district board of education
+NJ,South Plainfield School District,south plainfield boro school dist,south plainfield,3415360,31501201800000,3400.00000,borough of south plainfield school distrcit
+NJ,Southern Regional School District,south regional high sch dist,southern regional,3415480,31501550100000,2905.00000,southern regional school district
+NJ,South River Public School District,south river boro sch dist,south river,3415390,31501201900000,2361.00000,south river borough board of education
+NJ,Southampton Township School District,southampton twp sch dist,southampton,3415420,31500302900000,704.00000,NA
+NJ,Spotswood Public School District,spotswood boro sch dist,spotswood,3415540,31501202000000,1683.00000,NA
+NJ,Spring Lake Borough,spring lake boro sch dist,spring lake,3415570,31501304300000,152.00000,NA
+NJ,Spring Lake Heights School District,spring lake hght boro sch dist,spring lake heights,3415600,31501304400000,343.00000,NA
+NJ,Stanhope School District,stanhope boro sch dist,stanhope,3415720,31501901700000,311.00000,NA
+NJ,Sterling Regional School District,sterling high sch dist,sterling regional,3402880,31500450100000,939.00000,NA
+NJ,Stillwater Township School District,stillwater twp sch dist,stillwater,3415750,31501901800000,247.00000,NA
+NJ,Stone Harbor School District,stone harbor sch dist,stone harbor,3415810,31500500600000,89.00000,NA
+NJ,Stow Creek Township School District,stow creek twp sch dist,stow creek,3415840,31500601000000,125.00000,NA
+NJ,Stratford School District,stratford boro sch dist,stratford,3415870,31500403200000,895.00000,NA
+NJ,Summit Public School District,summit city school district,summit,3415900,31202001230100,4001.00000,NA
+NJ,Sussex-Wantage Regional School District,sussex wantage regional school dist,sussex wantage regional,3415960,31501902100000,1049.00000,NA
+NJ,Swedesboro-Woolwich School District,swedesboro-woolwich sch dist,swedesboro woolwich,3415990,31500801700000,1583.00000,NA
+NJ,Tabernacle Township School District,tabernacle twp sch dist,tabernacle,3416020,31500303100000,670.00000,NA
+NJ,Tenafly Public School District,tenafly boro sch dist,tenafly,3416110,31500206100000,3729.00000,tenafly board of education
+NJ,Tewksbury Township School District,tewksbury twp sch dist,tewksbury,3416170,31501002500000,514.00000,NA
+NJ,Tinton Falls School District,tinton falls sch dist,tinton falls,3416200,31501304100000,1436.00000,school district of the borough of tinton falls
+NJ,Totowa Public School District,totowa boro sch dist,totowa,3416260,31501601000000,981.00000,NA
+NJ,Tuckerton Borough School District,tuckerton boro sch dist,tuckerton,3416320,31501502700000,329.00000,NA
+NJ,Union Beach Public School District,union beach boro sch dist,union beach,3416350,31501304500000,640.00000,NA
+NJ,Union City School District,union city school district,union,3416380,31200900930100,13754.00000,city of union city school district
+NJ,Union Township School District,union twp sch dist,union,3416440,31501002600000,441.00000,city of union city school district
+NJ,Upper Freehold Regional School District,upper freehold reg school dist,upper freehold regional,3416560,31501304600000,2189.00000,NA
+NJ,UPPER PITTSGROVE TWP School District,upper pittsgrove twp sch dist,upper pittsgrove twp,3416590,31501701200000,306.00000,NA
+NJ,Upper Saddle River School District,upper saddle river sch dist,upper saddle river,3416620,31500206300000,1108.00000,NA
+NJ,Ventnor City School District,ventnor city school district,ventnor,3416680,31200101730100,668.00000,city of ventnor school district
+NJ,Verona Public School District,verona boro sch dist,verona,3416740,31500701300000,2295.00000,NA
+NJ,Vineland Public School District,vineland school district,vineland,3416800,31500640100000,10753.00000,city of vineland board of education
+NJ,Waldwick School District,waldwick boro sch dist,waldwick,3416860,31500206400000,1652.00000,NA
+NJ,Wallington Boro School District,wallington boro sch dist,wallington,3416920,31500206500000,1289.00000,NA
+NJ,Wallkill Valley Regional High School,wallkill valley regional high sch dist,wallkill valley regional,3416870,31501990400000,582.00000,NA
+NJ,Wanaque School District,wanaque boro sch dist,wanaque,3416950,31501601100000,906.00000,NA
+NJ,Warren Township School District,warren twp sch dist,warren,3416980,31501801900000,1604.00000,NA
+NJ,Washington Borough School District,washington boro sch dist,washington,3417010,31502102000000,495.00000,NA
+NJ,WATCHUNG BOROUGH SCHOOL DISTRICT,watchung boro sch dist,watchung,3417190,31501802000000,604.00000,NA
+NJ,Watchung Hills Regional High School District,watchung hills regional high sch dist,watchung hills regional,3417220,31501802100000,1983.00000,NA
+NJ,Waterford Township School District,waterford twp sch dist,waterford,3417250,31500403500000,888.00000,NA
+NJ,Wenonah Boro School District,wenonah boro sch dist,wenonah,3417340,31500801900000,168.00000,NA
+NJ,WEST CAPE MAY SCHOOL DISTRICT,west cape may boro school dist,west cape may,3417400,31500500800000,94.00000,NA
+NJ,West Essex Regional School District,west essex reg sch dist,west essex regional,3417460,31500750100000,1683.00000,NA
+NJ,West Long Branch School District,west long branch sch dist,west long branch,3417490,31501304800000,592.00000,NA
+NJ,West Milford Township Public School District,west milford twp sch dist,west milford,3417520,31501601300000,3153.00000,school district of the township of west milford
+NJ,West Morris Regional High School District,west morris high sch dist,west morris regional,3417550,31501450100000,2426.00000,NA
+NJ,WEST NEW YORK SCHOOL DISTRICT,west new york town schools,west new york,3417580,31200901030100,8545.00000,town of west new york board of education
+NJ,West Orange Public Schools,west orange town sch dist,west orange public,3417610,31500701400000,6718.00000,NA
+NJ,West Windsor-Plainsboro Regional School District,west windsor-plainsboro reg sch dist,west windsor plainsboro regional,3417700,31501101000000,9599.00000,west windsor-plainsboro regional school district
+NJ,Westampton Township Public School District,westampton twp sch dist,westampton,3417730,31500303300000,1030.00000,NA
+NJ,Westfield Public School District,westfield town sch dist,westfield,3417760,31502001500000,6299.00000,school district of town of westfield
+NJ,Westville Boro Public School District,westville boro sch dist,westville boro,3417790,31500802100000,361.00000,NA
+NJ,Weymouth Township School District,weymouth twp sch dist,weymouth,3417850,31500100900000,157.00000,NA
+NJ,Wharton Borough School District,wharton boro sch dist,wharton,3417880,31501404000000,751.00000,wharton board of education
+NJ,White Township Consolidated School District,white twp school district,white consolidated,3417910,31502102200000,278.00000,NA
+NJ,Wildwood City School District,wildwood city sch dist,wildwood,3417940,31500590200000,938.00000,city of wildwood board of education
+NJ,Wildwood Crest Borough School District,wildwood crest boro sch dist,wildwood crest,3417970,31500501000000,275.00000,NA
+NJ,Winfield Township,winfield twp sch dist,winfield,3418030,31502001600000,143.00000,NA
+NJ,Wood-Ridge School District,wood-ridge school dist,wood ridge,3418300,31500206800000,1263.00000,NA
+NJ,Woodbine School District,woodbine boro sch dist,woodbine,3418090,31500501100000,225.00000,NA
+NJ,Woodbury City Public School District,woodbury city sch dist,woodbury,3418150,31500850300000,1637.00000,city of woodbury public school district
+NJ,Woodbury Heights Public School District,woodbury heights boro sch dist,woodbury heights,3418180,31500802200000,253.00000,NA
+NJ,Woodcliff Lake School District,woodcliff lake school dist,woodcliff lake,3418210,31500206700000,713.00000,NA
+NJ,Woodland Township School District,woodland twp sch dist,woodland,3418240,31500303500000,136.00000,NA
+NJ,Woodlynne School District,woodlynne boro sch dist,woodlynne,3418270,31500403700000,403.00000,woodlynne board of education
+NJ,Wyckoff Township Public School District,wyckoff twp sch dist,wyckoff,3418360,31500206900000,1904.00000,NA

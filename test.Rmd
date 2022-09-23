@@ -1,0 +1,272 @@
+---
+title: "Untitled"
+output: html_document
+date: '2022-08-31'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+library(tidyr)
+library(dplyr)
+library(threadr)
+```
+
+# Round 1
+
+## ACFRs
+```{r}
+acfrs_school_districts <- readRDS("data_from_dbsite.RDS") %>% 
+  rename(acfrs_original_name = name) %>% 
+  filter(category == "School District") %>% 
+  mutate(name = str_to_lower(acfrs_original_name)) %>% 
+  select(-c(census_id, has_unconfirmed)) %>% 
+  
+  mutate(name = str_remove_all(name, "no\\.|#|'")) %>% 
+  mutate(name = str_replace_all(name, "/", " ")) %>%
+  mutate(name = str_replace_all(name, "\\.", " ")) %>% 
+  mutate(name = str_replace_all(name, "-", " ")) %>% 
+  
+  mutate(name = str_remove_all(name, "(community consolidated school district)|(community consolidated schools district)|(joint unified school district)|(center unified school district)"),
+         #name = str_remove_all(name, ""),
+         name = str_remove_all(name, "(consolidated high school district)|(consolidated independent school district)"),
+         name = str_remove_all(name, "(union high school district)|(city school district)|(union elementary school district)|(union school district)|(county unified school district)|(joint unified school district)"), # cali
+         name = str_remove_all(name, "(county school district)|(county independent school district)"),
+         name = str_remove_all(name, "(community unit school district)|(community unit district)"),
+         name = str_remove_all(name, "(public school district)|(public schools district)|(independent school district)|(district school board)"),
+         #OH
+         name = str_remove_all(name, "(union exempted village school district)|(exempted village school district)|(county joint vocational school district)"), 
+         name = str_remove_all(name, "(high school district)|(local school district)"),
+         name = str_remove_all(name, "educational service district"),
+         name = str_remove_all(name, "fractional township"), 
+         name = str_remove_all(name, "(the school districts of)|(board of education)|(the school board of)|(public school system)"),
+         name = str_remove_all(name, "unified school district"),
+         name = str_remove_all(name, "(community school district)|(comm unit school)|(community school dist)"),
+         name = str_remove_all(name,"(elementary school district)|(elementary scool district)"),
+         name = str_remove_all(name,"public schools"),
+         name = str_remove_all(name,"grade school district"),
+         name = str_remove_all(name, "(school district)|(comm sch dist)|(elem sch dist)|(sch dist)|(ind sch dist)")) %>% 
+  mutate(name = str_squish(name))
+
+
+```
+
+## Govt Units
+```{r}
+census_gov_unit <- rio::import("data/Govt_Units_2021_Final.xlsx", sheet = 3) %>% 
+  rbind(rio::import("data/Govt_Units_2021_Final.xlsx", sheet = 4)) %>% select(UNIT_NAME, STATE, ZIP, ZIP4, ENROLLMENT, ENROLLMENT_YEAR, COUNTY_AREA_NAME, CENSUS_ID_GIDID) %>% 
+  rename_all(., .funs = tolower) %>% 
+  rename(gov_unit_original_name = unit_name) %>% 
+
+  mutate(gov_unit_original_name = str_to_lower(gov_unit_original_name),
+         county_area_name = str_to_lower(county_area_name)) %>% 
+  
+  mutate(name = str_trim(gov_unit_original_name)) %>% 
+  select(gov_unit_original_name, state, enrollment, name, census_id_gidid) %>% arrange(name) %>% 
+  #filter(enrollment > 0) %>% 
+                          
+  mutate(name = str_replace_all(name, "\\.", " ")) %>% 
+  mutate(name = str_replace_all(name, "/", " ")) %>% 
+  mutate(name = str_replace_all(name, "-|&", " ")) %>% 
+  
+  mutate(name = str_remove_all(name, "(community consolidated school district)"),
+         name = str_remove_all(name, "(community unit school district)|(community unit)"),
+         name = str_remove_all(name, "consolidated school district"), 
+         name = str_remove_all(name, "county school district"),
+         name = str_remove_all(name, "community consolidated schools district"),
+         name = str_remove_all(name, "(community high school district)|(high school district)"), 
+         name = str_remove_all(name, "community consolidated school district"),
+         name = str_remove_all(name, "consolidated high school district"),
+         name = str_remove_all(name,"(city unified sch dist)|(joint unified school district)"), 
+        name = str_remove_all(name, "(unified school district)|(union high school dist)|(co office of ed)|(unified sch dist)|(unified school dist)|(union elem sch dist)|(co unif sch dist)|(union elementary sch dist)"),
+         
+         name = str_remove_all(name,"(public school district)|(public schools)|(unit school district)|(union school district)"),
+         name = str_remove_all(name,"(elementary school district)|(elementary scool district)|(elem school district)|(elementary school dist)"),
+        # Ohio
+        name = str_remove_all(name, "(local school district)|(local sch dist)|(local school dist)|(jt voc sch dist)|(exempted sch dist)|(city sch dist)|(ex vlg sch dist)|(union sch dist)|(ex vlg school dist)"), 
+        name = str_remove_all(name, "co jt voc sch dist"),
+        
+         name = str_remove_all(name, "(community school district)|(community unit district)|(comm college district)|(uni sch dist)|(un sch dist)"),
+         name = str_remove_all(name, "(co ind sch dist)|(unif school dist)|(unif sch dist)|(union elem sch dt)|(jt unified sch dist)|(jt union high school dist)|(elem sch district)|(jt elem sch dist)"), #
+         name = str_remove_all(name, "(district school board)|(ind sch district)|(ind sch dist)|(cons sch dist)|(ind school district)"),
+         
+         name = str_remove_all(name, "(school district)|(district)|(comm sch dist)|(elem sch dist)|(sch dist)|(fr t h school district)|(elem sch dt)|(union el sch d)|(jt uni sch dist)")
+         ) %>% 
+  
+     # Texas 
+  mutate(name = ifelse(state == "TX", str_remove_all(name, "[0-9]"), name)) %>% 
+  mutate(name = str_squish(name))
+
+round1 <- acfrs_school_districts %>% left_join(census_gov_unit) %>% drop_na(enrollment)
+#round1 %>% filter(enrollment == 0)
+```
+
+# Round 2 
+## ACFRs
+```{r}
+acfrs_sd_2 <- acfrs_school_districts %>% filter(!acfrs_original_name %in% round1$acfrs_original_name)%>% 
+  mutate(name = str_replace_all(name, "-|,|&|#|_", " ")) %>%  
+  mutate(name = str_remove_all(name, "(school district of the city of)|(consolidated school district)|(consolidated schools)|(community schools)|intermediate|(office of education)|(city sch dist)|(independent public school district)"),
+         name = str_remove_all(name, "^(the)"),
+    name = str_remove_all(name, "central|(union free)|(counties boces)|(county board of cooperative educational services)|centre|(community school)|(community high school)"),
+  #Michigan
+  name = str_remove_all(name, "(union free school district)|(city school district)|(board of cooperative educational services of)|(schools)|township|(district schools)|(union schools)|(public school of)"),
+  
+  name = str_remove_all(name, "public school"),
+  name = str_remove_all(name, "^of "),
+  name = str_remove_all(name, "(school)|county|consolidated|(isd)|( joint)|( district)|( community)|(union districit)$")) %>% 
+  mutate(name = ifelse(state == "OK", str_replace_all(name, " 00", " "), name)) %>% 
+  mutate(name = ifelse(state == "OK", str_replace_all(name, "( i )|(c0)|( c)|( c )|( 0)|( 1 )", " "), name)) %>%
+mutate(name = ifelse(state == "OK", str_replace_all(name, "( ity)|( 0)", " "), name)) %>%
+  mutate(name = str_remove_all(name, "number|(independent)")) %>% 
+  mutate(name = str_replace_all(name, "( d )|( no )|( o[0-9])", " ")) %>% 
+  mutate(name = str_squish(name))
+```
+
+## Gov Units
+```{r}
+census_sd_2 <- census_gov_unit %>% filter(!gov_unit_original_name %in% round1$gov_unit_original_name) %>% 
+mutate(name = str_replace_all(name, "-|,|&|#|_", " "),
+       name = str_remove_all(name, "'")) %>%  
+  mutate(name = ifelse(state == "MI", str_remove_all(name, "[0-9]"), name)) %>% 
+mutate(name = str_remove_all(name, "(consolidated school district)|(cons school)|(joint community college)|(county community school corporation)"),
+       
+       name = str_remove_all(name, "(union free school district)|(uf sch dist)|(central sch dist)|(union free)|(ctl high school dist)|(pt ool dist)|central|(centre union free school dist)"),
+  name = str_remove_all(name, "(city school dist)|(central sch)|(comm college)|(community college)|(ctl sch dist)|(ctl school dist)|(co comm coll)|(community high school)|(pub sch dist)|(comm sch dist)"),
+  name = str_remove_all(name, "(school district)|central|( ool dist)|(u f school dist)|(ctl sch)|(uf school dist)|(school dist)|(comm schs)|(city sch dist)|(township sch dist)"),
+  
+  name = str_remove_all(name,"(community sch dist)|(comm school dist)"),
+  name = str_remove_all(name, "^of "),
+  
+  name = str_remove_all(name, "(u f)|(twp)$"),
+  name = str_remove_all(name, "(uf)|(isd)$"),
+  name = str_remove_all(name, "( ool)|( pt)|( csd)$"),
+  name = str_remove_all(name, "( ctl)|(c s d)|( schs)$"),
+  
+  name = str_remove_all(name, "(comm schools)|(schs dist)|(public school)|(consolidated school)|(community schools)|(joint union)"),
+  name = str_remove_all(name, 
+"( schools)|( public)|(co schools)|(township)|(pub)|(twp)|( comm)|( community)|( cmty)|(twp f)|(pub fr)|(consol)|( sch)|( scools)|(college)|(township f)|(twp fr)|( co)|( union)|( joint)$"),
+  name = str_replace_all(name, "( i 00)", " ")) %>% 
+
+  mutate(name = str_squish(name)) 
+
+```
+
+```{r}
+round2 <- acfrs_sd_2 %>% left_join(census_sd_2) %>% drop_na(enrollment) 
+round1_2 <- round1 %>% rbind(round2)
+```
+
+# Round 3
+```{r}
+# after round 2, how many each state has left NOT matched
+acfrs_sd_2 %>% left_join(census_sd_2) %>% filter(is.na(enrollment)) %>% count(state) %>% arrange(desc(n))
+
+## after round 2, how many ACFRS left in total NOT matched
+acfrs_sd_3 <- acfrs_school_districts %>% filter(!acfrs_original_name %in% round1_2$acfrs_original_name) 
+```
+
+```{r}
+# after round 2, how many census left in total NOT matched
+census_sd_3 <- census_gov_unit %>% filter(!gov_unit_original_name %in% round1_2$gov_unit_original_name)
+
+```
+
+Now need to match acfrs_sd_3 and census_sd_3
+```{r}
+acfrs_sd_3_clean <- acfrs_sd_3 %>% #filter(state == "ME") %>% arrange(name) %>% 
+  mutate(name = str_remove_all(name, "(community schools district)|(county schools district)"),
+    name = str_remove_all(name, "(school disrict)|(community schools)|(community schools)"),
+         
+         name = str_remove_all(name, "( r)|( county)|( consolidated)$")) %>% 
+    mutate(name = ifelse(state == "NE", str_remove_all(name, " [0-9]+$"), name)) %>% 
+  mutate(name = str_remove_all(name, "( municipal)|( city)|( union)$")) %>% 
+  mutate(name = str_squish(name))
+```
+
+```{r}
+census_sd_3_clean <- census_sd_3 %>% 
+  filter(enrollment > 0) %>% 
+  #filter(state == "ME") %>% 
+  mutate(name = str_remove_all(name,"(ind school dist)|(independent rict)|(community college dist)|(community college)|(br school dist)")) %>% 
+  mutate(name = str_remove_all(name, "( rict )|(county unified school system)"),
+         name = str_remove_all(name, "(city sd)|(city pub[0-9])|(city pub)"),
+         
+    name = str_replace_all(name, "( 0)", " "),
+         name = str_replace_all(name, "serv", "service")) %>% 
+   # name = str_remove_all(name, " [0-9]+$")) %>% #filter(str_detect(name, "city pub"))
+  mutate(name = ifelse(state == "NE", str_remove_all(name, " [0-9]+$"), name)) %>% 
+
+mutate(name = str_remove_all(name,"( college)|( independent)|( cons)|( i s)|( rict)|( co cons)|( school)|( city)|( co)|( comm)|( ind sh)|( indep)$"),
+  name = str_remove(name, "(olidated)|( munc)$")
+  ) %>% 
+   mutate(name = str_squish(name))
+```
+
+```{r}
+round_3 <- acfrs_sd_3_clean %>% left_join(census_sd_3_clean) %>% drop_na(enrollment)
+# NOT matched after round 3
+acfrs_sd_3_clean %>% filter(!acfrs_original_name %in% round_3$acfrs_original_name) %>% count(state) %>% arrange(desc(n))
+  filter(state == "TX") %>% arrange(name)  #filter(str_detect(name, "goose"))
+```
+
+```{r}
+round123 <- round1_2 %>% rbind(round_3) 
+# Got this file from Paul sent to Marc: "dataformarc" file
+id <- rio::import("data/censusID_necesID_link.xlsx") %>% 
+  rename()
+
+round123 %>% rename(idcensus = census_id_gidid) %>% left_join(id, by = "idcensus")
+```
+
+```{r}
+
+round123 %>% write_csv("mapped_sd_census_enrollment.csv")
+
+acfrs_school_districts %>% filter(!acfrs_original_name %in% round123$acfrs_original_name) %>% filter(str_detect(name, "minidoka"))
+  write_csv("NOT_mapped_sd_census_enrollment.csv")
+
+acfrs_school_districts %>% filter(!acfrs_original_name %in% round123$acfrs_original_name) %>% count(state) %>% arrange(desc(n)) %>% 
+  write_csv("NOT_mapped_count_by_state.csv")
+
+acfrs_school_districts %>% filter(str_detect(name, "minidoka"))
+```
+```{r}
+acfrs_school_districts %>% filter(!acfrs_original_name %in% round123$acfrs_original_name) %>% select(acfrs_original_name, name, state) %>% arrange(name) %>% 
+  filter(state == "AR")
+```
+
+```{r}
+census_gov_unit %>% filter(!gov_unit_original_name %in% round123$gov_unit_original_name) %>% filter(str_detect(name, "charleston"))
+  filter(state == "AR")
+```
+
+
+
+# individual case
+```{r}
+# match name in Census back to ACFRs 
+census_gov_unit %>% 
+mutate(name = case_when("gardner edgerton antioch 231" ~ "gardner 231"))
+ name = case_when(gov_unit_original_name = "minidoka county jt sch district 331" ~ "minidoka joint 331"
+
+# IL
+case_when(acfrs_original_name == "Alsip Hazelgreen and Oak Lawn School District 126" ~ name = "alsip hazlgrn oaklawn 126")
+"Berwyn South School District 100" ~ name = "berwyn 100",
+"Carmi-White County Community Unit School District No.5" ~ name = "carmi 5",
+"Chicago Board of Education" ~ name = "city of chicago 299",
+"Country Club Hill School District 160" ~ name = "country club hills 160", 
+"Dolton West School District 148" ~ name = "dolton 148",
+"Kildeer Countryside Consolidated School District" ~ name = "kildeer countryside community consl 96",
+"Lagrange Elementary School District 102" ~ name = "la grange 102", 
+"Lemont-Bromberek Combined School District 113A"~ name = "lemont bromberek combined 113 a", 
+"moline coal valley school dist 40" ~ name = "moline 40"
+"Posen-Robbins Elementary School District 143 1/2" ~ name = "posen robbins 143 5", 
+"Prairie-Hills Elementary School District 144" ~ name = "praire hills 144",
+"Thornton Fractional Township High School District No. 215" ~ name = "",
+"School District U-46"~ name = "u 46 (elgin area)",
+"Valley View Public Schools Community Unit District" ~ name = "valley view 365 u"
+
+mutate(case_when(name== "calumetlaurium keweenaw" ~ "calumet laureium keweenaw"))
+```

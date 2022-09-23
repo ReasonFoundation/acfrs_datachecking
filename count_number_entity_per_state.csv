@@ -1,0 +1,52 @@
+state,nces_sd_count,acfrs_sd_count
+Alabama,138,133
+Alaska,54,43
+Arizona,274,140
+Arkansas,237,246
+California,996,941
+Colorado,178,90
+Connecticut,175,22
+Delaware,19,NA
+Florida,75,69
+Georgia,183,195
+Hawaii,1,NA
+Idaho,117,57
+Illinois,948,388
+Indiana,296,69
+Iowa,328,333
+Kansas,291,98
+Kentucky,175,162
+Louisiana,78,67
+Maine,222,58
+Maryland,26,24
+Massachusetts,321,48
+Michigan,541,596
+Minnesota,367,171
+Mississippi,155,126
+Missouri,518,234
+Montana,402,60
+Nebraska,249,249
+Nevada,22,15
+New Hampshire,168,44
+New Jersey,547,285
+New Mexico,136,57
+New York,723,463
+North Carolina,125,117
+North Dakota,184,33
+Ohio,619,677
+Oklahoma,515,512
+Oregon,182,235
+Pennsylvania,508,474
+Rhode Island,41,3
+South Carolina,84,78
+South Dakota,171,52
+Tennessee,147,165
+Texas,1024,1014
+Utah,43,47
+Vermont,113,49
+Virginia,134,20
+Washington,316,183
+West Virginia,55,55
+Wisconsin,425,228
+Wyoming,60,33
+NA,6,2
