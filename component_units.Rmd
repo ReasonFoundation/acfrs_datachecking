@@ -1,0 +1,112 @@
+---
+title: "State Government Vs. Component Units"
+output: 
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+    toc_depth: 3
+    
+date: "2023-05-10"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(dplyr)
+library(DT)
+library(ggplot2)
+library(forcats)
+library(plotly)
+```
+
+### List of all 434 component units in 2020
+```{r}
+component_units2020 <- readRDS("data/data_from_dbsite_2020.RDS") %>% filter(!is.na(component_unit_of_id)) %>% select(state, name, total_liabilities, net_pension_liability)
+
+component_units_bystate_2020 <- component_units2020 %>% 
+  group_by(state) %>% 
+  mutate(tot_component_units_liabilities = sum(total_liabilities),
+         tot_component_units_netpension = sum(net_pension_liability)) %>% 
+  select(state, tot_component_units_liabilities, tot_component_units_netpension) %>% distinct()
+
+state_gov2020 <- readRDS("/Users/tn/Desktop/REASON/state_county_city/state_gov.RDS") %>% 
+  select(state, total_liabilities, net_pension_liability)
+
+component_units2021 <- readRDS("data/data_from_dbsite_2021.RDS") %>% filter(!is.na(component_unit_of_id))
+
+component_units2020 %>% format(big.mark = ",") %>% datatable()
+
+write.csv(component_units2020, "component_units2020.csv")
+```
+
+### State Government ACFRs vs. The Sum of Component Units by state ACFRs
+
+pct_total_liabilities = sum of total liabilities of all component units / state government total_liabilities
+
+pct_netpension = sum of net pension liabilities of all component units / state government net pension liabilities 
+
+
+```{r}
+state_gov2020 %>% left_join(component_units_bystate_2020) %>% 
+  mutate(pct_total_liabilities = tot_component_units_liabilities/total_liabilities,
+         pct_netpension = tot_component_units_netpension/net_pension_liability) %>% 
+  arrange(desc(pct_total_liabilities)) -> dp2020
+
+dp2020 %>% 
+  format(big.mark = ",") %>% 
+  datatable()
+
+```
+
+```{r}
+dp2020 %>% 
+  filter(!is.na(pct_total_liabilities)) %>% 
+  ggplot(aes(fct_reorder(state, pct_total_liabilities), pct_total_liabilities)) +
+  geom_col(fill = "lightblue") +
+  coord_flip() +
+  labs(title = "Total liabilities: \nThe sum of component units as a percentage of state government", 
+       x = "") +
+  theme_minimal() -> p1
+
+ggplotly(p1)
+
+```
+
+### View component units of SC
+
+```{r}
+component_units2020 %>% filter(state == "SC") %>% 
+  select(state, name, total_liabilities, net_pension_liability) %>% 
+  arrange(desc(total_liabilities)) %>% 
+  format(big.mark = ",") %>% 
+  datatable()
+```
+
+### View component units of NY
+
+```{r}
+component_units2020 %>% filter(state == "NY") %>% 
+  select(state, name, total_liabilities, net_pension_liability) %>% format(big.mark = ",") %>% 
+  arrange(desc(total_liabilities)) %>% 
+  datatable()
+```
+
+```{r}
+dp2020 %>% 
+  filter(!is.na(pct_netpension)) %>% 
+  ggplot(aes(fct_reorder(state, pct_netpension), pct_netpension)) +
+  geom_col(fill = "orange") +
+  coord_flip() +
+  labs(title = "Net Pension liabilities: \nThe sum of component units as a percentage of state government", 
+       x = "") +
+  theme_minimal() -> p2
+
+ggplotly(p2)
+```
+### View component units of OK
+
+```{r}
+component_units2020 %>% filter(state == "OK") %>% 
+  select(state, name, total_liabilities, net_pension_liability) %>% format(big.mark = ",") %>% 
+  arrange(desc(total_liabilities)) %>% 
+  datatable()
+```
